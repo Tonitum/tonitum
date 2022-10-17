@@ -24,10 +24,10 @@ vim.wo.cursorline = true
     -- vim.opt.undofile = true
 
 -- search options
-    vim.opt.hlsearch = false
-    vim.opt.ignorecase = true
-    vim.opt.incsearch = true
-    vim.opt.smartcase = true
+vim.opt.hlsearch = false
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.smartcase = true
 
 -- this breaks on the windows terminal
 -- vim.opt.termguicolors = true
@@ -42,10 +42,11 @@ vim.opt.cmdheight = 1
 -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 -- delays and poor user experience.
 vim.opt.updatetime = 50
+vim.opt.timeoutlen = 1000
+vim.opt.ttimeoutlen = 50
 
 -- Don't pass messages to |ins-completion-menu|.
 vim.opt.shortmess:append("c")
-
 
 -- performance options
 vim.o.complete = "i"
@@ -63,7 +64,3 @@ vim.cmd("colorscheme solarized")
 vim.opt.colorcolumn = "80"
 -- transparency
 vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
--- vim.g.netrw_browse_split = 0
-vim.g.netrw_browse_split = 2
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize=25
