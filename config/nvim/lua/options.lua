@@ -10,19 +10,17 @@ local options = {
     tabstop = 4,
     smarttab = true,
 
-    -- line 
+    -- line
     nu = true,
     relativenumber = true,
-    cursorline = true,
+    cursorline = false,
     showtabline = 0,
-    
+
     -- search options
     hlsearch = false,
     ignorecase = true,
     incsearch = true,
     smartcase = true,
-
-    cmdheight = 1,-- Give more space for displaying messages.
 
     -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
     -- delays and poor user experience.
@@ -53,26 +51,26 @@ local options = {
 
     -- other
     -- clipboard = "unnamedplus",
-    errorbells = false,
-    guicursor = "",
+    cmdheight = 1,-- Give more space for displaying messages.
+    errorbells = false, -- no dings on error
+    guicursor = "", -- dunno, some gui thing
+    guifont = "monospace:h17", -- see above
+    laststatus = 3, --
+    pumheight = 10,
     scrolloff = 8,
     signcolumn = "yes",
-    wrap = false,
-    pumheight = 10,
-    laststatus = 3,
+    title = true,
     numberwidth = 4,
     wrap = false,
-    guifont = "monospace:h17",
-    title = true,
 }
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
--- visual 
-vim.cmd("colorscheme solarized")
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+-- visual
+vim.cmd("colorscheme NeoSolarized")
+-- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
 
 vim.opt.shortmess:append("c")
 vim.opt.isfname:append("@-@")
