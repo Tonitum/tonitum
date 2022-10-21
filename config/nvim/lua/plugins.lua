@@ -1,38 +1,65 @@
--- installing packer and plugin config
-local use = require('packer').use
+vim.cmd [[packadd packer.nvim]]
+local packer = require("packer")
+local use = packer.use
+local home_dir = "/home/e416232/.config/nvim"
 
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager itself.
-  use 'tpope/vim-commentary' -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
-  use 'tpope/vim-surround' -- change text wrappers e.g. " ' ()
-  use 'tpope/vim-fugitive' -- git commands in vim 
-  use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code using a fast incremental parsing library. Treesitter is used by nvim for various things, but among others, for syntax coloring. Make sure that any themes you install support treesitter!
-  use 'nvim-treesitter/nvim-treesitter-textobjects' -- Additional textobjects for treesitter.
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client.
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
-  use 'saadparwaiz1/cmp_luasnip' -- Snippets source for nvim-cmp
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
+packer.startup(function()
+    -- packer itself
+    use(home_dir .. '/after/pack/packer/opt/packer.nvim')
+    -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
+    use(home_dir .. '/manual-plugins/vim-commentary-master')
+    -- use "cs" to change wrappers e.g. " to '
+    use(home_dir .. '/manual-plugins/vim-surround-master')
+    -- Highlight, edit, and navigate code using a fast incremental parsing library.
+    -- Treesitter is used by nvim for various things, but among others, for syntax coloring.
+    -- Make sure that any themes you install support treesitter!
+    use(home_dir .. '/manual-plugins/nvim-treesitter-master')
+    -- Additional textobjects for treesitter.
+    use(home_dir .. '/manual-plugins/nvim-treesitter-textobjects-master')
+    -- Collection of configurations for builtin LSP client.
+    use(home_dir .. '/manual-plugins/nvim-lspconfig-master')
+    -- Autocompletion plugin
+    use(home_dir .. '/manual-plugins/nvim-cmp-main')
+    -- LSP source for nvim cmp
+    use(home_dir .. '/manual-plugins/cmp-nvim-lsp-main')
+    -- Snippets source for nvim cmp
+    use(home_dir .. '/manual-plugins/cmp_luasnip-master')
+    --  Snippets plugin
+    use(home_dir .. '/manual-plugins/LuaSnip-master')
 end)
-
--- can probably move the below to idividual files
-
-require('cmp_nvim_lsp') -- need to add a check here to see if it's installed
+-- if nil == packer["cmp_nvim_lsp"] then
+--     -- failed to load plugins, are they installed?
+--     print("failed to load cmp_nvim_lsp")
+--     return
+-- end
+local cmp_module_name = "cmp_nvim_lsp"
+if not pcall(require, cmp_module_name) then
+    print(cmp_module_name .. " is not found")
+    return
+end
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
--- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pyright' }
+local servers = { 'pylsp' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
     capabilities = capabilities,
   }
 end
+
+lspconfig.clangd.setup({
+    capabilities = capabilities,
+    -- cmd = {
+    --   "clangd",
+    --   "-completion-style=detailed",
+    --   "--header-insertion=never",
+    --   "-g -std=c++20"}
+})
 
 -- luasnip setup
 local luasnip = require 'luasnip'
@@ -45,10 +72,14 @@ cmp.setup {
       luasnip.lsp_expand(args.body)
     end,
   },
+  window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+  },
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
+    ['<C-c>'] = cmp.mapping.complete(),
     ['<CR>'] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -58,6 +89,8 @@ cmp.setup {
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
         luasnip.expand_or_jump()
+      -- elseif has_words_before() then
+      --   cmp.complete()
       else
         fallback()
       end
@@ -75,5 +108,6 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
+    { name = 'buffer' },
   },
 }
