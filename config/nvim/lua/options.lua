@@ -32,6 +32,7 @@ local options = {
     complete = "i",
     lazyredraw = true,
     autoread = true,
+    compatible = false,
 
     -- folding
     foldmethod = "indent",
@@ -39,6 +40,7 @@ local options = {
 
     -- colors
     colorcolumn = "80",
+    background = "dark",
 
     -- swapfile/history
     -- I don't really know what these do
@@ -46,11 +48,19 @@ local options = {
     backup = false,
     undodir = os.getenv("HOME") .. "/.vim/undodir",
     undofile = true,
+
     -- this breaks on the windows terminal
-    -- termguicolors = true,
+    termguicolors = false,
+
+    -- path
+    path = vim.o.path .. ".config/nvim/",
+    path = vim.o.path .. "/opt/tbs/include/",
+    path = vim.o.path .. "/disk01/e416232/projects/dts",
+    path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo",
+    -- path = path + "**", -- enable vanilla fuzzy find. have to see if this slows me down
 
     -- other
-    -- clipboard = "unnamedplus",
+    -- clipboard = "unnamedplus", -- system clipboard (linux)
     cmdheight = 1,-- Give more space for displaying messages.
     errorbells = false, -- no dings on error
     guicursor = "", -- dunno, some gui thing
@@ -62,6 +72,7 @@ local options = {
     title = true,
     numberwidth = 4,
     wrap = false,
+    showtabline = 1,
 }
 
 for k, v in pairs(options) do
@@ -69,11 +80,14 @@ for k, v in pairs(options) do
 end
 
 -- visual
--- vim.cmd("colorscheme NeoSolarized")
-vim.cmd("colorscheme solarized")
+vim.cmd("colorscheme NeoSolarized")
+-- vim.cmd("colorscheme solarized")
 -- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
+-- vim.cmd("colorscheme gruvbox")
 
-vim.opt.shortmess:append("c")
+-- path options
+
+vim.opt.shortmess:append("c") -- what do these do?
 vim.opt.isfname:append("@-@")
 -- Manually set settings
 -- [[
