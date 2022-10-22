@@ -82,8 +82,8 @@ end
 -- visual
 vim.cmd("colorscheme NeoSolarized")
 -- vim.cmd("colorscheme solarized")
--- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
 -- vim.cmd("colorscheme gruvbox")
+-- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
 
 -- path options
 
