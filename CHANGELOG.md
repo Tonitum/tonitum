@@ -1,4 +1,8 @@
 _______________________________________________________________________________
+# v0.0.3
+tmux config added
+
+_______________________________________________________________________________
 # v0.0.2
 Cleaned up logic in many places, trying to make this config not crash if
 certain elements (plugins and such) are not present.
