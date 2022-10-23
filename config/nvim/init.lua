@@ -1,25 +1,29 @@
 -- Module Imports
 require('plugins') -- install plugins
 require("options") -- essential vim settings
-require("netrw-tree") -- pseudo-nerdtree
+local utils = require("utils") -- utility functions
+local nerdtree = require('nerdtree-settings')
+-- local netrw = require('netrw-tree') -- pseudo-nerdtree
 
 -- Key Mappings
-local map = require("map").map
-vim.g.mapleader = " " -- set leader key to space
--- vim.g.mapleader = "," -- set leader key to space
+-- These should probably be moved elsewhere, v0.0.4?
+local map = utils.map
+local nmap = utils.nmap
+local imap = utils.imap
+local augroup = utils.augroup 
+local autocmd = utils.autocmd 
+local TonitumGroup = utils.TonitumGroup 
 
--- nmap("<leader><key>", "<cmd>Command<CR>")
-function nmap(shortcut, command)
-    -- normal mode remampings
-    map('n', shortcut, command)
-end
-function imap(shortcut, command)
-    -- insert mode remampings
-    map('i', shortcut, command)
-end
-function vmap(shortcut, command)
-    -- visual mode remampings
-    map('v', shortcut, command)
+vim.g.mapleader = " " -- set leader key to space
+-- show/hide explorer window
+if nerdtree ~= nil then
+  nmap("<leader>e", ":NERDTreeFocus<CR>")
+  nmap("<leader><C-e>", "<cmd>NERDTree<CR>")
+  nmap("<leader>E", "<cmd>NERDTreeToggle<CR>")
+  nmap("<leader>F", "<cmd>NERDTreeFind<CR>")
+elseif netrw ~= nil then
+  nmap("<leader>q", "<cmd>Lex %:p:h<CR>")
+  nmap("<leader>e", "<cmd>Lex<CR>")
 end
 
 -- easier line navigation
@@ -51,9 +55,6 @@ nmap("<leader>tn", ":tabnew<Space>")
 nmap("<leader>tm", ":tabm<Space>")
 nmap("<leader>td", "<cmd>tabclose<CR>")
 
--- show/hide explorer window
-nmap("<leader>Q", "<cmd>Lex %:p:h<CR>")
-nmap("<leader>E", "<cmd>Lex<CR>")
 
 -- buffer swapping
 nmap("<leader>bp", "<cmd>bprevious<CR>")
