@@ -116,14 +116,24 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+BLACK='\001\e[0;30m\002'
+BLUE='\001\e[0;34m\002'
+GREEN='\001\e[0;32m\002'
+CYAN='\001\e[0;36m\002'
+RED='\001\e[0;31m\002'
+PURPLE='\001\e[0;35m\002'
+BROWN='\001\e[0;33m\002'
+LIGHTGRAY='\001\e[0;37m\002'
+DARKGRAY='\001\e[1;30m\002'
+LIGHTBLUE='\001\e[1;34m\002'
+LIGHTGREEN='\001\e[1;32m\002'
+LIGHTCYAN='\001\e[1;36m\002'
+LIGHTRED='\001\e[1;31m\002'
+LIGHTPURPLE='\001\e[0;35m\002'
+YELLOW='\001\e[1;33m\002'
+WHITE='\001\e[1;37m\002'
+RESET='\001\e[0m\002'
 export PATH=$PATH:~/nvim-linux64/bin/
 export PATH=$PATH:~/.local/bin
-alias vim=nvim
 
-# bash aliases
-alias re-source="source ~/.bashrc"
-alias openrc="nvim ~/.bashrc"
-
-# Git Aliases
-alias gs="git status"
-alias gc="git commit -m "
+PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_branch) λ "
