@@ -10,9 +10,9 @@ local nerdtree = require('nerdtree-settings')
 local map = utils.map
 local nmap = utils.nmap
 local imap = utils.imap
-local augroup = utils.augroup 
-local autocmd = utils.autocmd 
-local TonitumGroup = utils.TonitumGroup 
+local augroup = utils.augroup
+local autocmd = utils.autocmd
+local TonitumGroup = utils.TonitumGroup
 
 vim.g.mapleader = " " -- set leader key to space
 -- show/hide explorer window
@@ -26,6 +26,7 @@ elseif netrw ~= nil then
   nmap("<leader>e", "<cmd>Lex<CR>")
 end
 
+nmap("<leader>w", "<cmd>wincmd l<CR>")
 -- easier line navigation
 -- visual mode
 vmap("L", "$")
@@ -39,11 +40,14 @@ nmap("J", "}")
 nmap("K", "{")
 
 -- more convenient esc
-imap("jk", "<esc>")
+imap("jf", "<esc>")
+imap("fj", "<esc>")
 
+-- open notes
+nmap("<leader>nt", "<cmd>tabedit ~/Documents/notes/notes.md<CR>")
 -- reload the config
 nmap("<leader>vs", "<cmd>so ~/.config/nvim/init.lua<CR>") -- re-source the config
-nmap("<leader>ve", "<cmd>e ~/.config/nvim/init.lua<CR>") -- edit the config
+nmap("<leader>ve", "<cmd>tabedit ~/.config/nvim/init.lua<CR>") -- edit the config
 
 -- tab navigation
 nmap("<leader>th", "<cmd>tabfirst<CR>")
@@ -66,24 +70,24 @@ map("x", "<leader>so", "<cmd>'<,'>!sort<CR>")
 -- replace all instances
 nmap("<leader><C-d>", ":%s//")
 
--- bracket completion
-imap("{", "{}<left>")
-imap("{{", "{")
-imap("{}", "{}")
+-- -- bracket completion
+-- imap("{", "{}<left>")
+-- imap("{{", "{")
+-- imap("{}", "{}")
 
-imap("(", "()<left>")
-imap("((", "(")
-imap("()", "()")
+-- imap("(", "()<left>")
+-- imap("((", "(")
+-- imap("()", "()")
 
-imap("[", "[]<left>")
-imap("[[", "[")
-imap("[]", "[]")
+-- imap("[", "[]<left>")
+-- imap("[[", "[")
+-- imap("[]", "[]")
 
-imap('"', '""<left>')
-imap('""', '""')
+-- imap('"', '""<left>')
+-- imap('""', '""')
 
-imap("'", "''<left>")
-imap("''", "''")
+-- imap("'", "''<left>")
+-- imap("''", "''")
 
 -- apply suggested fix
 nmap("<leader>ap", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
@@ -111,5 +115,24 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
+  autocmd FileType cmake setlocal shiftwidth=2 tabstop=2
+]]
+
+vim.cmd [[
   autocmd FileType python setlocal shiftwidth=4 tabstop=4
 ]]
+-- highlight on yank
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local yank_group = augroup('HighlightYank', {})
+
+autocmd('TextYankPost', {
+    group = yank_group,
+    pattern = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 40,
+        })
+    end,
+})
