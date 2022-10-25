@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import unittest
-from question_one import NumberPicker
+from python.day1.question_one import NumberPicker
 
 class TestQuestionOne(unittest.TestCase):
     def test_process(self):

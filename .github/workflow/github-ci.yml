@@ -6,7 +6,8 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "master" branch
   push:
-    branches: [ "master" ]
+    # this should make these jobs run on all branches
+    # branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
 
@@ -34,3 +35,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+  python-question-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: day-one-test
+        run: |
+          PYTHONPATH=$PYTHONPATH:$(pwd)
+          python3 python/day1/test/test_question_1.py
+
