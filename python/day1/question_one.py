@@ -22,7 +22,6 @@ class NumberPicker():
         return ','.join(return_l)
 
 if __name__ == "__main__":
-    # picker = NumberPicker(2000, 3200)
     picker = NumberPicker(1, 42)
     res = picker.process()
     print(res)
