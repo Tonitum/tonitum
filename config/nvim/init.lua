@@ -89,6 +89,14 @@ nmap("<leader><C-d>", ":%s//")
 -- imap("'", "''<left>")
 -- imap("''", "''")
 
+-- telescope bindings
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- this requires ripgrep, which may not be available to me
+-- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 -- apply suggested fix
 nmap("<leader>ap", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 -- vim-commentary
