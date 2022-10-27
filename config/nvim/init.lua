@@ -1,8 +1,8 @@
 -- Module Imports
-require('plugins') -- install plugins
+require("plugins") -- install plugins
 require("options") -- essential vim settings
 local utils = require("utils") -- utility functions
-local nerdtree = require('nerdtree-settings')
+local nerdtree = require('plugin-opt.nerdtree')
 -- local netrw = require('netrw-tree') -- pseudo-nerdtree
 
 -- Key Mappings
