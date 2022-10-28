@@ -44,6 +44,7 @@ jobs:
           pwd
           ls
           echo $PYTHONPATH
-          PYTHONPATH=$PYTHONPATH:$(pwd)
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          echo $PYTHONPATH
           python3 python/day1/test/test_question_1.py
 
