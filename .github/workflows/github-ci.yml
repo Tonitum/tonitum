@@ -16,3 +16,4 @@ jobs:
         run: |
           export PYTHONPATH=$PYTHONPATH:$(pwd)
           python3 python/day1/test/test_question_1.py
+          python3 python/day1/test/test_question_2.py

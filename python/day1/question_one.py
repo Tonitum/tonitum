@@ -11,17 +11,29 @@ class NumberPicker():
         self.min = min_range
         self.max = max_range
 
-    def process(self) -> str:
+    def process_1(self) -> str:
         return_l = []
         for i in range(self.min, self.max + 1):
-            # self documenting code who?
-            divisible_by_5 = ((i % 5) == 0)
-            divisible_by_7 = ((i % 7) == 0)
-            if divisible_by_7 and not divisible_by_5:
+            if self._divisible_by_7(i) and not self._divisible_by_5(i):
                 return_l.append(str(i))
         return ','.join(return_l)
 
+    def _divisible_by_5(self, target):
+        return ((target % 5) == 0)
+
+    def _divisible_by_7(self, target):
+        return ((target % 7) == 0)
+
+    def process_2(self) -> str:
+        # this uses list comprehensions
+        return_l = [str(i) for i in range(self.min, self.max + 1)
+                if not self._divisible_by_5(i) and self._divisible_by_7(i)]
+        return ','.join(return_l)
+
+
 if __name__ == "__main__":
     picker = NumberPicker(1, 42)
-    res = picker.process()
-    print(res)
+    res1 = picker.process_1()
+    res2 = picker.process_2()
+    print(res1)
+    print(res2)
