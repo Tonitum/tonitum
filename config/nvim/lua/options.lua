@@ -76,10 +76,10 @@ end
 -- path
 vim.o.path = vim.o.path .. ".config/nvim/,"
 vim.o.path = vim.o.path .. "/opt/tbs/include/,"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts,"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo,"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo/nondev/gmock_install/include/"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo/nondev/gtest_install/include/"
+vim.o.path = vim.o.path .. "$PRODUCT_BASE,"
+vim.o.path = vim.o.path .. "$TBS,"
+vim.o.path = vim.o.path .. "$TBS/nondev/gmock_install/include/,"
+vim.o.path = vim.o.path .. "$TBS/nondev/gtest_install/include/"
 -- vim.o.path = vim.o.path .. "**", -- enable vanilla fuzzy find. have to see if this slows me down
 
 -- colorscheme, etc
