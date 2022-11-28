@@ -8,9 +8,9 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- TODO: add logic to this to deterine which method to use, OR update work cmp
 -- work cmp
--- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 -- home cmp
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+-- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
