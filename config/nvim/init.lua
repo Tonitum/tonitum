@@ -17,9 +17,9 @@ local autocmd = utils.autocmd
 -- show/hide explorer window
 if nerdtree ~= nil then
   nmap("<leader>e", ":NERDTreeFocus<CR>")
-  nmap("<leader><C-e>", "<cmd>NERDTree<CR>")
-  nmap("<leader>E", "<cmd>NERDTreeToggle<CR>")
-  nmap("<leader>F", "<cmd>NERDTreeFind<CR>")
+  nmap("<leader>nE", "<cmd>NERDTreeToggle<CR>")
+  nmap("<leader>nf", "<cmd>NERDTreeFind<CR>")
+  -- nmap("<leader><C-e>", "<cmd>NERDTree<CR>")
 elseif netrw ~= nil then
   nmap("<leader>q", "<cmd>Lex %:p:h<CR>")
   nmap("<leader>e", "<cmd>Lex<CR>")
