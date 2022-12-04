@@ -76,8 +76,10 @@ end
 -- path
 vim.o.path = vim.o.path .. ".config/nvim/,"
 vim.o.path = vim.o.path .. "/opt/tbs/include/,"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts,"
-vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo,"
+vim.o.path = vim.o.path .. "$PRODUCT_BASE,"
+vim.o.path = vim.o.path .. "$TBS,"
+vim.o.path = vim.o.path .. "$TBS/nondev/gmock_install/include/,"
+vim.o.path = vim.o.path .. "$TBS/nondev/gtest_install/include/"
 -- vim.o.path = vim.o.path .. "**", -- enable vanilla fuzzy find. have to see if this slows me down
 
 -- colorscheme, etc
@@ -94,7 +96,7 @@ vim.opt.isfname:append("@-@")
 -- Plugin Settings
 -- vim-airline
 -- let g:airline_theme='<theme>'
-vim.cmd('let g:airline#extensions#tabline#enabled = 1')
+-- vim.cmd('let g:airline#extensions#tabline#enabled = 1')
 
 -- gitgutter
 vim.g.gitgutter_override_sign_column_highlight = 0
