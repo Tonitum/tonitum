@@ -20,7 +20,8 @@ nmap("<leader>w", "<cmd>wincmd l<CR>")
 vmap("L", "$")
 vmap("H", "^")
 vmap("J", "}")
-vmap("J", "}")
+vmap("K", "{")
+
 -- normal mode
 nmap("L", "$")
 nmap("H", "^")
