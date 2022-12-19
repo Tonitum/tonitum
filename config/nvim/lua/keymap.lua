@@ -25,6 +25,8 @@ vmap("K", "{")
 -- normal mode
 nmap("L", "$")
 nmap("H", "^")
+-- nmap("J", "<C-d>zz")
+-- nmap("K", "<C-u>zz")
 nmap("J", "}")
 nmap("K", "{")
 
@@ -63,6 +65,12 @@ nmap("<leader>td", "<cmd>tabclose<CR>")
 -- buffer swapping
 nmap("<leader>bp", "<cmd>bprevious<CR>")
 nmap("<leader>bn", "<cmd>bnext<CR>")
+
+-- close all unopen buffers
+nmap("<leader>bc", "<cmd>%bd|e#<CR>")
+
+-- auto-increment numbers
+map("x", "<leader>i", "g<C-a>")
 
 -- sort lines from visual selection
 map("x", "<leader>so", "<cmd>'<,'>sort<CR>")
@@ -108,7 +116,9 @@ nmap("<leader>sy", "<cmd>lua searchLastYank()<CR>")
 nmap("<leader>ap", "<cmd>:lua vim.lsp.buf.code_action()<CR>")
 
 -- vim-commentary
-nmap("<leader>C", "<Plug>Commentary w")
+-- nmap("<leader>C", "<Plug>Commentary w")
+nmap("<C-_>", "<Plug>Commentary w")
+vmap("<C-_>", "<Plug>Commentary w")
 
 -- telescope bindings
 ignored_dirs = {
@@ -123,4 +133,5 @@ vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 -- vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 
