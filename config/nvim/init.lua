@@ -7,7 +7,6 @@ local nerdtree = require("plugin-opt.nerdtree")
 -- local netrw = require('netrw-tree') -- pseudo-nerdtree
 
 -- Key Mappings
--- These should probably be moved elsewhere, v0.0.4?
 local map = utils.map
 local nmap = utils.nmap
 local imap = utils.imap
@@ -50,8 +49,6 @@ vim.cmd [[
   autocmd FileType python setlocal shiftwidth=4 tabstop=4
 ]]
 -- highlight on yank
-local augroup = vim.api.nvim_create_augroup
-local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
 autocmd('TextYankPost', {
