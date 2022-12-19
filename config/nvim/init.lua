@@ -1,4 +1,7 @@
+-- include all of my custom setup
+require("tonitum")
 -- Module Imports
+--
 require("plugins") -- install plugins
 require("options") -- essential vim settings
 require("keymap") -- alternate key maps
