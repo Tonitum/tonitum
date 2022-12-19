@@ -1,6 +1,33 @@
+local pickers = require("telescope.pickers")
+local finders = require("telescope.finders")
+local previewers = require("telescope.previewers")
+local action_state = require("telescope.actions.state")
+local conf = require("telescope.config").values
+local actions = require("telescope.actions")
 -- You dont need to set any of these options. These are the default ones. Only
 -- the loading is important
 require('telescope').setup {
+  	defaults = {
+		file_sorter = require("telescope.sorters").get_fzy_sorter,
+		prompt_prefix = " >",
+		color_devicons = true,
+
+		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
+		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
+
+		mappings = {
+			i = {
+				["<C-x>"] = false,
+				["<C-q>"] = actions.send_to_qflist,
+        ["<CR>"] = actions.select_default,
+			},
+		},
+    file_ignore_patterns = {
+      "_build/",
+      "temp/",
+    },
+	},
   -- extensions = {
   --   fzf = {
   --     fuzzy = true,                    -- false will only do exact matching
@@ -10,12 +37,6 @@ require('telescope').setup {
   --                                      -- the default case_mode is "smart_case"
   --   },
   -- },
-  defaults = {
-    file_ignore_patterns = {
-      "_build",
-      "temp",
-    },
-  }
 }
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
