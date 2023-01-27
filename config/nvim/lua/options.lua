@@ -87,7 +87,7 @@ vim.o.path = vim.o.path .. "/disk01/e416232/projects/dts/tbs_repo/nondev/gtest_i
 vim.cmd("colorscheme gruvbox")
 -- transparency
 -- vim.cmd("hi Normal ctermfg=12 ctermbg=8 guifg=#839496 guibg=#002b36")
-vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
+-- vim.cmd("hi Normal guibg=NONE ctermbg=NONE")
 
 vim.opt.shortmess:append("c") -- what do these do?
 vim.opt.isfname:append("@-@")
