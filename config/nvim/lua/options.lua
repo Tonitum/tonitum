@@ -35,7 +35,7 @@ local options = {
     autoread = true,
     compatible = false,
 
-    -- folding
+    -- foldingA
     foldmethod = "indent", -- set a default fold method
     foldenable = false,
 
