@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>pv", "<cmd>Ex<CR>")
 -- move cursor to active window
-nmap("<leader>w", "<cmd>wincmd l<CR>")
+vim.keymap.set("n", "<leader>w", "<cmd>wincmd l<CR>")
 
 -- easier horizontal line navigation
 vim.keymap.set("n", "H", "^")
@@ -38,9 +38,9 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<leader>f", function()
-    vim.lsp.buf.format()
-end)
+-- vim.keymap.set("n", "<leader>f", function()
+    -- vim.lsp.buf.format()
+-- end)
 
 
 -- quick fix list navigation
