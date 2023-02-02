@@ -30,41 +30,43 @@ return require('packer').startup(function(use)
   use( 'hrsh7th/cmp-nvim-lsp' ) -- LSP source for nvim-cmp
   use( 'saadparwaiz1/cmp_luasnip' ) -- Snippets source for nvim-cmp
   use({ 'L3MON4D3/LuaSnip',
-      commit ='94f192cf5f0a1931b3035c2d8affdebec460968c'}) -- Snippets plugin
+  commit ='94f192cf5f0a1931b3035c2d8affdebec460968c'}) -- Snippets plugin
 
   use({'ellisonleao/gruvbox.nvim',
-      commit = 'cb7a8a867cfaa7f0e8ded57eb931da88635e7007',
-      config = function()
-        vim.cmd('colorscheme gruvbox')
-      end
-    }) -- gruvbox color scheme
+  commit = 'cb7a8a867cfaa7f0e8ded57eb931da88635e7007',
+  config = function()
+    vim.cmd('colorscheme gruvbox')
+  end
+}) -- gruvbox color scheme
 
-use('theprimeagen/harpoon')
+use({'theprimeagen/harpoon',
+commit='6138ff7096bc50f0b6b40b607196232e1b90d6b6'
+  })
 
 
--- use {
--- 'VonHeikemen/lsp-zero.nvim',
--- requires = {
--- -- LSP Support
--- {'neovim/nvim-lspconfig'},
--- {'williamboman/mason.nvim'},
--- {'williamboman/mason-lspconfig.nvim'},
+  -- use {
+  -- 'VonHeikemen/lsp-zero.nvim',
+  -- requires = {
+  -- -- LSP Support
+  -- {'neovim/nvim-lspconfig'},
+  -- {'williamboman/mason.nvim'},
+  -- {'williamboman/mason-lspconfig.nvim'},
 
--- -- Autocompletion
--- {'hrsh7th/nvim-cmp'},
--- {'hrsh7th/cmp-buffer'},
--- {'hrsh7th/cmp-path'},
--- {'saadparwaiz1/cmp_luasnip'},
--- {'hrsh7th/cmp-nvim-lsp'},
--- {'hrsh7th/cmp-nvim-lua'},
+  -- -- Autocompletion
+  -- {'hrsh7th/nvim-cmp'},
+  -- {'hrsh7th/cmp-buffer'},
+  -- {'hrsh7th/cmp-path'},
+  -- {'saadparwaiz1/cmp_luasnip'},
+  -- {'hrsh7th/cmp-nvim-lsp'},
+  -- {'hrsh7th/cmp-nvim-lua'},
 
--- -- Snippets
--- {'L3MON4D3/LuaSnip'},
--- {'rafamadriz/friendly-snippets'},
--- }
--- }
+  -- -- Snippets
+  -- {'L3MON4D3/LuaSnip'},
+  -- {'rafamadriz/friendly-snippets'},
+  -- }
+  -- }
 
--- use("folke/zen-mode.nvim")
--- use("github/copilot.vim")
+  -- use("folke/zen-mode.nvim")
+  -- use("github/copilot.vim")
 
 end)
