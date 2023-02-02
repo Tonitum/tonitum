@@ -35,12 +35,12 @@ return require('packer').startup(function(use)
   use({'ellisonleao/gruvbox.nvim',
   commit = 'cb7a8a867cfaa7f0e8ded57eb931da88635e7007',
   config = function()
-    vim.cmd('colorscheme gruvbox')
-  end
-}) -- gruvbox color scheme
+      vim.cmd('colorscheme gruvbox')
+    end
+  }) -- gruvbox color scheme
 
-use({'theprimeagen/harpoon',
-commit='6138ff7096bc50f0b6b40b607196232e1b90d6b6'
+  use({'theprimeagen/harpoon',
+    commit='6138ff7096bc50f0b6b40b607196232e1b90d6b6'
   })
 
 
@@ -67,6 +67,4 @@ commit='6138ff7096bc50f0b6b40b607196232e1b90d6b6'
   -- }
 
   -- use("folke/zen-mode.nvim")
-  -- use("github/copilot.vim")
-
 end)
