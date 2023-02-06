@@ -11,11 +11,15 @@ vim.keymap.set("n", "L", "$")
 vim.keymap.set("v", "H", "^")
 vim.keymap.set("v", "L", "$")
 
+vim.keymap.set("n", "J", "}")
+vim.keymap.set("n", "K", "{")
 -- move highlighted line up/down with shift J/K
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("v", "J", "}")
+vim.keymap.set("v", "K", "{")
+
+-- vim.keymap.set("v", "<C-N>", ":m '>+1<CR>gv=gv")
+-- vim.keymap.set("v", "<C-M>", ":m '<-2<CR>gv=gv")
 
 -- center screen when jumping pages
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
@@ -24,7 +28,6 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- center screen on search term and open any folds
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
-
 
 -- greatest remap ever: that does what?
 vim.keymap.set("x", "<leader>p", "\"_dP")
