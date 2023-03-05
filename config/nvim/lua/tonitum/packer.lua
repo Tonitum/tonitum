@@ -12,25 +12,27 @@ return require('packer').startup(function(use)
   use('vim-airline/vim-airline') -- fancy status bar
   use('preservim/nerdtree')
 
-  use{
+  use({
     'nvim-telescope/telescope.nvim', tag = '0.1.0',
     requires = { {'nvim-lua/plenary.nvim'} }
-  }
+  })
 
   -- Highlight, edit, and navigate code using a fast incremental parsing library.
   -- Treesitter is used by nvim for various things,
   -- but among others, for syntax coloring.
   -- Make sure that any themes you install support treesitter!
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use({'nvim-treesitter/nvim-treesitter', commit = '0948bf22745f1d80572e2b46ed547c7c8674cca9'}, {run = ':TSUpdate'})
   use('nvim-treesitter/nvim-treesitter-textobjects') -- Additional textobjects for treesitter.
   use('nvim-treesitter/playground')
 
-  use{'ellisonleao/gruvbox.nvim',
-    commit = 'cb7a8a867cfaa7f0e8ded57eb931da88635e7007',
-    config = function()
-      vim.cmd('colorscheme gruvbox')
-    end
-  } -- gruvbox color scheme
+  use{'sainnhe/everforest'} -- everforest color scheme
+
+  -- use{'ellisonleao/gruvbox.nvim',
+  --   commit = 'cb7a8a867cfaa7f0e8ded57eb931da88635e7007',
+  --   config = function()
+  --     vim.cmd('colorscheme gruvbox')
+  --   end
+  -- } -- gruvbox color scheme
 
   use{'theprimeagen/harpoon',
     commit='6138ff7096bc50f0b6b40b607196232e1b90d6b6'
