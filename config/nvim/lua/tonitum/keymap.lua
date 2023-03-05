@@ -13,11 +13,11 @@ vim.keymap.set("v", "L", "$")
 
 vim.keymap.set("n", "J", "}")
 vim.keymap.set("n", "K", "{")
--- move highlighted line up/down with shift J/K
 
 vim.keymap.set("v", "J", "}")
 vim.keymap.set("v", "K", "{")
 
+-- move highlighted line up/down with shift J/K
 -- vim.keymap.set("v", "<C-N>", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "<C-M>", ":m '<-2<CR>gv=gv")
 
@@ -41,14 +41,16 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
 vim.keymap.set("n", "Q", "<nop>")
--- vim.keymap.set("n", "<leader>f", function()
-    -- vim.lsp.buf.format()
--- end)
 
+-- reload the config
+vim.keymap.set("n", "<leader>vs", "<cmd>so ~/.config/nvim/lua/tonitum/init.lua<CR>") -- re-source the config
+vim.keymap.set("n", "<leader>ve", "<cmd>tabedit ~/.config/nvim/lua/tonitum/init.lua<CR>") -- edit the config
+vim.keymap.set("n", "<leader>vk", "<cmd>tabedit ~/.config/nvim/lua/tonitum/keymap.lua<CR>") -- edit the keymaps
+vim.keymap.set("n", "<leader>vE", "<cmd>tabedit ~/.config/nvim/<CR>") -- open the vim config folder
 
 -- quick fix list navigation
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<leader>dk", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<leader>dj", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
