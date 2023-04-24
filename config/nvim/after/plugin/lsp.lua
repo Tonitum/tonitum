@@ -1,6 +1,9 @@
+local lsp_module_name = "lsp-zero"
+if not pcall(require, lsp_module_name) then
+  print("lsp-zero not loaded")
+  return
+end
 local lsp = require("lsp-zero")
-
-lsp.preset("recommended")
 
 lsp.ensure_installed({
   'lua_ls',
@@ -9,17 +12,7 @@ lsp.ensure_installed({
   'clangd',
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
+lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -63,6 +56,18 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+-- Fix Undefined global 'vim'
+lsp.configure('lua_ls', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
+lsp.nvim_workspace()
 lsp.setup()
 vim.diagnostic.config({
     virtual_text = true
