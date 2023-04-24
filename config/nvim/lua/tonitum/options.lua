@@ -33,8 +33,8 @@ local options = {
     -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
     -- delays and poor user experience.
     updatetime = 50,
-    -- timeoutlen = 1000,
-    -- ttimeoutlen = 50,
+    timeoutlen = 1000,
+    ttimeoutlen = 50,
 
     colorcolumn = "80",
     background = "dark",
@@ -53,6 +53,7 @@ local options = {
     complete = "i",
 }
 
+vim.opt.shortmess:append("c") -- what do these do?
 vim.opt.isfname:append("@-@")
 
 for k, v in pairs(options) do
