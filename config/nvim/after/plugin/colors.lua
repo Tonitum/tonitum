@@ -1,3 +1,8 @@
+if not pcall(vim.cmd, 'colorscheme everforest') then
+  print("colorscheme not loaded")
+  return
+end
+
 vim.opt.termguicolors = true
 vim.cmd("set background=dark")
 vim.cmd("let g:everforest_disable_italic_comment = 1")
