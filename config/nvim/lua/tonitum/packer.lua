@@ -27,8 +27,6 @@ return require("packer").startup(function(use)
   -- use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter.
   use("nvim-treesitter/nvim-treesitter-context")
 
-  -- use("mbhill/undotree")
-
   use{"sainnhe/everforest"} -- everforest color scheme
 
   use({
