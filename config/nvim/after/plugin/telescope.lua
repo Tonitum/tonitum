@@ -4,6 +4,7 @@ if not pcall(require, "telescope") then
 end
 local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
+local trouble = require("trouble.providers.telescope")
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
@@ -14,12 +15,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 vim.keymap.set('n', '<leader>fs', function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") });
 end)
-
-local ignored_dirs = {
-  "_build",
-  ".git",
-}
-
 
 vim.keymap.set('n', '<leader>gr', builtin.lsp_references)
 
@@ -36,11 +31,18 @@ require('telescope').setup({
     mappings = {
       i = {
         ["<C-x>"] = false,
-        ["<C-q>"] = actions.send_to_qflist,
+        ["<C-q>"] = actions.smart_send_to_qflist,
+        ["<c-t>"] = trouble.open_with_trouble,
         ["<CR>"] = actions.select_default,
-	}
       },
+      n = {
+        ["<C-q>"] = actions.smart_send_to_qflist,
+        ["<leader>a"] = actions.toggle_selection,
+        ["<c-t>"] = trouble.open_with_trouble,
+      }
+    },
   },
+
   file_ignore_patterns = {
       "_build/",
       "_release/",

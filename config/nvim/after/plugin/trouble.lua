@@ -11,22 +11,12 @@ vim.keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>",
 vim.keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>",
   {silent = true, noremap = true}
 )
-vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
+vim.keymap.set("n", "<leader>xt", "<cmd>TroubleToggle telescope<cr>",
+  {silent = true, noremap = true}
+)
+vim.keymap.set("n", "<leader>q", "<cmd>TroubleToggle quickfix<cr>",
   {silent = true, noremap = true}
 )
 vim.keymap.set("n", "gR", "<cmd>TroubleToggle lsp_references<cr>",
   {silent = true, noremap = true}
 )
-
-local trouble = require("trouble.providers.telescope")
-
-local telescope = require("telescope")
-
-telescope.setup {
-  defaults = {
-    mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
-    },
-  },
-}
