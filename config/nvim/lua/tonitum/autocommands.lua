@@ -1,6 +1,6 @@
 -- highlight on yank
 local augroup = vim.api.nvim_create_augroup
-local TonitumGroup = augroup("Tonitum",  {})
+local tonitum_group = augroup("Tonitum",  {})
 local autocmd = vim.api.nvim_create_autocmd
 
 
