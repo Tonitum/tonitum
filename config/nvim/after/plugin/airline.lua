@@ -1,7 +1,9 @@
-vim.cmd('let g:airline_powerline_fonts = 1')
-vim.cmd('let g:airline_highlighting_cache = 1')
-vim.cmd('AirlineTheme everforest')
-vim.cmd [[
+vim.cmd[[  if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+  endif
+]]
+
+vim.cmd[[
   " powerline symbols
   let g:airline_left_sep = ''
   let g:airline_left_alt_sep = ''
@@ -12,5 +14,8 @@ vim.cmd [[
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ' :'
   let g:airline_symbols.maxlinenr = '☰ '
-  let g:airline_symbols.dirty='⚡'
 ]]
+
+vim.cmd('let g:airline_powerline_fonts = 1')
+vim.cmd('let g:airline_highlighting_cache = 1')
+vim.cmd('AirlineTheme everforest')
