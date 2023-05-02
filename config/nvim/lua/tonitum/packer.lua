@@ -12,6 +12,7 @@ return require("packer").startup(function(use)
   use("vim-airline/vim-airline") -- fancy status bar
   use("preservim/nerdtree")
   use("alepez/vim-gtest")
+  use("ojroques/nvim-osc52")
 
   use({
     "nvim-telescope/telescope.nvim", tag = "0.1.0",
