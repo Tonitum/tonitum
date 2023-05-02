@@ -60,3 +60,15 @@ autocmd('TextYankPost', {
         })
     end,
 })
+
+-- TODO: move this to a keymap
+-- vim.cmd [[
+--   autocmd BufWritePre *.lua :%s/\s\+$//e
+--   autocmd BufWritePre *.yaml :%s/\s\+$//e
+--   autocmd BufWritePre *.yml :%s/\s\+$//e
+--   autocmd BufWritePre *.py :%s/\s\+$//e
+--   autocmd BufWritePre *.cc :%s/\s\+$//e
+--   autocmd BufWritePre *.h :%s/\s\+$//e
+--   autocmd BufWritePre *.proto :%s/\s\+$//e
+-- ]]
+
