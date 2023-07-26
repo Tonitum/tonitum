@@ -11,6 +11,7 @@ lsp.ensure_installed({
   'pyright',
   'clangd',
   'yamlls',
+  'tsserver',
 })
 
 lsp.preset("recommended")

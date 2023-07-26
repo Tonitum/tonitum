@@ -135,6 +135,7 @@ WHITE='\001\e[1;37m\002'
 RESET='\001\e[0m\002'
 export PATH=$PATH:~/nvim-linux64/bin/
 export PATH=$PATH:~/.local/bin
+export PATH=$PATH:$(pwd)
 
 PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_branch) λ "
 
