@@ -1,8 +1,3 @@
-require('dap-python').setup('/usr/bin/python3')
-
--- require('dap-python').resolve_python = function()
---   return '/.virtualenvs/debugpy/bin/python'
--- end
 local dap = require('dap')
 require("dapui").setup(
   {
@@ -25,18 +20,19 @@ require("dapui").setup(
       }, {
         elements = { {
             id = "repl",
-            size = 0.0
+            size = 0.25
           },
           {
             id = "console",
-            size = 0.5
+            size = 0.75
           }
         },
         position = "bottom",
-        size = 10
+        size = 20
       } },
   }
 )
+
 vim.keymap.set("n", "<leader>b", function ()
   dap.toggle_breakpoint()
 end)
@@ -50,9 +46,18 @@ vim.keymap.set("n", "<leader>dn", function ()
   dap.step_over()
 end)
 vim.keymap.set("n", "<leader>di", function ()
-  require("dapui").toggle()
+  require("dapui").toggle({reset=true})
+end)
+vim.keymap.set("n", "<leader>dv", function ()
+  require("dapui").toggle(1,{reset=true})
+end)
+vim.keymap.set("n", "<leader>dr", function ()
+  require("dapui").toggle(2,{reset=true})
 end)
 -- Setting breakpoints via :lua require'dap'.toggle_breakpoint().
 -- Launching debug sessions and resuming execution via :lua require'dap'.continue().
 -- Stepping through code via :lua require'dap'.step_over() and :lua require'dap'.step_into().
 -- Inspecting the state via the built-in REPL: :lua require'dap'.repl.open() or using the widget UI (:help dap-widgets)
+-- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
+-- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
+-- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
