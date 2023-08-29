@@ -6,17 +6,17 @@ parse_git_branch() {
 }
 
 get_cwd() {
-    in_repo=$(git rev-parse >/dev/null 2>/dev/null; echo $?)
+  in_repo=$(git rev-parse >/dev/null 2>/dev/null; echo $?)
 
-    if [[ $in_repo -ne 0 ]]; then
-        pwd
-        exit 0
-    fi
+  if [[ $in_repo -ne 0 ]]; then
+      pwd
+      exit 0
+  fi
 
-    repo_path=$(git rev-parse --show-toplevel)
-    repo_root=$(git rev-parse --show-toplevel | rev | cut -d "/" -f 1 | rev | awk '{print tolower($0)}')
-    echo "$(pwd)" | sed 's@'"$repo_path"'@'"$repo_root"'@'
-    exit 0
+  repo_path=$(git rev-parse --show-toplevel)
+  repo_root=$(git rev-parse --show-toplevel | rev | cut -d "/" -f 1 | rev | awk '{print tolower($0)}')
+  pwd | sed 's@'"$repo_path"'@'"$repo_root"'@'
+  exit 0
 }
 
 commit_by_branch() {
@@ -80,7 +80,7 @@ run_shell_in_container() {
 }
 
 get_image_name() {
-  CID="$(basename $(cat /proc/1/cpuset))"
+  CID=$(basename "$(cat /proc/1/cpuset)")
   if [[ $CID == '/' ]]; then
     echo "$HOSTNAME"
   else
@@ -130,7 +130,7 @@ alias gc="get_exercise; commit_by_branch"
 # fuzzy find git branches
 alias gcb='git branch | fzf | xargs git checkout'
 # delete untracked files
-alias gclean-full='git clean -xdf -e .clangd -e Makefile' 
+alias gclean-full='git clean -xdf -e .clangd -e Makefile'
 # list untracked files
 alias gclean-list='git clean -nxdf -e .clangd -e Makefile'
 # change to main branch
@@ -145,13 +145,15 @@ alias grd="git rev-parse --show-toplevel"
 alias gs='git status'
 alias prune-branches='git branch | grep -v "master" | xargs git branch -D '
 # rebase the main branch into the current branch
-alias rebase-branch-main='git rebase main $(git rev-parse --abbrev-ref HEAD)' 
+alias rebase-branch-main='git rebase main $(git rev-parse --abbrev-ref HEAD)'
 # rebase the master branch into the current branch
-alias rebase-branch='git rebase master $(git rev-parse --abbrev-ref HEAD)' 
+alias rebase-branch='git rebase master $(git rev-parse --abbrev-ref HEAD)'
 # rebase the main branch and update submodules
 alias rebase-main='git checkout main && git pull --rebase && git submodule update --recursive'
 # rebase the master branch and update submodules
 alias rebase-master='git checkout master && git pull --rebase && git submodule update --recursive'
+# rebase the develop branch into the current branch
+alias rebase-branch-develop='git rebase develop $(git rev-parse --abbrev-ref HEAD)'
 
 ########################################
 # Program aliases
@@ -160,9 +162,12 @@ alias rebase-master='git checkout master && git pull --rebase && git submodule u
 alias vim=nvim
 # Kubernetes control
 alias k=kubectl
+# Maven settings
+alias mvnd='mvn --settings "/home/vagrant/work/maven-settings/.m2/settings.xml"'
+alias mvn-sds='mvn -s .m2/settings.xml --batch-mode -Dmaven.javadoc.skip=true -Dsettings.security=.m2/settings-security.xml'
 
 ########################################
-# Program aliases
+# Bash Vim
 ########################################
 alias bvim-s='set -o vi'
 alias bvim-x='set +o vi'
