@@ -28,8 +28,12 @@ return require("packer").startup(function(use)
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
   use("mfussenegger/nvim-dap-python")
+  use("mfussenegger/nvim-jdtls")
   use("folke/zen-mode.nvim")
   use("renerocksai/telekasten.nvim")
+  use("renerocksai/calendar-vim")
+  use("towolf/vim-helm")
+  use("airblade/vim-gitgutter")
 
   -- troupe
   use({
