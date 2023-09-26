@@ -1,32 +1,26 @@
+local lsp_module_name = "lsp-zero"
+if not pcall(require, lsp_module_name) then
+  print("lsp-zero not loaded")
+  return
+end
 local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
-
 lsp.ensure_installed({
-  'sumneko_lua',
   'rust_analyzer',
-  'pylsp',
+  'pyright',
   'clangd',
+  'yamlls',
+  'tsserver',
 })
 
--- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' }
-            }
-        }
-    }
-})
-
+lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
   ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  ['<CR>'] = cmp.mapping.confirm({ select = true }),
   ["<C-Space>"] = cmp.mapping.complete(),
 })
 
@@ -63,6 +57,31 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+local words = {}
+
+for word in io.open(path, "r"):lines() do
+	table.insert(words, word)
+end
+
+require('lspconfig').ltex.setup {
+   settings = {
+    ltex = {
+      configurationTarget = {
+          dictionary = path,
+      },
+      dictionary = { ["en-US"] = words },
+      java = {
+        path = "/usr/lib/jvm/java-17-openjdk-amd64/"
+      },
+    },
+   },
+}
+
+lsp.skip_server_setup({'jdtls'})
+
+
+lsp.nvim_workspace()
 lsp.setup()
 
 vim.diagnostic.config({

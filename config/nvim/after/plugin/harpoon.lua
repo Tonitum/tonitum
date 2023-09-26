@@ -1,3 +1,8 @@
+if not pcall(require, "harpoon") then
+  print("harpoon not loaded")
+  return
+end
+
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")
 
