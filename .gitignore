@@ -1,1 +1,5 @@
+.git/
+.github/
+
 packer_compiled.lua
+**/__pycache__
