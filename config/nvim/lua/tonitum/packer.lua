@@ -45,12 +45,11 @@ return require("packer").startup(function(use)
     end
   })
   -- harpoon
-  use{"theprimeagen/harpoon",
-    commit="6138ff7096bc50f0b6b40b607196232e1b90d6b6"
+  use{"theprimeagen/harpoon"
   }
   -- telescope
   use({
-    "nvim-telescope/telescope.nvim", tag = "0.1.0",
+    "nvim-telescope/telescope.nvim",
     requires = { {"nvim-lua/plenary.nvim"} }
   })
   -- lsp-zero
@@ -71,8 +70,7 @@ return require("packer").startup(function(use)
       {"hrsh7th/cmp-nvim-lua"},
 
       -- Snippets
-      { "L3MON4D3/LuaSnip",
-        commit ="94f192cf5f0a1931b3035c2d8affdebec460968c"},
+      { "L3MON4D3/LuaSnip"},
       {"rafamadriz/friendly-snippets"},
     }
   }

@@ -10,7 +10,7 @@ lsp.ensure_installed({
   'pyright',
   'clangd',
   'yamlls',
-  'tsserver',
+  'jdtls',
 })
 
 lsp.preset("recommended")
@@ -76,6 +76,10 @@ require('lspconfig').ltex.setup {
       },
     },
    },
+}
+
+require('lspconfig').clangd.setup {
+   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 
 lsp.skip_server_setup({'jdtls'})
