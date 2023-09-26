@@ -30,6 +30,8 @@ local options = {
     incsearch = true,
     smartcase = true,
 
+    spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add",
+
     termguicolors = true,
 
     -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable

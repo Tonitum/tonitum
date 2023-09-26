@@ -68,7 +68,3 @@ vim.keymap.set("n", "<leader>zj", function()
     vim.cmd("set breakindent")
   end)
 
--- Call insert link automatically when we start typing a link
-vim.keymap.set("i", "[[", function()
-    tk.insert_link()
-  end)

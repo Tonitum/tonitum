@@ -5,7 +5,6 @@ if not pcall(require, lsp_module_name) then
 end
 local lsp = require("lsp-zero")
 
--- 'lua_ls',
 lsp.ensure_installed({
   'rust_analyzer',
   'pyright',

@@ -1,10 +1,12 @@
--- mercurial ftw
-vim.keymap.set("n", "<leader>gs", ":G status<CR>") -- status
+vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>") -- status
+vim.keymap.set("n", "<leader>gst", ":Telescope git_stash<CR>") -- stash
+vim.keymap.set("n", "<leader>gH", ":Telescope git_commits<CR>") -- all commits
+vim.keymap.set("n", "<leader>gh", ":Telescope git_bcommits<CR>") -- file commits
+vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>") -- branches
 vim.keymap.set("n", "<leader>gd", ":G diff<CR>") -- diff
-vim.keymap.set("n", "<leader>gb", ":G blame<CR>") -- blame
-vim.keymap.set("n", "<leader>ga", ":G add %<CR>") -- add the current file
+vim.keymap.set("n", "<leader>gB", ":G blame<CR>") -- blame
+vim.keymap.set("n", "<leader>ga", ":Gwrite<CR>") -- add the current file
 vim.keymap.set("n", "<leader>gc", ":G commit -m ''<left>") -- add the current file
-vim.keymap.set("n", "<leader>gq", ":G difftool<CR> :cclose<CR> :TroubleToggle quickfix<CR>") -- diff the current file
 
 local function openDiffSplit()
     vim.cmd("Gvdiffsplit")
