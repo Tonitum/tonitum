@@ -10,6 +10,7 @@ return require("packer").startup(function(use)
   use("tpope/vim-commentary") -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
   use("tpope/vim-surround") -- change text wrappers e.g. " " ()
   use("vim-airline/vim-airline") -- fancy status bar
+  use("vim-airline/vim-airline-themes") -- fancy status bar
   use("preservim/nerdtree")
   use("alepez/vim-gtest")
   use("ojroques/nvim-osc52")
@@ -25,6 +26,7 @@ return require("packer").startup(function(use)
   use("nvim-tree/nvim-web-devicons")
 
   use{"sainnhe/everforest"} -- everforest color scheme
+  use({"rose-pine/neovim", as = "rose-pine"})
   use("mfussenegger/nvim-dap")
   use("rcarriga/nvim-dap-ui")
   use("mfussenegger/nvim-dap-python")
