@@ -24,7 +24,6 @@ require('telescope').setup({
     prompt_prefix = " >",
     color_devicons = true,
     theme = "ivy",
-    initial_mode = "normal",
 
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
