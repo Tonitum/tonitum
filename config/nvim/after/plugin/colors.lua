@@ -1,4 +1,5 @@
-local colorscheme = "rose-pine"
+-- local colorscheme = "rose-pine"
+local colorscheme = "everforest"
 if not pcall(vim.cmd, "colorscheme " ..colorscheme ) then
   print(colorscheme .. " not loaded")
   return
