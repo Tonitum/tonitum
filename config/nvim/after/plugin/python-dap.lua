@@ -15,6 +15,6 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   group = python_cmds,
   pattern = {'python'},
-  desc = 'Setup jdtls',
+  desc = 'Setup python',
   callback = python_dap_setup,
 })
