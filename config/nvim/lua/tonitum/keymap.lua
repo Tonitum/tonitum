@@ -78,11 +78,12 @@ vim.keymap.set("n", "<leader>WS",  ':%s/\\s\\+$//e<CR>')
 
 
 -- add execute to file
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>x", "<cmd>!%<CR>", { silent = true })
 
 -- diffing
 vim.keymap.set("n", "<leader><C-d>s", "<cmd>windo diffthis<CR>", { silent = true })
 vim.keymap.set("n", "<leader><C-d>e", "<cmd>windo diffoff<CR>", { silent = true })
 
 -- protobuf linting
-vim.keymap.set("n", "<leader>lp", "<cmd>!buf lint<CR>", { silent = true })
+vim.keymap.set("n", "<leader>lp", "<cmd>!protolint lint %<CR>", { silent = true })

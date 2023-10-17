@@ -95,4 +95,10 @@ return require("packer").startup(function(use)
       require("which-key").setup {}
     end
   })
+
+  -- install without yarn or npm
+  use({
+      "iamcco/markdown-preview.nvim",
+      run = function() vim.fn["mkdp#util#install"]() end,
+  })
 end)
