@@ -187,6 +187,7 @@ alias docker-full-prune='docker system prune --all'
 alias docker-ps='docker ps -a --format "table {{.Image}}\t{{.RunningFor}}\t{{.Names}}"'
 # get a list of running containers, filtered nicely with ports
 alias docker-ports='docker ps -a --format "table {{.Image}}\t{{.Ports}}\t{{.Names}}"'
+alias docker-top="watch -n .5 'docker ps --format \"table {{.Names}}\t{{.Status}}\t{{.Ports}}\"'"
 
 ########################################
 # Package management

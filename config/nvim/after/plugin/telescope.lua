@@ -7,6 +7,7 @@ local builtin = require('telescope.builtin')
 local trouble = require("trouble.providers.telescope")
 
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', function () builtin.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end, {})
 vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 vim.keymap.set('n', '<leader>fr', builtin.live_grep, {})
@@ -55,22 +56,26 @@ require('telescope').setup({
       theme = "cursor"
     },
     find_files = {
-      theme = "ivy"
+      theme = "ivy",
+      hidden = true
     },
     live_grep = {
-      theme = "ivy"
+      theme = "ivy",
+      hidden = true
     },
     quickfix = {
       theme = "ivy"
     },
     git_files = {
-      theme = "ivy"
+      theme = "ivy",
+      hidden = true
     },
     git_branches = {
       theme = "ivy"
     },
     git_status = {
-      theme = "ivy"
+      theme = "ivy",
+      initial_mode = "normal"
     },
     git_commits = {
       theme = "ivy"
