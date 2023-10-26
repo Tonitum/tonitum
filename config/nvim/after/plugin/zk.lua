@@ -1,4 +1,4 @@
-local notes_path = "~/zettelkasten/"
+local notes_path = "/home/vagrant/zk"
 require('telekasten').setup({
   home = vim.fn.expand(notes_path), -- Put the name of your notes directory here
   dailies = vim.fn.expand(notes_path .. "/daily"),
@@ -16,8 +16,8 @@ require('telekasten').setup({
 local tk = require('telekasten')
 -- Launch panel if nothing is typed after <leader>z
 vim.keymap.set("n", "<leader>z", function()
-    tk.panel()
-  end)
+  tk.panel()
+end)
 
 -- Most used functions
 vim.keymap.set("n", "<leader>zf", function()

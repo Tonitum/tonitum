@@ -57,33 +57,37 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
-local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
-local words = {}
+-- local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+-- local words = {}
 
-for word in io.open(path, "r"):lines() do
-	table.insert(words, word)
-end
+-- for word in io.open(path, "r"):lines() do
+-- 	table.insert(words, word)
+-- end
 
-require('lspconfig').ltex.setup {
-   settings = {
-    ltex = {
-      configurationTarget = {
-          dictionary = path,
-      },
-      dictionary = { ["en-US"] = words },
-      java = {
-        path = "/usr/lib/jvm/java-17-openjdk-amd64/"
-      },
-    },
-   },
-}
+-- require('lspconfig').ltex.setup {
+--    settings = {
+--     ltex = {
+--       configurationTarget = {
+--           dictionary = path,
+--       },
+--       dictionary = { ["en-US"] = words },
+--       java = {
+--         path = "/usr/lib/jvm/java-17-openjdk-amd64/"
+--       },
+--     },
+--    },
+-- }
 
 require('lspconfig').clangd.setup {
    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 
-lsp.skip_server_setup({'jdtls'})
+require('lspconfig').yamlls.setup {
+   filetypes = {"yaml"},
+}
 
+
+lsp.skip_server_setup({'jdtls'})
 
 lsp.nvim_workspace()
 lsp.setup()
