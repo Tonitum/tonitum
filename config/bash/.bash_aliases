@@ -163,8 +163,9 @@ alias vim=nvim
 # Kubernetes control
 alias k=kubectl
 # Maven settings
-alias mvnd='mvn --settings "/home/vagrant/work/maven-settings/.m2/settings.xml"'
-alias mvn-sds='mvn -s .m2/settings.xml --batch-mode -Dmaven.javadoc.skip=true -Dsettings.security=.m2/settings-security.xml'
+# alias mvnd='mvn --settings "/home/vagrant/work/maven-settings/.m2/settings.xml"'
+# alias mvn-sds='mvn -s .m2/settings.xml --batch-mode -Dmaven.javadoc.skip=true -Dsettings.security=.m2/settings-security.xml'
+alias mvng='mvn "-Dmaven.repo.local=$(git rev-parse --show-toplevel)/.m2/repository" -s "$(git rev-parse --show-toplevel)/.m2/settings.xml"  "-settings.security=$(git rev-parse --show-toplevel)/.m2/settings-security.xml"'
 
 ########################################
 # Bash Vim
@@ -194,3 +195,5 @@ alias docker-top="watch -n .5 'docker ps --format \"table {{.Names}}\t{{.Status}
 ########################################
 alias nexus-install='sudo -E nexus pip3 install '
 alias pipi='pip --proxy https://proxy-lmi.global.lmco.com:80 --trusted-host pypi.python.org --trusted-host pypi.org --trusted-host files.pythonhosted.org install '
+
+bind -x '"\C-f":"tmux-sessionizer"'
