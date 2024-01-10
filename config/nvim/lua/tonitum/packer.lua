@@ -101,4 +101,15 @@ return require("packer").startup(function(use)
       "iamcco/markdown-preview.nvim",
       run = function() vim.fn["mkdp#util#install"]() end,
   })
+  use {
+  'Chaitanyabsprip/present.nvim',
+  config = function()
+    require('present').setup{
+      -- ... your config here
+    }
+  end}
+
+  use({'cacalabs/toilet'})
+  use({'bluz71/vim-nightfly-colors'})
+
 end)
