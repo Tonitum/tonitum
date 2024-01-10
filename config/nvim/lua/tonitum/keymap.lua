@@ -8,6 +8,9 @@ vim.keymap.set("n", "<leader>ss", "z=") -- open spelling corrections list
 -- move cursor to active window
 vim.keymap.set("n", "<leader>w", "<cmd>wincmd l<CR>")
 
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+
 -- easier line navigation
 -- visual mode
 vim.keymap.set("v", "J", "}")
@@ -55,6 +58,9 @@ vim.keymap.set("n", "<leader>vE", "<cmd>tabedit ~/.config/nvim/<CR>") -- open th
 
 -- close all unopen buffers
 vim.keymap.set("n", "<leader>bc", "<cmd>%bd|e#<CR>")
+-- vim.keymap.set("n", "<leader>bj", "<cmd>bnext<CR>")
+-- vim.keymap.set("n", "<leader>bk", "<cmd>bnext<CR>")
+
 
 -- auto-increment numbers
 vim.keymap.set("x", "<leader>i", "g<C-a>")

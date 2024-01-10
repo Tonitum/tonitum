@@ -1,8 +1,10 @@
 vim.keymap.set("n", "<leader>Z", function()
   require("zen-mode").setup {
       window = {
-          width = 180,
-          options = { }
+          width = 120,
+          options = {
+
+          }
       },
   }
   require("zen-mode").toggle()

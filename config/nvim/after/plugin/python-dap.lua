@@ -1,7 +1,7 @@
 local python_cmds = vim.api.nvim_create_augroup('python_cmds', {clear = true})
 
 require('dap-python').setup()
--- require('dap-python').setup("/usr/bin/python3",{
+-- require('dap-python').setup(".venv/bin/python3",{
 --   include_configs = true,
 --   console = 'integratedTerminal',
 -- })
