@@ -111,5 +111,5 @@ return require("packer").startup(function(use)
 
   use({'cacalabs/toilet'})
   use({'bluz71/vim-nightfly-colors'})
-
+  use({'jbyuki/venn.nvim'})
 end)
