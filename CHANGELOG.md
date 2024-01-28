@@ -1,4 +1,9 @@
 _______________________________________________________________________________
+# v1.0.0
+Choosing a commit to centralize on. This will be my baseline moving forward.
+Please see commit log for history.
+
+_______________________________________________________________________________
 # v0.0.3
 tmux config added
 
