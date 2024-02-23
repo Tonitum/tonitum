@@ -12,6 +12,10 @@ return require("packer").startup(function(use)
   use("vim-airline/vim-airline") -- fancy status bar
   use("vim-airline/vim-airline-themes") -- fancy status bar
   use("preservim/nerdtree")
+  use("PhilRunninger/nerdtree-buffer-ops")
+  use("PhilRunninger/nerdtree-visual-selection")
+  use("tiagofumo/vim-nerdtree-syntax-highlight")
+  use("ryanoasis/vim-devicons")
   use("alepez/vim-gtest")
   use("ojroques/nvim-osc52")
 
@@ -86,6 +90,7 @@ return require("packer").startup(function(use)
       "nvim-neotest/neotest-python"
     }
   })
+
   -- whichkey
   use({
     "folke/which-key.nvim",
@@ -112,4 +117,7 @@ return require("packer").startup(function(use)
   use({'cacalabs/toilet'})
   use({'bluz71/vim-nightfly-colors'})
   use({'jbyuki/venn.nvim'})
+  use({'rcasia/neotest-java'})
+  -- use({'bufbuild/vim-buf'})
+  
 end)
