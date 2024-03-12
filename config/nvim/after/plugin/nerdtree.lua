@@ -2,6 +2,15 @@ vim.keymap.set("n", "<leader>e", ":NERDTreeFocus<CR>")
 vim.keymap.set("n", "<leader>nE", "<cmd>NERDTreeToggle<CR>")
 vim.keymap.set("n", "<leader>nf", "<cmd>NERDTreeFind<CR>")
 
+-- vim.cmd("let g:NERDTreeFileLines = 1")
+vim.cmd("let NERDTreeShowHidden=1")
+vim.cmd("let NERDTreeNaturalSort=1")
+vim.cmd("let NERDTreeMinimalUI=1")
+vim.cmd("let NERDTreeMinimalMenu=1")
+vim.cmd("let NERDTreeCascadeSingleChildDir=0")
+vim.cmd("let NERDTreeWinSize=40")
+vim.cmd("let NERDTreeWinPos='left'")
+
 -- Start NERDTree. If a file is specified, move the cursor to its window.
 -- vim.cmd( "autocmd StdinReadPre * let s:std_in=1 \
 -- autocmd VimEnter * NERDTree | if argc() > 0 || exists('s:std_in') | wincmd p | endif" )
@@ -38,8 +47,8 @@ vim.cmd( "autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NER
 --     \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
 
 -- If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
--- vim.cmd
- -- "autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\\d\\+' &&  bufname('%') !~ 'NERD_tree_\\d\\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute 'normal! \\<C-W>w' | execute 'buffer'.buf | endif"
+vim.cmd
+ "autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\\d\\+' &&  bufname('%') !~ 'NERD_tree_\\d\\+' && winnr('$') > 1 | let buf=bufnr() | buffer# | execute 'normal! \\<C-W>w' | execute 'buffer'.buf | endif"
 
 -- -- Mirror the NERDTree before showing it. This makes it the same on all tabs.
 -- nnoremap <C-n> :NERDTreeMirror<CR>:NERDTreeFocus<CR>

@@ -1,4 +1,4 @@
-local notes_path = "~/zettelkasten/"
+local notes_path = "~/zk"
 require('telekasten').setup({
   home = vim.fn.expand(notes_path), -- Put the name of your notes directory here
   dailies = vim.fn.expand(notes_path .. "/daily"),
@@ -6,22 +6,29 @@ require('telekasten').setup({
   templates = vim.fn.expand(notes_path .. "/templates"),
   template_new_note = vim.fn.expand(notes_path .. "/templates/base.md"),
   template_new_daily = vim.fn.expand(notes_path .. "/templates/daily.md"),
-  new_note_filename = 'title-uuid',
+  new_note_filename = 'title',
   filename_space_subst = "_",
   auto_set_filetype = false,
   journal_auto_open = true,
+  sort = 'modified',
+  install_syntax = true,
+  -- tag_notation = "@tag",
+  -- show_tags_theme = "get_cursor",
 })
 
-
 local tk = require('telekasten')
--- Launch panel if nothing is typed after <leader>z
-vim.keymap.set("n", "<leader>z", function()
-    tk.panel()
-  end)
+
+vim.keymap.set("n", "<leader>zp", function()
+  tk.panel()
+end)
 
 -- Most used functions
 vim.keymap.set("n", "<leader>zf", function()
     tk.find_notes()
+  end)
+-- insert lint
+vim.keymap.set("n", "<leader>zi", function()
+    tk.insert_link()
   end)
 vim.keymap.set("n", "<leader>zD", function()
     tk.find_daily_notes()
@@ -49,6 +56,9 @@ vim.keymap.set("n", "<leader>zc", function()
   end)
 vim.keymap.set("n", "<leader>zt", function()
     tk.toggle_todo()
+  end)
+vim.keymap.set("n", "<leader>zl", function()
+    tk.show_tags()
   end)
 vim.keymap.set("n", "<leader>zb", function()
     tk.show_backlinks()
