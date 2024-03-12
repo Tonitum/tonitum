@@ -163,8 +163,10 @@ alias vim=nvim
 # Kubernetes control
 alias k=kubectl
 # Maven settings
-alias mvnd='mvn --settings "/home/vagrant/work/maven-settings/.m2/settings.xml"'
-alias mvn-sds='mvn -s .m2/settings.xml --batch-mode -Dmaven.javadoc.skip=true -Dsettings.security=.m2/settings-security.xml'
+# alias mvnd='mvn --settings "/home/vagrant/work/maven-settings/.m2/settings.xml"'
+alias mvnl='mvn "-Dmaven.repo.local=.m2/repository" -s ".m2/settings.xml"  "-settings.security=.m2/settings-security.xml"'
+alias mvng='mvn -s "$(git rev-parse --show-toplevel)/.m2/settings.xml"  "-settings.security=$(git rev-parse --show-toplevel)/.m2/settings-security.xml"'
+alias mvngr='mvn "-Dmaven.repo.local=$(git rev-parse --show-toplevel)/.m2/repository" -s "$(git rev-parse --show-toplevel)/.m2/settings.xml"  "-settings.security=$(git rev-parse --show-toplevel)/.m2/settings-security.xml"'
 
 ########################################
 # Bash Vim

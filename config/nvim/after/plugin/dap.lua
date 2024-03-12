@@ -1,35 +1,40 @@
 local dap = require('dap')
 require("dapui").setup(
   {
-    layouts = { {
-        elements = { {
-            id = "scopes",
-            size = 0.25
-          }, {
-            id = "breakpoints",
-            size = 0.25
-          }, {
-            id = "stacks",
-            size = 0.25
-          }, {
-            id = "watches",
-            size = 0.25
-          } },
+    layouts = {
+      {
         position = "left",
-        size = 40
-      }, {
-        elements = { {
+        size = 40,
+        elements = {
+          {
+            id = "stacks",
+            size = 0.50
+          },
+          {
+            id = "scopes",
+            size = 0.3,
+          },
+          {
+            id = "breakpoints",
+            size = 0.2
+          },
+        },
+      },
+      {
+        position = "bottom",
+        size = 20,
+        elements = {
+          {
             id = "repl",
-            size = 0.25
+            size = 0.50
           },
           {
             id = "console",
-            size = 0.75
-          }
+            size = 0.50
+          },
         },
-        position = "bottom",
-        size = 20
-      } },
+      }
+    },
   }
 )
 
@@ -53,6 +58,9 @@ vim.keymap.set("n", "<leader>dv", function ()
 end)
 vim.keymap.set("n", "<leader>dr", function ()
   require("dapui").toggle(2,{reset=true})
+end)
+vim.keymap.set("n", "<leader>dh", function ()
+  require("dapui").float_element("scopes")
 end)
 -- Setting breakpoints via :lua require'dap'.toggle_breakpoint().
 -- Launching debug sessions and resuming execution via :lua require'dap'.continue().
