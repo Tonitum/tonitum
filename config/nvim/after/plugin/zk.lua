@@ -1,4 +1,4 @@
-local notes_path = "/home/vagrant/zk"
+local notes_path = "~/zk"
 require('telekasten').setup({
   home = vim.fn.expand(notes_path), -- Put the name of your notes directory here
   dailies = vim.fn.expand(notes_path .. "/daily"),
