@@ -44,6 +44,10 @@ vim.cmd [[
   autocmd FileType helm setlocal shiftwidth=2 tabstop=2 softtabstop=4 commentstring=#\ %s
 ]]
 
+vim.cmd [[
+  autocmd FileType proto setlocal shiftwidth=2 tabstop=2 softtabstop=2 commentstring=//\ %s
+]]
+
 -- what does this do again?
 vim.api.nvim_create_autocmd('BufReadPost', {
   group = tonitum_group,
