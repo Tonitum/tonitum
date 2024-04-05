@@ -6,6 +6,7 @@ require('dap-python').setup()
 --   console = 'integratedTerminal',
 -- })
 
+require('dap-python').test_runner = 'pytest'
 local function python_dap_setup(event)
   local opts = {silent = true}
   vim.keymap.set('n', '<leader>df', "<cmd>lua require('dap-python').test_class()<cr>", opts)

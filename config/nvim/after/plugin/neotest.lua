@@ -12,7 +12,7 @@ require("neotest").setup({
       },
       -- Runner to use. Will use pytest if available by default.
       -- Can be a function to return dynamic value.
-      runner = "python-unittest",
+      runner = "pytest",
     }),
     -- require("neotest-vim-test"){
     --     -- ignore_file_types = { "python", "vim", "lua" },

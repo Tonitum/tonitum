@@ -9,7 +9,8 @@ lsp.ensure_installed({
   'rust_analyzer',
   'pyright',
   'clangd',
-  'yamlls',
+  'jdtls',
+  -- 'yamlls',
 })
 
 lsp.preset("recommended")
