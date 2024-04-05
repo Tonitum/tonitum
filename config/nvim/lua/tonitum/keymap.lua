@@ -113,6 +113,8 @@ vim.keymap.set("n", "<leader>bc", "<cmd>%bd|e#<CR>")
 vim.keymap.set("n", "<leader><C-d>s", "<cmd>windo diffthis<CR>", { silent = true })
 vim.keymap.set("n", "<leader><C-d>e", "<cmd>windo diffoff<CR>", { silent = true })
 
+-- execute a shell command
+vim.keymap.set("n", "<leader>sh", ":!")
 
 -------------------------------------------------------------------------------
 ------------ terminal/shell ------------
@@ -122,8 +124,11 @@ vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>x", "<cmd>!%<CR>", { silent = true })
 
 -- protobuf linting
-vim.keymap.set("n", "<leader>lp", "<cmd>!buf lint %<CR>", { silent = true })
-vim.keymap.set("n", "<leader>lf", "<cmd>!buf format % -w <CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>lp", "<cmd>!buf lint %<CR>", { silent = true })
+-- vim.keymap.set("n", "<leader>lf", "<cmd>!buf format % -w <CR>", { silent = true })
+
+vim.keymap.set("n", "<leader>lp", "<cmd>!protolint %<CR>", { silent = true })
+vim.keymap.set("n", "<leader>lf", "<cmd>!protolint -fix -auto_disable=next % <CR>", { silent = true })
 
 -- execute a shell command
 vim.keymap.set("n", "<leader>sh", ":!")

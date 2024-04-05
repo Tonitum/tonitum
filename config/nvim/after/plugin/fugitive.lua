@@ -25,7 +25,8 @@ local function makeCommit()
     print("aborting commit")
     return
   end
-  local complete_message = "refs " .. current_branch .. ": " .. commit_message
+  local branch_ref = "refs " .. current_branch
+  local complete_message = branch_ref .. ": " .. commit_message
   vim.cmd("G commit -m '" .. complete_message .."'")
 end
 vim.keymap.set("n", "<leader>gc", makeCommit) -- add the current file

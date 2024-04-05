@@ -29,11 +29,14 @@ local function get_jdtls_paths()
 
   path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
 
-  local jdtls_install = require('mason-registry')
-    .get_package('jdtls')
-    :get_install_path()
+  -- local jdtls_install = require('mason-registry')
+  --   .get_package('jdtls')
+  --   :get_install_path()
+  local jdtls_root = vim.env.HOME .. "/.local/share/jdtls/"
+  -- local jdtls_install = jdtls_root .. "/jdtls-v1.28.0"
+  local jdtls_install = jdtls_root .. "/jdtls-v1.27.1"
 
-  path.java_agent = jdtls_install .. '/lombok.jar'
+  path.java_agent = jdtls_root .. '/lombok/lombok.jar'
   path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
   if vim.fn.has('mac') == 1 then
@@ -92,10 +95,6 @@ local function get_jdtls_paths()
     --   name = 'JavaSE-17',
     --   path = vim.fn.expand('~/.sdkman/candidates/java/17.0.6-tem'),
     -- },
-    -- {
-    --   name = 'JavaSE-18',
-    --   path = vim.fn.expand('~/.sdkman/candidates/java/18.0.2-amzn'),
-    -- },
   }
 
   cache_vars.paths = path
@@ -142,7 +141,6 @@ local function jdtls_on_attach(client, bufnr)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<leader>jc", "<cmd>JdtCompile<CR>", opts)
-  print("set jdtls keybinds")
 end
 
 
@@ -166,7 +164,7 @@ local function jdtls_setup(event)
   -- The command that starts the language server
   -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
   local cmd = {
-    'java',
+    '/usr/lib/jvm/java-17-openjdk-amd64/bin/java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -192,7 +190,7 @@ local function jdtls_setup(event)
       jdt = {
         ls = {
           java = {
-            home = "/usr/lib/jvm/java-17-openjdk-amd64/"
+            home = "/usr/lib/jvm/java-11-openjdk-amd64/"
            },
         },
       },
@@ -205,8 +203,8 @@ local function jdtls_setup(event)
       },
       maven = {
         downloadSources = true,
-        globalSettings = "~/.m2/settings.xml",
-        userSettings = "~/.m2/settings-security.xml"
+        globalSettings = jdtls.setup.find_root(root_files) .. "/.m2/settings.xml",
+        userSettings = jdtls.setup.find_root(root_files) .. "/.m2/settings-security.xml"
       },
       implementationsCodeLens = {
         enabled = true,
@@ -214,16 +212,8 @@ local function jdtls_setup(event)
       referencesCodeLens = {
         enabled = true,
       },
-      -- inlayHints = {
-      --   parameterNames = {
-      --     enabled = 'all' -- literals, all, none
-      --   }
-      -- },
       format = {
         enabled = true,
-        -- settings = {
-        --   profile = 'asdf'
-        -- },
       }
     },
     signatureHelp = {

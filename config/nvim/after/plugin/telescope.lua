@@ -70,9 +70,9 @@ require('telescope').setup({
       theme = "ivy",
       hidden = true
     },
-    git_branches = {
-      theme = "ivy"
-    },
+    -- git_branches = {
+    --   theme = "dropdown"
+    -- },
     git_status = {
       theme = "ivy",
       initial_mode = "normal"
