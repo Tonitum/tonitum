@@ -1,25 +1,30 @@
-vim.keymap.set("n", "<leader>e", ":NERDTreeFocus<CR>")
-vim.keymap.set("n", "<leader>nE", "<cmd>NERDTreeToggle<CR>")
-vim.keymap.set("n", "<leader>nf", "<cmd>NERDTreeFind<CR>")
+vim.cmd[[
+  call webdevicons#refresh()
+]]
+-- vim.keymap.set("n", "<leader>e", ":NERDTreeFocus<CR>")
+-- vim.keymap.set("n", "<leader>nE", "<cmd>NERDTreeToggle<CR>")
+-- vim.keymap.set("n", "<leader>nf", "<cmd>NERDTreeFind<CR>")
 
--- vim.cmd("let g:NERDTreeFileLines = 1")
-vim.cmd("let NERDTreeShowHidden=1")
-vim.cmd("let NERDTreeNaturalSort=1")
-vim.cmd("let NERDTreeMinimalUI=1")
-vim.cmd("let NERDTreeMinimalMenu=1")
-vim.cmd("let NERDTreeCascadeSingleChildDir=0")
-vim.cmd("let NERDTreeWinSize=40")
-vim.cmd("let NERDTreeWinPos='left'")
+-- -- vim.cmd("let g:NERDTreeFileLines = 1")
+-- vim.cmd("let NERDTreeShowHidden=1")
+-- vim.cmd("let NERDTreeNaturalSort=1")
+-- vim.cmd("let NERDTreeMinimalUI=1")
+-- vim.cmd("let NERDTreeMinimalMenu=1")
+-- vim.cmd("let NERDTreeCascadeSingleChildDir=0")
+-- vim.cmd("let NERDTreeWinSize=40")
+-- vim.cmd("let NERDTreeWinPos='left'")
+-- vim.cmd("let g:webdevicons_enable_nerdtree = 1")
+-- vim.cmd("let g:webdevicons_conceal_nerdtree_brackets = 1")
 
--- Start NERDTree. If a file is specified, move the cursor to its window.
--- vim.cmd( "autocmd StdinReadPre * let s:std_in=1 \
--- autocmd VimEnter * NERDTree | if argc() > 0 || exists('s:std_in') | wincmd p | endif" )
+-- -- Start NERDTree. If a file is specified, move the cursor to its window.
+-- -- vim.cmd( "autocmd StdinReadPre * let s:std_in=1 \
+-- -- autocmd VimEnter * NERDTree | if argc() > 0 || exists('s:std_in') | wincmd p | endif" )
 
--- Exit Vim if NERDTree is the only window remaining in the only tab.
--- vim.cmd( "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif" )
+-- -- Exit Vim if NERDTree is the only window remaining in the only tab.
+-- -- vim.cmd( "autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif" )
 
--- Close the tab if NERDTree is the only window remaining in it.
-vim.cmd( "autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif" )
+-- -- Close the tab if NERDTree is the only window remaining in it.
+-- vim.cmd( "autocmd BufEnter * if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif" )
 
 -- Open the existing NERDTree on each new tab.
 -- vim.cmd( "autocmd BufWinEnter * if getcmdwintype() == '' | silent NERDTreeMirror | endif" )
