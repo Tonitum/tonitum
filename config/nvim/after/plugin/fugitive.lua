@@ -1,5 +1,5 @@
 vim.keymap.set("n", "<leader>gs", ":Telescope git_status<CR>") -- status
-vim.keymap.set("n", "<leader>gst", ":Telescope git_stash<CR>") -- stash
+vim.keymap.set("n", "<leader>gt", ":Telescope git_stash<CR>") -- stash
 vim.keymap.set("n", "<leader>gH", ":Telescope git_commits<CR>") -- all commits
 vim.keymap.set("n", "<leader>gl", ":Telescope git_branches<CR>") -- branches
 vim.keymap.set("n", "<leader>gbl", ":G blame<CR>") -- full file blame
