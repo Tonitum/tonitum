@@ -29,14 +29,14 @@ local function get_jdtls_paths()
 
   path.data_dir = vim.fn.stdpath('cache') .. '/nvim-jdtls'
 
-  -- local jdtls_install = require('mason-registry')
-  --   .get_package('jdtls')
-  --   :get_install_path()
-  local jdtls_root = vim.env.HOME .. "/.local/share/jdtls/"
+  local jdtls_install = require('mason-registry')
+    .get_package('jdtls')
+    :get_install_path()
+  -- local jdtls_root = vim.env.HOME .. "/.local/share/jdtls/"
   -- local jdtls_install = jdtls_root .. "/jdtls-v1.28.0"
-  local jdtls_install = jdtls_root .. "/jdtls-v1.27.1"
+  -- local jdtls_install = jdtls_root .. "/jdtls-v1.27.1"
 
-  path.java_agent = jdtls_root .. '/lombok/lombok.jar'
+  path.java_agent = jdtls_install .. '/lombok.jar'
   path.launcher_jar = vim.fn.glob(jdtls_install .. '/plugins/org.eclipse.equinox.launcher_*.jar')
 
   if vim.fn.has('mac') == 1 then

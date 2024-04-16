@@ -6,7 +6,7 @@ local actions = require('telescope.actions')
 local builtin = require('telescope.builtin')
 local trouble = require("trouble.providers.telescope")
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+-- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ff', function () builtin.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }}) end, {})
 vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
 vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
@@ -22,9 +22,8 @@ vim.keymap.set('n', '<leader>gr', builtin.lsp_references)
 require('telescope').setup({
   defaults = {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
-    prompt_prefix = " >",
+    prompt_prefix = " > ",
     color_devicons = true,
-    theme = "ivy",
 
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -56,35 +55,35 @@ require('telescope').setup({
       theme = "cursor"
     },
     find_files = {
-      theme = "ivy",
+      -- theme = "ivy",
       hidden = true
     },
     live_grep = {
-      theme = "ivy",
+      -- theme = "ivy",
       hidden = true
     },
-    quickfix = {
-      theme = "ivy"
-    },
+    -- quickfix = {
+    --   theme = "ivy"
+    -- },
     git_files = {
-      theme = "ivy",
+      -- theme = "ivy",
       hidden = true
     },
     -- git_branches = {
     --   theme = "dropdown"
     -- },
     git_status = {
-      theme = "ivy",
+      -- theme = "ivy",
       initial_mode = "normal"
     },
     git_commits = {
-      theme = "ivy"
+      -- theme = "ivy"
     },
     git_bcommits = {
-      theme = "ivy"
+      -- theme = "ivy"
     },
     git_stash = {
-      theme = "ivy"
+      -- theme = "ivy"
     }
   }
 })

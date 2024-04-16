@@ -5,30 +5,55 @@ if not pcall(require, lsp_module_name) then
 end
 local lsp = require("lsp-zero")
 
-lsp.ensure_installed({
-  'rust_analyzer',
-  'pyright',
-  'clangd',
-  'jdtls',
-  -- 'yamlls',
-})
+require('mason').setup({})
+
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'rust_analyzer',
+    'clangd',
+    'jdtls',
+  },
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+    },
+    jdtls = lsp.noop,
+    lua_ls = function ()
+      local lua_opts = lsp.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end
+  }
+)
 
 lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<CR>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
-
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
+cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  mapping = cmp.mapping.preset.insert({
+    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ['<Tab>'] = nil,
+    ['<S-Tab>'] = nil
+  }),
+  snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
+  sources = {
+    {name = 'nvim_lsp'},
+  }
 })
 
 lsp.set_preferences({
@@ -57,39 +82,13 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
--- local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
--- local words = {}
-
--- for word in io.open(path, "r"):lines() do
--- 	table.insert(words, word)
--- end
-
--- require('lspconfig').ltex.setup {
---    settings = {
---     ltex = {
---       configurationTarget = {
---           dictionary = path,
---       },
---       dictionary = { ["en-US"] = words },
---       java = {
---         path = "/usr/lib/jvm/java-17-openjdk-amd64/"
---       },
---     },
---    },
--- }
-
 require('lspconfig').clangd.setup {
    filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
+require('lspconfig').yamlls.setup {
+   filetypes = {"yaml"},
+}
 
--- require('lspconfig').yamlls.setup {
---    filetypes = {"yaml"},
--- }
-
-
-lsp.skip_server_setup({'jdtls'})
-
-lsp.nvim_workspace()
 lsp.setup()
 
 vim.diagnostic.config({
