@@ -17,15 +17,18 @@ PP_EXPORT='export PYTHONPATH=$(git rev-parse --show-toplevel)'
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -ds $selected_name -c $selected
     echo "setting python path"
-    tmux setenv -t $selected_name PYTHONPATH "$selected:$PYTHONPATH"
+    tmux setenv -t $selected_name PYTHONPATH "$selected"
+    tmux send-keys -t $selected_name "export PYTHONPATH="$selected C-m
+    tmux send-keys -t $selected_name "clear" C-m
     tmux a -t $selected_name
     exit 0
 fi
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -ds $selected_name -c $selected
-    echo "setting python path"
-    tmux setenv -t $selected_name PYTHONPATH "$selected:$PYTHONPATH"
+if ! tmux has-session -t="$selected_name" 2> /dev/null; then
+    tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux switch-client -Et $selected_name
+tmux setenv -t "$selected_name" PYTHONPATH "$selected"
+tmux send-keys -t "$selected_name" "export PYTHONPATH=$selected" C-m
+tmux send-keys -t $selected_name "clear" C-m
+tmux switch-client -Et "$selected_name"

@@ -1,12 +1,6 @@
-local lsp_module_name = "lsp-zero"
-if not pcall(require, lsp_module_name) then
-  print("lsp-zero not loaded")
-  return
-end
 local lsp = require("lsp-zero")
 
 require('mason').setup({})
-
 require('mason-lspconfig').setup({
   ensure_installed = {
     'rust_analyzer',
@@ -17,19 +11,26 @@ require('mason-lspconfig').setup({
     function(server_name)
       require('lspconfig')[server_name].setup({})
     end,
-    },
-    jdtls = lsp.noop,
-    lua_ls = function ()
-      local lua_opts = lsp.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end
-  }
+  },
+  jdtls = lsp.noop,
+  lua_ls = function()
+    local lua_opts = lsp.nvim_lua_ls()
+    require('lspconfig').lua_ls.setup(lua_opts)
+  end
+}
 )
 
 lsp.preset("recommended")
 
 local cmp = require('cmp')
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
+local cmp_select = { behavior = cmp.SelectBehavior.Select }
+
+local utils = {}
+function utils.myfunc()
+  for i = 1, 10, 1 do
+    print("hello world")
+  end
+end
 
 cmp.setup({
   window = {
@@ -52,24 +53,30 @@ cmp.setup({
     end,
   },
   sources = {
-    {name = 'nvim_lsp'},
-  }
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'luasnip', keyword_length = 2 },
+    { name = 'buffer',  keyword_length = 3 },
+  },
+  -- note: if you are going to use lsp-kind (another plugin)
+  -- replace the line below with the function from lsp-kind
+  formatting = lsp.cmp_format(),
 })
 
 lsp.set_preferences({
-    suggest_lsp_servers = false,
-    set_lsp_keymaps = false,
-    sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-    }
+  suggest_lsp_servers = false,
+  set_lsp_keymaps = false,
+  sign_icons = {
+    error = 'E',
+    warn = 'W',
+    hint = 'H',
+    info = 'I'
+  }
 })
 
 lsp.on_attach(function(client, bufnr)
-  local opts = {buffer = bufnr, remap = false}
-
+  local opts = { buffer = bufnr, remap = false }
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
   vim.keymap.set("n", "D", function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
@@ -80,17 +87,18 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
 end)
 
 require('lspconfig').clangd.setup {
-   filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }
 require('lspconfig').yamlls.setup {
-   filetypes = {"yaml"},
+  filetypes = { "yaml" },
 }
 
 lsp.setup()
 
 vim.diagnostic.config({
-    virtual_text = true
+  virtual_text = true
 })
