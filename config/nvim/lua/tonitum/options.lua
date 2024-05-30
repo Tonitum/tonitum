@@ -59,6 +59,7 @@ local options = {
     foldmethod = "indent", -- set a default fold method
     foldenable = false,
     complete = "i",
+    foldlevel = 99,
 }
 
 vim.opt.shortmess:append("c") -- what do these do?
