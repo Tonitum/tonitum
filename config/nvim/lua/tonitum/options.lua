@@ -62,7 +62,7 @@ local options = {
     foldlevel = 99,
 }
 
-vim.opt.shortmess:append("c") -- what do these do?
+vim.opt.shortmess:append("c")
 vim.opt.isfname:append("@-@")
 
 for k, v in pairs(options) do
