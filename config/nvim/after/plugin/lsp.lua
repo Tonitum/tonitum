@@ -3,7 +3,7 @@ local lsp = require("lsp-zero")
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
-    'rust_analyzer',
+    'yamlls',
     'clangd',
     'jdtls',
   },
@@ -52,16 +52,21 @@ cmp.setup({
       require('luasnip').lsp_expand(args.body)
     end,
   },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'nvim_lua' },
-    { name = 'path' },
-    { name = 'luasnip', keyword_length = 2 },
-    { name = 'buffer',  keyword_length = 3 },
-  },
+  sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lua' },
+      { name = 'path' },
+      { name = 'luasnip' }, -- For luasnip users.
+    }, {
+      { name = 'buffer' },
+    }),
   -- note: if you are going to use lsp-kind (another plugin)
   -- replace the line below with the function from lsp-kind
   formatting = lsp.cmp_format(),
+})
+
+vim.diagnostic.config({
+  virtual_text = true
 })
 
 lsp.set_preferences({
@@ -99,6 +104,3 @@ require('lspconfig').yamlls.setup {
 
 lsp.setup()
 
-vim.diagnostic.config({
-  virtual_text = true
-})
