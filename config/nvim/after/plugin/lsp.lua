@@ -4,8 +4,6 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'yamlls',
-    'clangd',
-    'jdtls',
   },
   handlers = {
     function(server_name)
@@ -24,13 +22,6 @@ lsp.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-
-local utils = {}
-function utils.myfunc()
-  for i = 1, 10, 1 do
-    print("hello world")
-  end
-end
 
 cmp.setup({
   window = {
