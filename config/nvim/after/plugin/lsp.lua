@@ -4,6 +4,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'yamlls',
+    'pyright',
   },
   handlers = {
     function(server_name)
@@ -15,8 +16,7 @@ require('mason-lspconfig').setup({
     local lua_opts = lsp.nvim_lua_ls()
     require('lspconfig').lua_ls.setup(lua_opts)
   end
-}
-)
+})
 
 lsp.preset("recommended")
 
