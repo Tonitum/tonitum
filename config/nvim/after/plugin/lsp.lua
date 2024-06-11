@@ -10,12 +10,30 @@ require('mason-lspconfig').setup({
     function(server_name)
       require('lspconfig')[server_name].setup({})
     end,
+    ["jdtls"] = lsp.noop,
+    ["clangd"] = function ()
+      local opts = {
+        filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+      }
+      require('lspconfig').clangd.setup(opts)
+    end,
+    ["lua_ls"] = function()
+      local lua_opts = lsp.nvim_lua_ls()
+      require('lspconfig').lua_ls.setup(lua_opts)
+    end,
+    ["jqls"] = function()
+      local lua_opts = {
+        filetypes = {"jq", "avsc", "json"}
+      }
+      require('lspconfig').jqls.setup(lua_opts)
+    end,
+    ["yamlls"] = function()
+      local lua_opts = {
+        filetypes = { "yaml" },
+      }
+      require('lspconfig').yamlls.setup(lua_opts)
+    end
   },
-  jdtls = lsp.noop,
-  lua_ls = function()
-    local lua_opts = lsp.nvim_lua_ls()
-    require('lspconfig').lua_ls.setup(lua_opts)
-  end
 })
 
 lsp.preset("recommended")
@@ -85,13 +103,6 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
   vim.keymap.set("n", "<leader>vf", function() vim.lsp.buf.format() end, opts)
 end)
-
-require('lspconfig').clangd.setup {
-  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
-}
-require('lspconfig').yamlls.setup {
-  filetypes = { "yaml" },
-}
 
 lsp.setup()
 
