@@ -84,6 +84,7 @@ vim.opt.formatoptions = vim.opt.formatoptions
     - "t" -- wrap with text width
     + "c" -- wrap comments
     - "o" -- insert comment after o/O
+    + "r" -- insert comment after C-R
     - "a" -- format paragraphs
     + "n" -- recognized numbered lists
     - "2" -- use indent of second line for paragraph
