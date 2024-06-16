@@ -11,7 +11,7 @@ require('mason-lspconfig').setup({
       require('lspconfig')[server_name].setup({})
     end,
     ["jdtls"] = lsp.noop,
-    ["clangd"] = function ()
+    ["clangd"] = function()
       local opts = {
         filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
       }
@@ -23,7 +23,7 @@ require('mason-lspconfig').setup({
     end,
     ["jqls"] = function()
       local lua_opts = {
-        filetypes = {"jq", "avsc", "json"}
+        filetypes = { "jq", "avsc", "json" }
       }
       require('lspconfig').jqls.setup(lua_opts)
     end,
@@ -62,13 +62,13 @@ cmp.setup({
     end,
   },
   sources = cmp.config.sources({
-      { name = 'nvim_lsp' },
-      { name = 'nvim_lua' },
-      { name = 'path' },
-      { name = 'luasnip' }, -- For luasnip users.
-    }, {
-      { name = 'buffer' },
-    }),
+    { name = 'nvim_lsp' },
+    { name = 'nvim_lua' },
+    { name = 'path' },
+    { name = 'luasnip' },   -- For luasnip users.
+  }, {
+    { name = 'buffer' },
+  }),
   -- note: if you are going to use lsp-kind (another plugin)
   -- replace the line below with the function from lsp-kind
   formatting = lsp.cmp_format(),
@@ -105,4 +105,3 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
