@@ -83,7 +83,7 @@ return {
     ft = "python",
     config = function()
       -- require('dap-python').setup()
-      require('dap-python').setup(".venv/bin/python3",{
+      require('dap-python').setup("python",{
         include_configs = true,
         console = 'integratedTerminal',
       })
