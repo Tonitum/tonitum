@@ -5,3 +5,4 @@ require("tonitum.autocommands")
 require("tonitum.keymap")
 require("tonitum.options")
 require("tonitum.lazy_init")
+vim.cmd.colorscheme "everforest"
