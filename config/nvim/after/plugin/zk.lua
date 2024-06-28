@@ -67,6 +67,13 @@ vim.keymap.set("n", "<leader>zI", function()
     tk.insert_img_link()
   end)
 
+-- mark item as done, then move to bottom of file
+vim.keymap.set("n", "<leader>zm", function()
+    tk.toggle_todo()
+    vim.cmd.normal('ddGp')
+    vim.cmd(vim.api.nvim_replace_termcodes('normal <C-o>',true,true,true))
+end)
+
 vim.keymap.set("n", "<leader>zj", function()
     vim.cmd("80 vsplit")
     local win = vim.api.nvim_get_current_win()
