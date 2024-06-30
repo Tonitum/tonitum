@@ -6,6 +6,16 @@ return {
     { "nvim-tree/nvim-web-devicons" },
     { "folke/trouble.nvim" },
   },
+  keys = {
+    {"<leader>ff", nil},
+    {"<leader>fq", nil},
+    {"<leader>fg", nil},
+    {"<leader>fr", nil},
+    {"<leader>fb", nil},
+    {"<leader>fh", nil},
+    {"<leader>fs", nil},
+    {"<leader>gr", nil}
+  },
   config = function()
     local actions = require('telescope.actions')
     local builtin = require('telescope.builtin')
