@@ -157,4 +157,7 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp"
   },
+  {"towolf/vim-helm", ft = "helm"},
+  {"mfussenegger/nvim-jdtls"},
+  {"sheerun/vim-polyglot"},
 }
