@@ -45,6 +45,7 @@
   "toilet": { "branch": "master", "commit": "3eb9d58037afb0a1baec6dca82caa045fb2217c0" },
   "tokyonight": { "branch": "main", "commit": "c2dde8d093b4196a24e8c0fd69ca272f31ba05b9" },
   "trouble.nvim": { "branch": "main", "commit": "f1168feada93c0154ede4d1fe9183bf69bac54ea" },
+  "undotree": { "branch": "master", "commit": "56c684a805fe948936cda0d1b19505b84ad7e065" },
   "venn.nvim": { "branch": "main", "commit": "b09c2f36ddf70b498281845109bedcf08a7e0de0" },
   "vim-airline": { "branch": "master", "commit": "02894b6ef4752afd8579fc837aec5fb4f62409f7" },
   "vim-airline-themes": { "branch": "master", "commit": "a9aa25ce323b2dd04a52706f4d1b044f4feb7617" },
