@@ -19,7 +19,7 @@ return {
     end},
 
   },
-  config = function() 
+  config = function()
     require("neotest").setup({
       quickfix = {
         enabled = true,

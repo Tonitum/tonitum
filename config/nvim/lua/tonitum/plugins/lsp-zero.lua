@@ -78,6 +78,7 @@ return {
 
       local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
+      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
       cmp.setup({
         window = {
           completion = cmp.config.window.bordered(),
@@ -107,6 +108,11 @@ return {
         -- note: if you are going to use lsp-kind (another plugin)
         -- replace the line below with the function from lsp-kind
         formatting = lsp.cmp_format(),
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
       })
 
       vim.diagnostic.config({
@@ -155,9 +161,11 @@ return {
     "L3MON4D3/LuaSnip",
     version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
-    build = "make install_jsregexp"
+    build = "make install_jsregexp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+
   },
-  {"towolf/vim-helm", ft = "helm"},
-  {"mfussenegger/nvim-jdtls"},
-  {"sheerun/vim-polyglot"},
+  { "towolf/vim-helm",        ft = "helm" },
+  { "mfussenegger/nvim-jdtls" },
+  { "sheerun/vim-polyglot" },
 }
