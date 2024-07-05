@@ -28,6 +28,7 @@ return {
     },
     config = function()
       local tk = require('telekasten')
+      local notes_path = "~/zk"
 
       vim.keymap.set("n", "<leader>zp", function()
         tk.panel()
@@ -112,7 +113,6 @@ return {
       vim.keymap.set("n", "<leader>zh", function()
         vim.cmd("e " .. notes_path .. "/TODO.md")
       end)
-      local notes_path = "~/zk"
       require('telekasten').setup({
         home = vim.fn.expand(notes_path), -- Put the name of your notes directory here
         dailies = vim.fn.expand(notes_path .. "/daily"),

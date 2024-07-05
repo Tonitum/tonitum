@@ -1,14 +1,25 @@
 local lsp = require("lsp-zero")
+local cmp_lsp = require("cmp_nvim_lsp")
+local cmp = require('cmp')
 
+local capabilities = vim.tbl_deep_extend(
+  "force",
+  {},
+  vim.lsp.protocol.make_client_capabilities(),
+  cmp_lsp.default_capabilities())
+
+require('fidget').setup()
 require('mason').setup({})
 require('mason-lspconfig').setup({
   ensure_installed = {
     'yamlls',
-    'pyright',
+    -- 'pyright',
   },
   handlers = {
     function(server_name)
-      require('lspconfig')[server_name].setup({})
+      require('lspconfig')[server_name].setup({
+          capabilities = capabilities
+        })
     end,
     ["jdtls"] = lsp.noop,
     ["clangd"] = function()
@@ -38,7 +49,6 @@ require('mason-lspconfig').setup({
 
 lsp.preset("recommended")
 
-local cmp = require('cmp')
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 cmp.setup({
@@ -66,8 +76,6 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'path' },
     { name = 'luasnip' },   -- For luasnip users.
-  }, {
-    { name = 'buffer' },
   }),
   -- note: if you are going to use lsp-kind (another plugin)
   -- replace the line below with the function from lsp-kind
@@ -75,6 +83,14 @@ cmp.setup({
 })
 
 vim.diagnostic.config({
+  float = {
+    focusable = false,
+    style = "minimal",
+    border = "rounded",
+    source = "always",
+    header = "",
+    prefix = "",
+  },
   virtual_text = true
 })
 
