@@ -19,7 +19,7 @@ return {
         background = "hard",
         ---How much of the background should be transparent. 2 will have more UI
         ---components be transparent (e.g. status line background)
-        transparent_background_level = 2,
+        transparent_background_level = 3,
         disable_italic_comments = true,
       }
       )
@@ -50,7 +50,7 @@ return {
       vim.opt.termguicolors = true
       vim.g.nightflyCursorColor = true
       vim.g.nightflyItalics = false
-      vim.g.nightflyTransparent = true
+      vim.g.nightflyTransparent = false
       vim.g.nightflyUnderlineMatchParen = true
     end
   },
@@ -61,12 +61,12 @@ return {
     priority = 1000,
     config = function ()
       require("catppuccin").setup({
-        flavour = "auto", -- latte, frappe, macchiato, mocha
+        flavour = "mocha", -- latte, frappe, macchiato, mocha
         background = { -- :h background
             light = "latte",
             dark = "mocha",
         },
-        transparent_background = false, -- disables setting the background color.
+        transparent_background = true, -- disables setting the background color.
         no_italic = true, -- Force no italic
         integrations = {
             cmp = true,
@@ -75,7 +75,7 @@ return {
             treesitter = true,
             notify = false,
             mini = {
-                enabled = true,
+                enabled = false,
                 indentscope_color = "",
             },
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
@@ -117,7 +117,7 @@ return {
     config = function()
       vim.o.background = 'dark' -- or 'light'
       require('solarized').setup({
-        transparent = true, -- enable transparent background
+        transparent = false, -- enable transparent background
         styles = {
           comments = { italic = false, bold = false },
           functions = { italic = false },
