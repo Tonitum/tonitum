@@ -117,6 +117,8 @@ return {
       })
 
       vim.diagnostic.config({
+        underline = true,
+        update_in_insert = false,
         float = {
           focusable = false,
           style = "minimal",
@@ -125,7 +127,10 @@ return {
           header = "",
           prefix = "",
         },
-        virtual_text = true
+        virtual_text = true,
+        document_highlight = {
+          enabled = true,
+        },
       })
 
       lsp.set_preferences({
@@ -163,7 +168,6 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
-
   },
   {
     "towolf/vim-helm",
