@@ -3,6 +3,7 @@ return {
     "VonHeikemen/lsp-zero.nvim",
     -- lsp-zero
     branch = "v3.x",
+    event = "VeryLazy",
     dependencies = {
       -- LSP Support
       { "neovim/nvim-lspconfig" },
@@ -155,7 +156,6 @@ return {
 
       lsp.setup()
     end
-
   },
   {
     "L3MON4D3/LuaSnip",
@@ -165,7 +165,12 @@ return {
     dependencies = { "rafamadriz/friendly-snippets" },
 
   },
-  { "towolf/vim-helm",        ft = "helm" },
-  { "mfussenegger/nvim-jdtls" },
-  { "sheerun/vim-polyglot" },
+  {
+    "towolf/vim-helm",
+    ft = "helm"
+  },
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = "java"
+  },
 }

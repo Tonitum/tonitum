@@ -1,5 +1,4 @@
 return {
-  {"folke/zen-mode.nvim"},
   {"tpope/vim-commentary"}, -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
   {"tpope/vim-surround"}, -- change text wrappers e.g. " " ()
   {
@@ -20,7 +19,7 @@ return {
         end
       end
 
-      vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
+      -- vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
     end
   },
 }

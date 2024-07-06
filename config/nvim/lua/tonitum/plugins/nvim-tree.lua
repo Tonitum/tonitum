@@ -9,18 +9,8 @@ return {
     },
     config = function()
       require("nvim-tree").setup({
-        -- view = {
-        --   float = {
-        --     enable = true,
-        --   }
-        -- }
-        -- filters = {
-        --   dotfiles = true,
-        -- },
       })
       -- disable netrw at the very start of your init.lua
-      vim.g.loaded_netrw = 1
-      vim.g.loaded_netrwPlugin = 1
       vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>")
       vim.keymap.set("n", "<leader>nE", "<cmd>NvimTreeToggle<CR>")
       vim.keymap.set("n", "<leader>nf", "<cmd>NvimTreeFindFile<CR>")
