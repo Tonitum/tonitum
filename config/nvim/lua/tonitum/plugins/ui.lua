@@ -1,5 +1,5 @@
 return {
-  -- status bar
+  {"folke/zen-mode.nvim"},
   {"vim-airline/vim-airline",
     config = function()
       vim.cmd[[  if !exists('g:airline_symbols')
