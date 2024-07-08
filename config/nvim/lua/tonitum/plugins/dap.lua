@@ -87,9 +87,13 @@ return {
         include_configs = true,
         console = 'integratedTerminal',
       })
+      local dap = require('dap')
       local opts = {silent = true}
       vim.keymap.set('n', '<leader>df', "<cmd>lua require('dap-python').test_class()<cr>", opts)
       vim.keymap.set('n', '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", opts)
+      vim.keymap.set("n", "<leader>b", function ()
+        dap.toggle_breakpoint()
+      end)
 
       require('dap-python').test_runner = 'pytest'
 
