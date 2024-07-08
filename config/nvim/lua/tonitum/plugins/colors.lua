@@ -66,7 +66,7 @@ return {
             light = "latte",
             dark = "mocha",
         },
-        transparent_background = true, -- disables setting the background color.
+        transparent_background = false, -- disables setting the background color.
         no_italic = true, -- Force no italic
         integrations = {
             cmp = true,
