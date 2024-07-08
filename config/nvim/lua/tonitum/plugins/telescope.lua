@@ -19,7 +19,6 @@ return {
   config = function()
     local actions = require('telescope.actions')
     local builtin = require('telescope.builtin')
-    local trouble = require("trouble.providers.telescope")
 
     -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set('n', '<leader>ff',
@@ -49,13 +48,14 @@ return {
           i = {
             ["<C-x>"] = false,
             ["<C-q>"] = actions.smart_send_to_qflist,
-            ["<c-t>"] = trouble.open_with_trouble,
+            ["<c-t>"] = require("trouble.sources.telescope").open,
+
             ["<CR>"] = actions.select_default,
           },
           n = {
             ["<C-q>"] = actions.smart_send_to_qflist,
             ["<leader>a"] = actions.toggle_selection,
-            ["<c-t>"] = trouble.open_with_trouble,
+            ["<c-t>"] = require("trouble.sources.telescope").open,
           }
         },
       },
