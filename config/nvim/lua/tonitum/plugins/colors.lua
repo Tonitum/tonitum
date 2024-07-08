@@ -31,7 +31,6 @@ return {
   {"rose-pine/neovim",
     name = "rose-pine",
     lazy = true,
-    dependencies = "vim-airline/vim-airline",
     config = function ()
       require("rose-pine").setup({
         styles = {
@@ -40,7 +39,6 @@ return {
         },
       })
       ColorMyPencils("rose-pine")
-      vim.cmd("AirlineTheme luna")
     end
   }, -- rose pine color scheme
 
