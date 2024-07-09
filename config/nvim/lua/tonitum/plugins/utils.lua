@@ -1,6 +1,6 @@
 return {
   { "tpope/vim-commentary" }, -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
-  { "tpope/vim-surround" }, -- change text wrappers e.g. " " ()
+  { "tpope/vim-surround" },   -- change text wrappers e.g. " " ()
   {
     "ojroques/nvim-osc52",
 
@@ -22,4 +22,40 @@ return {
       -- vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
     end
   },
+  {
+    -- whichkey
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup()
+    end,
+  },
+  {
+    "mbbill/undotree",
+
+    config = function()
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    end
+  },
+  {
+    "Chaitanyabsprip/present.nvim",
+    ft = "markdown",
+    build = function()
+      require('present').setup {}
+    end
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    ft = "markdown",
+    build = function() vim.fn["mkdp#util#install"]() end,
+    config = function()
+      vim.g.mkdp_open_to_the_world = 1
+      vim.g.mkdp_port = 24603
+      vim.g.mkdp_echo_preview_url = 1
+      vim.g.mkdp_open_ip = '127.0.0.1'
+      vim.g.mkdp_auto_start = 1
+    end
+  }
 }
