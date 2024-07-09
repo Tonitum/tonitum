@@ -1,4 +1,5 @@
-return {"folke/trouble.nvim",
+return {
+  "folke/trouble.nvim",
   -- trouble
   tag = "v3.5.1",
   cmd = "Trouble",

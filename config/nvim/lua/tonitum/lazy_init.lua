@@ -16,6 +16,6 @@ require("lazy").setup(
   "tonitum.plugins",
   {
     change_detection = {
-    notify = false, -- get a notification when new updates are found
-  },
-})
+      notify = false, -- get a notification when new updates are found
+    },
+  })

@@ -1,9 +1,9 @@
 -- install without yarn or npm
-return  {
+return {
   "iamcco/markdown-preview.nvim",
   ft = "markdown",
   build = function() vim.fn["mkdp#util#install"]() end,
-  config = function ()
+  config = function()
     vim.g.mkdp_open_to_the_world = 1
     vim.g.mkdp_port = 24603
     vim.g.mkdp_echo_preview_url = 1

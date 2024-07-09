@@ -1,6 +1,6 @@
 -- highlight on yank
 local augroup = vim.api.nvim_create_augroup
-local tonitum_group = augroup("Tonitum",  {})
+local tonitum_group = augroup("Tonitum", {})
 local autocmd = vim.api.nvim_create_autocmd
 
 
@@ -63,14 +63,14 @@ vim.api.nvim_create_autocmd('BufReadPost', {
 
 local yank_group = augroup('HighlightYank', {})
 autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+  group = yank_group,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
 })
 
 -- TODO: move this to a keymap
@@ -83,4 +83,3 @@ autocmd('TextYankPost', {
 --   autocmd BufWritePre *.h :%s/\s\+$//e
 --   autocmd BufWritePre *.proto :%s/\s\+$//e
 -- ]]
-
