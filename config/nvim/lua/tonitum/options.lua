@@ -48,9 +48,9 @@ local options = {
   showtabline = 1,
   mouse = "",
   clipboard = "unnamedplus",
-  cmdheight = 1,        -- Give more space for displaying messages.
-  errorbells = false,   -- no dings on error
-  laststatus = 3,       --
+  cmdheight = 1,      -- Give more space for displaying messages.
+  errorbells = false, -- no dings on error
+  laststatus = 3,     --
   pumheight = 10,
   scrolloff = 8,
   signcolumn = "yes",
@@ -58,7 +58,7 @@ local options = {
   splitright = true,
 
   -- folding
-  foldmethod = "indent",   -- set a default fold method
+  foldmethod = "indent", -- set a default fold method
   foldenable = false,
   complete = "i",
   foldlevel = 99,

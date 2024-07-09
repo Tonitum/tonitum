@@ -4,7 +4,7 @@ return {
   config = function()
     local harpoon = require("harpoon")
     harpoon:setup({
-      settings  = {
+      settings = {
         select_with_nil = false,
         save_on_toggle = true,
       }

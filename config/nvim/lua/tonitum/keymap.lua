@@ -58,7 +58,7 @@ vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
 
-vim.keymap.set("n", "<leader>fw",  "^<down>v$<left>y<up>A <esc>p<down>dd<up>^")
+vim.keymap.set("n", "<leader>fw", "^<down>v$<left>y<up>A <esc>p<down>dd<up>^")
 
 -- delete without overriding yank
 vim.keymap.set("n", "<leader>d", "\"_d")
@@ -72,7 +72,7 @@ vim.keymap.set("x", "<leader>so", "<cmd>'<,'>sort<CR>")
 
 -- delete all trailing whitespaces
 -- :%s/\s\+$//e
-vim.keymap.set("n", "<leader>WS",  ':%s/\\s\\+$//e<CR>')
+vim.keymap.set("n", "<leader>WS", ':%s/\\s\\+$//e<CR>')
 
 vim.keymap.set("n", "<A-d>", "D")
 
