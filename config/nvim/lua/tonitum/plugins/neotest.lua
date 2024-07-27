@@ -25,7 +25,7 @@ return {
         quickfix = {
           enabled = true,
           open = function()
-            vim.cmd("TroubleToggle quickfix")
+            vim.cmd("Trouble qflist focus")
           end
         },
         adapters = {
