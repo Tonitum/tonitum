@@ -39,6 +39,7 @@ return {
       desc = "Quickfix List (Trouble)",
     },
   },
+  lazy = true
   -- tag = "v2.10.0",
   -- config = function()
   --   require("trouble").setup({
