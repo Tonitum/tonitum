@@ -131,7 +131,10 @@ return {
       })
     end
   },
-  { "cacalabs/toilet" },
+  {
+    "cacalabs/toilet",
+    lazy = true
+  },
   {
     "jbyuki/venn.nvim",
     keys = {
