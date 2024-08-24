@@ -2,7 +2,7 @@
 return {
   -- testing
   {
-    'rcasia/neotest-java',
+    "rcasia/neotest-java",
     ft = "java"
   },
   { "alepez/vim-gtest" },

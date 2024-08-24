@@ -27,7 +27,7 @@ return {
       { "<leader>zh", nil }
     },
     config = function()
-      local tk = require('telekasten')
+      local tk = require("telekasten")
       local notes_path = "~/zk"
 
       vim.keymap.set("n", "<leader>zp", function()
@@ -82,8 +82,8 @@ return {
       -- mark item as done, then move to bottom of file
       vim.keymap.set("n", "<leader>zm", function()
         tk.toggle_todo()
-        vim.cmd.normal('ddGp')
-        vim.cmd(vim.api.nvim_replace_termcodes('normal <C-o>', true, true, true))
+        vim.cmd.normal("ddGp")
+        vim.cmd(vim.api.nvim_replace_termcodes("normal <C-o>", true, true, true))
       end)
 
       vim.keymap.set("n", "<leader>zj", function()
@@ -92,7 +92,7 @@ return {
         local buf = vim.api.nvim_create_buf(true, true)
         vim.api.nvim_win_set_buf(win, buf)
         tk.goto_today()
-        vim.keymap.set('n', 'q', "<c-w>c", { buffer = 0 })
+        vim.keymap.set("n", "q", "<c-w>c", { buffer = 0 })
         vim.cmd("set wrap")
         vim.cmd("set linebreak")
         vim.cmd("set breakindent")
@@ -104,7 +104,7 @@ return {
         local buf = vim.api.nvim_create_buf(true, true)
         vim.api.nvim_win_set_buf(win, buf)
         vim.cmd("e " .. notes_path .. "/capture.md")
-        vim.keymap.set('n', 'q', "<c-w>c", { buffer = 0 })
+        vim.keymap.set("n", "q", "<c-w>c", { buffer = 0 })
         vim.cmd("set wrap")
         vim.cmd("set linebreak")
         vim.cmd("set breakindent")
@@ -113,27 +113,27 @@ return {
       vim.keymap.set("n", "<leader>zh", function()
         vim.cmd("e " .. notes_path .. "/TODO.md")
       end)
-      require('telekasten').setup({
+      require("telekasten").setup({
         home = vim.fn.expand(notes_path), -- Put the name of your notes directory here
         dailies = vim.fn.expand(notes_path .. "/daily"),
         weeklies = vim.fn.expand(notes_path .. "/weekly"),
         templates = vim.fn.expand(notes_path .. "/templates"),
         template_new_note = vim.fn.expand(notes_path .. "/templates/base.md"),
         template_new_daily = vim.fn.expand(notes_path .. "/templates/daily.md"),
-        new_note_filename = 'title',
+        new_note_filename = "title",
         filename_space_subst = "_",
         auto_set_filetype = false,
         journal_auto_open = true,
-        sort = 'modified',
+        sort = "modified",
         install_syntax = true,
         -- tag_notation = "@tag",
         -- show_tags_theme = "get_cursor",
       })
     end
   },
-  { 'cacalabs/toilet' },
+  { "cacalabs/toilet" },
   {
-    'jbyuki/venn.nvim',
+    "jbyuki/venn.nvim",
     keys = {
       { "<leader>vv", nil }
     },
@@ -159,7 +159,7 @@ return {
       end
 
       -- toggle keymappings for venn using <leader>vv
-      vim.api.nvim_set_keymap('n', '<leader>vv', ":lua Toggle_venn()<CR>", { noremap = true })
+      vim.api.nvim_set_keymap("n", "<leader>vv", ":lua Toggle_venn()<CR>", { noremap = true })
     end
   }
 }

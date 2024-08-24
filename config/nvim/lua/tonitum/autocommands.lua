@@ -49,11 +49,11 @@ vim.cmd [[
 ]]
 
 -- what does this do again?
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd("BufReadPost", {
   group = tonitum_group,
   callback = function(args)
-    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line('$')
-    local not_commit = vim.b[args.buf].filetype ~= 'commit'
+    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
+    local not_commit = vim.b[args.buf].filetype ~= "commit"
 
     if valid_line and not_commit then
       vim.cmd([[normal! g`"]])
@@ -61,13 +61,13 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
-local yank_group = augroup('HighlightYank', {})
-autocmd('TextYankPost', {
+local yank_group = augroup("HighlightYank", {})
+autocmd("TextYankPost", {
   group = yank_group,
-  pattern = '*',
+  pattern = "*",
   callback = function()
     vim.highlight.on_yank({
-      higroup = 'IncSearch',
+      higroup = "IncSearch",
       timeout = 40,
     })
   end,

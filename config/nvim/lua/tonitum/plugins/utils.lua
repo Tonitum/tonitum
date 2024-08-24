@@ -5,21 +5,21 @@ return {
     "ojroques/nvim-osc52",
 
     keys = {
-      { '<leader>c',  nil, expr = true },
-      { '<leader>cc', nil, remap = true },
-      { '<leader>cc', nil, mode = "v" }
+      { "<leader>c",  nil, expr = true },
+      { "<leader>cc", nil, remap = true },
+      { "<leader>cc", nil, mode = "v" }
     },
     config = function()
-      vim.keymap.set('n', '<leader>c', require('osc52').copy_operator, { expr = true })
-      vim.keymap.set('n', '<leader>cc', '<leader>c_', { remap = true })
-      vim.keymap.set('v', '<leader>c', require('osc52').copy_visual)
+      vim.keymap.set("n", "<leader>c", require("osc52").copy_operator, { expr = true })
+      vim.keymap.set("n", "<leader>cc", "<leader>c_", { remap = true })
+      vim.keymap.set("v", "<leader>c", require("osc52").copy_visual)
       local function copy()
-        if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
-          require('osc52').copy_register('+')
+        if vim.v.event.operator == "y" and vim.v.event.regname == "+" then
+          require("osc52").copy_register("+")
         end
       end
 
-      -- vim.api.nvim_create_autocmd('TextYankPost', {callback = copy})
+      -- vim.api.nvim_create_autocmd("TextYankPost", {callback = copy})
     end
   },
   {
@@ -43,7 +43,7 @@ return {
     "Chaitanyabsprip/present.nvim",
     ft = "markdown",
     build = function()
-      require('present').setup {}
+      require("present").setup {}
     end
   },
   {
@@ -54,7 +54,7 @@ return {
       vim.g.mkdp_open_to_the_world = 1
       vim.g.mkdp_port = 24603
       vim.g.mkdp_echo_preview_url = 1
-      vim.g.mkdp_open_ip = '127.0.0.1'
+      vim.g.mkdp_open_ip = "127.0.0.1"
       vim.g.mkdp_auto_start = 1
     end
   }
