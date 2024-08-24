@@ -9,7 +9,7 @@ return {
     "mfussenegger/nvim-dap",
     lazy = true,
     config = function()
-      local dap = require('dap')
+      local dap = require("dap")
       require("dapui").setup(
         {
           layouts = {
@@ -71,13 +71,13 @@ return {
       vim.keymap.set("n", "<leader>dh", function()
         require("dapui").float_element("scopes")
       end)
-      -- Setting breakpoints via :lua require'dap'.toggle_breakpoint().
-      -- Launching debug sessions and resuming execution via :lua require'dap'.continue().
-      -- Stepping through code via :lua require'dap'.step_over() and :lua require'dap'.step_into().
-      -- Inspecting the state via the built-in REPL: :lua require'dap'.repl.open() or using the widget UI (:help dap-widgets)
-      -- nnoremap <silent> <leader>dn :lua require('dap-python').test_method()<CR>
-      -- nnoremap <silent> <leader>df :lua require('dap-python').test_class()<CR>
-      -- vnoremap <silent> <leader>ds <ESC>:lua require('dap-python').debug_selection()<CR>
+      -- Setting breakpoints via :lua require"dap".toggle_breakpoint().
+      -- Launching debug sessions and resuming execution via :lua require"dap".continue().
+      -- Stepping through code via :lua require"dap".step_over() and :lua require"dap".step_into().
+      -- Inspecting the state via the built-in REPL: :lua require"dap".repl.open() or using the widget UI (:help dap-widgets)
+      -- nnoremap <silent> <leader>dn :lua require("dap-python").test_method()<CR>
+      -- nnoremap <silent> <leader>df :lua require("dap-python").test_class()<CR>
+      -- vnoremap <silent> <leader>ds <ESC>:lua require("dap-python").debug_selection()<CR>
     end
   },
 
@@ -85,20 +85,20 @@ return {
     "mfussenegger/nvim-dap-python",
     ft = "python",
     config = function()
-      -- require('dap-python').setup()
-      require('dap-python').setup("python3", {
+      -- require("dap-python").setup()
+      require("dap-python").setup("python3", {
         include_configs = true,
-        console = 'integratedTerminal',
+        console = "integratedTerminal",
       })
-      local dap = require('dap')
+      local dap = require("dap")
       local opts = { silent = true }
-      vim.keymap.set('n', '<leader>df', "<cmd>lua require('dap-python').test_class()<cr>", opts)
-      vim.keymap.set('n', '<leader>dm', "<cmd>lua require('dap-python').test_method()<cr>", opts)
+      vim.keymap.set("n", "<leader>df", "<cmd>lua require('dap-python').test_class()<cr>", opts)
+      vim.keymap.set("n", "<leader>dm", "<cmd>lua require('dap-python').test_method()<cr>", opts)
       vim.keymap.set("n", "<leader>b", function()
         dap.toggle_breakpoint()
       end)
 
-      require('dap-python').test_runner = 'pytest'
+      require("dap-python").test_runner = "pytest"
     end
   }
 }
