@@ -14,7 +14,7 @@ return {
     "neanias/everforest-nvim",
     lazy = true,
     priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
+    -- Optional; default configuration will be used if setup isn"t called.
     config = function()
       require("everforest").setup({
         background = "hard",
@@ -45,7 +45,7 @@ return {
   }, -- rose pine color scheme
 
   {
-    'bluz71/vim-nightfly-colors',
+    "bluz71/vim-nightfly-colors",
     lazy = true,
     config = function()
       vim.opt.termguicolors = true
@@ -57,7 +57,7 @@ return {
   },
 
   {
-    'catppuccin/nvim',
+    "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
     priority = 1000,
@@ -68,8 +68,8 @@ return {
           light = "latte",
           dark = "mocha",
         },
-        transparent_background = false, -- disables setting the background color.
-        no_italic = true,               -- Force no italic
+        transparent_background = true, -- disables setting the background color.
+        no_italic = true,              -- Force no italic
         integrations = {
           cmp = true,
           gitsigns = true,
@@ -92,7 +92,7 @@ return {
     name = "tokyonight",
     lazy = true,
     priority = 1000, -- make sure to load this before all the other start plugins
-    -- Optional; default configuration will be used if setup isn't called.
+    -- Optional; default configuration will be used if setup isn"t called.
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -115,12 +115,12 @@ return {
   },
 
   {
-    'maxmx03/solarized.nvim',
+    "maxmx03/solarized.nvim",
     lazy = true,
     priority = 1000,
     config = function()
-      vim.o.background = 'dark' -- or 'light'
-      require('solarized').setup({
+      vim.o.background = "dark" -- or "light"
+      require("solarized").setup({
         transparent = false,    -- enable transparent background
         styles = {
           comments = { italic = false, bold = false },

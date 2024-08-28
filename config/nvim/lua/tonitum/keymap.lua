@@ -72,7 +72,7 @@ vim.keymap.set("x", "<leader>so", "<cmd>'<,'>sort<CR>")
 
 -- delete all trailing whitespaces
 -- :%s/\s\+$//e
-vim.keymap.set("n", "<leader>WS", ':%s/\\s\\+$//e<CR>')
+vim.keymap.set("n", "<leader>WS", ":%s/\\s\\+$//e<CR>")
 
 vim.keymap.set("n", "<A-d>", "D")
 
