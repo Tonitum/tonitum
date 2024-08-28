@@ -17,24 +17,24 @@ return {
     { "<leader>gr", nil }
   },
   config = function()
-    local actions = require('telescope.actions')
-    local builtin = require('telescope.builtin')
+    local actions = require("telescope.actions")
+    local builtin = require("telescope.builtin")
 
-    -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>ff',
-      function() builtin.find_files({ find_command = { 'rg', '--files', '--hidden', '-g', '!.git' } }) end, {})
-    vim.keymap.set('n', '<leader>fq', builtin.quickfix, {})
-    vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
-    vim.keymap.set('n', '<leader>fr', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-    vim.keymap.set('n', '<leader>fs', function()
+    -- vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+    vim.keymap.set("n", "<leader>ff",
+      function() builtin.find_files({ find_command = { "rg", "--files", "--hidden", "-g", "!.git" } }) end, {})
+    vim.keymap.set("n", "<leader>fq", builtin.quickfix, {})
+    vim.keymap.set("n", "<leader>fg", builtin.git_files, {})
+    vim.keymap.set("n", "<leader>fr", builtin.live_grep, {})
+    vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+    vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
+    vim.keymap.set("n", "<leader>fs", function()
       builtin.grep_string({ search = vim.fn.input("Grep > ") });
     end)
 
-    vim.keymap.set('n', '<leader>gr', builtin.lsp_references)
+    vim.keymap.set("n", "<leader>gr", builtin.lsp_references)
 
-    require('telescope').setup({
+    require("telescope").setup({
       defaults = {
         file_sorter = require("telescope.sorters").get_fzy_sorter,
         prompt_prefix = " > ",
