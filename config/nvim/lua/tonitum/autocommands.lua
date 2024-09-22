@@ -48,6 +48,10 @@ vim.cmd [[
   autocmd FileType proto setlocal shiftwidth=2 tabstop=2 softtabstop=2 commentstring=//\ %s
 ]]
 
+vim.cmd [[
+  autocmd BufNewFile,BufRead *.avsc setfiletype json
+]]
+
 -- what does this do again?
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = tonitum_group,
