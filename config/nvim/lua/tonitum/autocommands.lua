@@ -49,7 +49,11 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
-  autocmd BufNewFile,BufRead *.avsc setfiletype json
+  autocmd BufRead,BufNewFile *.avsc setlocal filetype=json shiftwidth=2 tabstop=2 softtabstop=2
+]]
+
+vim.cmd [[
+  autocmd FileType yml setfiletype yaml set ft=yaml
 ]]
 
 -- what does this do again?

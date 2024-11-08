@@ -45,7 +45,6 @@ return {
         cond = symbols.has,
       })
       require("lualine").setup(
-        opts
       )
     end,
   }
