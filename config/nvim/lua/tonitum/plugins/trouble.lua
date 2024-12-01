@@ -10,12 +10,12 @@ return {
   keys = {
     {
       "<leader>xx",
-      "<cmd>Trouble diagnostics toggle<cr>",
+      "<cmd>Trouble diagnostics focus<cr>",
       desc = "Diagnostics (Trouble)",
     },
     {
       "<leader>xd",
-      "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+      "<cmd>Trouble diagnostics focus filter.buf=0<cr>",
       desc = "Buffer Diagnostics (Trouble)",
     },
     {
@@ -30,12 +30,12 @@ return {
     },
     {
       "<leader>xL",
-      "<cmd>Trouble loclist toggle<cr>",
+      "<cmd>Trouble loclist focus<cr>",
       desc = "Location List (Trouble)",
     },
     {
       "<leader>q",
-      "<cmd>Trouble qflist toggle<cr>",
+      "<cmd>Trouble qflist focus<cr>",
       desc = "Quickfix List (Trouble)",
     },
   },
