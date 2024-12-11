@@ -53,6 +53,10 @@ vim.cmd [[
 ]]
 
 vim.cmd [[
+  autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+]]
+
+vim.cmd [[
   autocmd FileType yml setfiletype yaml set ft=yaml
 ]]
 
