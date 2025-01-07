@@ -1,6 +1,6 @@
 -- highlight on yank
 local augroup = vim.api.nvim_create_augroup
-local tonitum_group = augroup("Tonitum",  {})
+local tonitum_group = augroup("Tonitum", {})
 local autocmd = vim.api.nvim_create_autocmd
 
 
@@ -48,12 +48,24 @@ vim.cmd [[
   autocmd FileType proto setlocal shiftwidth=2 tabstop=2 softtabstop=2 commentstring=//\ %s
 ]]
 
+vim.cmd [[
+  autocmd BufRead,BufNewFile *.avsc setlocal filetype=json shiftwidth=2 tabstop=2 softtabstop=2
+]]
+
+vim.cmd [[
+  autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
+]]
+
+vim.cmd [[
+  autocmd FileType yml setfiletype yaml set ft=yaml
+]]
+
 -- what does this do again?
-vim.api.nvim_create_autocmd('BufReadPost', {
+vim.api.nvim_create_autocmd("BufReadPost", {
   group = tonitum_group,
   callback = function(args)
-    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line('$')
-    local not_commit = vim.b[args.buf].filetype ~= 'commit'
+    local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
+    local not_commit = vim.b[args.buf].filetype ~= "commit"
 
     if valid_line and not_commit then
       vim.cmd([[normal! g`"]])
@@ -61,16 +73,16 @@ vim.api.nvim_create_autocmd('BufReadPost', {
   end,
 })
 
-local yank_group = augroup('HighlightYank', {})
-autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+local yank_group = augroup("HighlightYank", {})
+autocmd("TextYankPost", {
+  group = yank_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = "IncSearch",
+      timeout = 40,
+    })
+  end,
 })
 
 -- TODO: move this to a keymap
@@ -83,4 +95,3 @@ autocmd('TextYankPost', {
 --   autocmd BufWritePre *.h :%s/\s\+$//e
 --   autocmd BufWritePre *.proto :%s/\s\+$//e
 -- ]]
-
