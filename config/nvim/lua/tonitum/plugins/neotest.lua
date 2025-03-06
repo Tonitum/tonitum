@@ -37,6 +37,12 @@ return {
             -- Can be a function to return dynamic value.
             runner = "pytest",
           }),
+          require("neotest-jest")({
+            jestConfigFile = "jest.config.ts",
+            cwd = function(path)
+              return vim.fn.getcwd()
+            end,
+          }),
           -- require("neotest-vim-test"){
           --     -- ignore_file_types = { "python", "vim", "lua" },
           --     allow_file_types = {"java" } ,
@@ -52,7 +58,8 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-neotest/neotest-python"
+      "nvim-neotest/neotest-python",
+      "nvim-neotest/neotest-jest"
     }
   },
   {
