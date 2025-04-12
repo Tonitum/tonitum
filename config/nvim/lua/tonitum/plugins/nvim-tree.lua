@@ -9,6 +9,15 @@ return {
     },
     config = function()
       require("nvim-tree").setup({
+        git = {
+          timeout = 1000
+        },
+        filesystem_watchers = {
+          ignore_dirs = {
+            ".venv",
+            "__pycache__",
+          },
+        },
       })
       -- disable netrw at the very start of your init.lua
       vim.keymap.set("n", "<leader>e", "<cmd>NvimTreeFocus<CR>")
