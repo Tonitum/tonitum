@@ -10,8 +10,8 @@ return {
       api_key_name = "OPENAI_API_KEY",
       disable_tools = true,
       endpoint = os.getenv("OPENAI_API_URL"),
-      -- model = "llama-3.3-70b-instruct", -- your desired model (or use gpt-4o, etc.)
-      model = "llama-4-scout", -- your desired model (or use gpt-4o, etc.)
+      model = "llama-3.3-70b-instruct", -- your desired model (or use gpt-4o, etc.)
+      -- model = "llama-4-scout", -- your desired model (or use gpt-4o, etc.)
       temperature = 0,
       timeout = 30000,                  -- Timeout in milliseconds, increase this for reasoning models
     },
