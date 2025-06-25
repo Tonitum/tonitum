@@ -5,6 +5,7 @@ return {
     "rcasia/neotest-java",
     ft = "java"
   },
+  { "nvim-neotest/neotest-jest" },
   { "alepez/vim-gtest" },
   {
     "nvim-neotest/neotest",
