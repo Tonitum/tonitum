@@ -145,15 +145,12 @@ eval "$(fzf --bash)"
 
 [ -f ~/.bash_local ] && source ~/.bash_local
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH=$PATH:~/.cargo/bin
-. "$HOME/.cargo/env"
+# . "$HOME/.cargo/env"
 
-# AsyncAPI CLI Autocomplete
+# opencode
+export PATH=~/.opencode/bin:$PATH
 
-ASYNCAPI_AC_BASH_SETUP_PATH=/Users/camerondavies/Library/Caches/@asyncapi/cli/autocomplete/bash_setup && test -f $ASYNCAPI_AC_BASH_SETUP_PATH && source $ASYNCAPI_AC_BASH_SETUP_PATH; # asyncapi autocomplete setup
-
-ASYNCAPI_AC_BASH_SETUP_PATH=/Users/camerondavies/Library/Caches/@asyncapi/cli/autocomplete/bash_setup && test -f $ASYNCAPI_AC_BASH_SETUP_PATH && source $ASYNCAPI_AC_BASH_SETUP_PATH; # asyncapi autocomplete setup
+# source things for local installations
+[ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
