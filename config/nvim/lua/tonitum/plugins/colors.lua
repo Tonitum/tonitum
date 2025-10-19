@@ -130,4 +130,13 @@ return {
       })
     end
   },
+
+  {
+    'l-snq/tr100.vim',
+    lazy = true,
+    priority = 1000,
+    config = function()
+      vim.cmd('colorscheme tr100')
+    end,
+  }
 }
