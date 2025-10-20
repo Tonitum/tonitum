@@ -197,4 +197,4 @@ alias docker-top="watch -n .5 'docker ps --format \"table {{.Names}}\t{{.Status}
 alias nexus-install='sudo -E nexus pip3 install '
 alias pipi='pip --proxy https://proxy-lmi.global.lmco.com:80 --trusted-host pypi.python.org --trusted-host pypi.org --trusted-host files.pythonhosted.org install '
 
-bind -x '"\C-f":"tmux-sessionizer"'
+bind -x '"\C-f": _bash_stty_save=$(stty -g); stty sane; tmux-sessionizer; stty "$_bash_stty_save"'
