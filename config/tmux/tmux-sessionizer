@@ -3,12 +3,44 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/projects/ ~/personal/ ~/work/ -mindepth 1 -maxdepth 1 -type d | fzf)
+    res=$(find ~/projects/ ~/personal/ ~/work/ -mindepth 1 -maxdepth 1 -type d)
+    res=("$res" new)
+    selected=$(printf "%s\n" "${res[@]}" | fzf)
 fi
 
 if [[ -z $selected ]]; then
     exit 0
 fi
+
+# git@github.com:Tonitum/portfolio.git
+if [[ $selected == "new" ]]; then
+  read -p "Enter project url: " repo
+  if [[ -z $repo ]]; then
+      exit 0
+  fi
+
+  # TODO: select from list
+  # TODO: default to work
+  read -p "Project type? (work/personal/project): " type
+  if [[ -z $type ]]; then
+      exit 0
+  fi
+
+  cd ~/$type
+
+  # TODO: git clone optimizations
+  git clone $repo
+  if [[ $? -ne 0 ]]; then
+    exit 1;
+  fi
+
+  # TODO: Handle ssh or https urls
+  folder_name=$(echo $repo | sed "s/.*\/\(.*\)\.git/\1/")
+  echo $folder_name
+
+  selected=$folder_name
+fi
+
 
 selected_name=$(basename "$selected" | tr . _)
 tmux_running=$(pgrep tmux)
