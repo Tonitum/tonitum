@@ -24,4 +24,5 @@ require("lazy").setup(
     change_detection = {
       notify = false, -- get a notification when new updates are found
     },
+    rocks = {enabled = false}
   })
