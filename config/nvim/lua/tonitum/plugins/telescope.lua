@@ -61,10 +61,9 @@ return {
       },
 
       file_ignore_patterns = {
-        "_build/",
-        "_release/",
-        "_deploy/",
-        "temp/",
+        "node_modules/",
+        ".git/",
+        ".venv/"
       },
       pickers = {
         lsp_references = {
@@ -75,7 +74,9 @@ return {
           hidden = true
         },
         live_grep = {
-          -- theme = "ivy",
+          additional_args = function(_)
+            return { "--hidden" }
+          end,
           hidden = true
         },
         -- quickfix = {
