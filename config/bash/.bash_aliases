@@ -96,6 +96,8 @@ get_image_name() {
 ########################################
 # General Purpose
 ########################################
+alias l='ls -CF'
+alias la='ls -A'
 alias ll='ls -al --color=auto'
 alias ls="ls -F --color=auto"
 alias fclear="clear && printf '\e[3J'"
@@ -103,6 +105,10 @@ alias up='cd `git rev-parse --show-toplevel`'
 alias psg='ps -ef | grep'
 alias mkdir='mkdir -p' # -> Prevent accidentally clobbering files
 alias up='cd `git rev-parse --show-toplevel`'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 ########################################
 # Bash Config Aliases
