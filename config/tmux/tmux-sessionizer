@@ -1,6 +1,6 @@
 #!/usr/bin/env bash 
 
-exit_and_print() {
+printAndExit() {
   msg=$1
   read -rp "$msg"
   exit 0
@@ -21,17 +21,17 @@ fi
 if [[ $selected == "new" ]]; then
   echo "Setting up new project"
   if ! read -rp "Enter project url: " repo < /dev/tty; then
-    exit_and_print "No project URL entered, exiting"
+    printAndExit "No project URL entered, exiting"
   fi
 
   if [[ -z $repo ]]; then
-    exit_and_print "No project URL entered, exiting"
+    printAndExit "No project URL entered, exiting"
   fi
 
   options=("work" "personal" "project")
-  project_type=$(printf "%s\n" "${options[@]}" | fzf --prompt "Project Type? > ")
+  project_type=$(printf "%s\n" "${options[@]}" | fzf --prompt "Project type? > ")
   if [[ -z $project_type ]]; then
-    exit_and_print "Project Type not specified, exiting"
+    printAndExit "Project type not specified, exiting"
   fi
 
   if [[ ! -d "$HOME/$project_type" ]]; then
@@ -41,7 +41,7 @@ if [[ $selected == "new" ]]; then
   cd ~/"$project_type" || exit
 
   if ! git clone --depth 1 --single-branch "$repo"; then
-    exit_and_print "Git clone failed, exiting"
+    printAndExit "Git clone failed, exiting."
   fi
 
   folder_name=$(echo "$repo" | sed "s/.*\/\(.*\)\.git/\1/")
@@ -56,7 +56,6 @@ tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
     tmux new-session -ds "$selected_name" -c "$selected"
-    tmux setenv -t "$selected_name" PYTHONPATH "$selected"
     tmux a -t "$selected_name"
     exit 0
 fi
@@ -65,5 +64,4 @@ if ! tmux has-session -t="$selected_name" 2> /dev/null; then
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux setenv -t "$selected_name" PYTHONPATH "$selected"
 tmux switch-client -Et "$selected_name"
