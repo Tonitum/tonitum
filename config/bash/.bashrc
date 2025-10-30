@@ -88,14 +88,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 # alias tmux="TERM=screen-256color-bce tmux"
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -116,22 +108,23 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-BLACK='\001\e[0;30m\002'
-BLUE='\001\e[0;34m\002'
+
+# BLACK='\001\e[0;30m\002'
+# BLUE='\001\e[0;34m\002'
+# RED='\001\e[0;31m\002'
+# PURPLE='\001\e[0;35m\002'
+# BROWN='\001\e[0;33m\002'
+# LIGHTGRAY='\001\e[0;37m\002'
+# DARKGRAY='\001\e[1;30m\002'
+# LIGHTBLUE='\001\e[1;34m\002'
+# LIGHTGREEN='\001\e[1;32m\002'
+# LIGHTCYAN='\001\e[1;36m\002'
+# LIGHTRED='\001\e[1;31m\002'
+# LIGHTPURPLE='\001\e[0;35m\002'
+# WHITE='\001\e[1;37m\002'
 GREEN='\001\e[0;32m\002'
 CYAN='\001\e[0;36m\002'
-RED='\001\e[0;31m\002'
-PURPLE='\001\e[0;35m\002'
-BROWN='\001\e[0;33m\002'
-LIGHTGRAY='\001\e[0;37m\002'
-DARKGRAY='\001\e[1;30m\002'
-LIGHTBLUE='\001\e[1;34m\002'
-LIGHTGREEN='\001\e[1;32m\002'
-LIGHTCYAN='\001\e[1;36m\002'
-LIGHTRED='\001\e[1;31m\002'
-LIGHTPURPLE='\001\e[0;35m\002'
 YELLOW='\001\e[1;33m\002'
-WHITE='\001\e[1;37m\002'
 RESET='\001\e[0m\002'
 export PATH=$PATH:~/nvim-linux64/bin/
 export PATH=$PATH:~/.local/bin
@@ -143,7 +136,7 @@ PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_bran
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(fzf --bash)"
 
-[ -f ~/.bash_local ] && source ~/.bash_local
+[ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export PATH=$PATH:~/.cargo/bin
