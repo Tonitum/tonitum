@@ -1,5 +1,5 @@
 _______________________________________________________________________________
-# v0.0.3
+# v0.0.2
 Cleaned up logic in many places, trying to make this config not crash if
 certain elements (plugins and such) are not present.
 
