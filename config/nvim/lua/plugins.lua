@@ -38,6 +38,11 @@ packer.startup(function()
   use( 'vim-airline/vim-airline' ) -- fancy status bar
   use( 'airblade/vim-gitgutter' )
   use( 'preservim/nerdtree' )
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+  'nvim-telescope/telescope.nvim', tag = '0.1.0',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- Highlight, edit, and navigate code using a fast incremental parsing library.
   -- Treesitter is used by nvim for various things,
@@ -136,3 +141,5 @@ cmp.setup {
     { name = 'buffer' },
   },
 }
+
+require("telescope-options")
