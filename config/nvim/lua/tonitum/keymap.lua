@@ -8,8 +8,6 @@ vim.keymap.set("n", "<leader>ss", "z=") -- open spelling corrections list
 -- move cursor to active window
 vim.keymap.set("n", "<leader>w", "<cmd>wincmd l<CR>")
 
-vim.keymap.set("n", "<leader>pv", "<cmd>Ex<CR>")
-
 -- easier line navigation
 -- visual mode
 vim.keymap.set("v", "J", "}")
@@ -63,9 +61,6 @@ vim.keymap.set("x", "<leader>i", "g<C-a>")
 -- sort lines from visual selection
 vim.keymap.set("x", "<leader>so", "<cmd>'<,'>sort<CR>")
 
--- find/replace all instances
-vim.keymap.set("n", "<leader><C-d>", ":%s//")
-
 -- paste last yanked
 vim.keymap.set("n", "<leader>p", '"0p')
 vim.keymap.set("n", "<leader>P", '"0P')
@@ -73,8 +68,17 @@ vim.keymap.set("n", "<leader>P", '"0P')
 vim.keymap.set("n", "<leader>fw",  "^<down>v$<left>y<up>A <esc>p<down>dd<up>^")
 vim.keymap.set("n", "y",  "\"*y")
 
--- find/replace all 
+-- find/replace all
 -- vim.keymap.set("n", "<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
+-- delete all trailing whitespaces
+-- :%s/\s\+$//e
+vim.keymap.set("n", "<leader>WS",  ':%s/\\s\\+$//e<CR>')
+
 
 -- add execute to file
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- diffing
+vim.keymap.set("n", "<leader><C-d>s", "<cmd>windo diffthis<CR>", { silent = true })
+vim.keymap.set("n", "<leader><C-d>e", "<cmd>windo diffoff<CR>", { silent = true })
