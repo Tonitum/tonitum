@@ -4,6 +4,8 @@ local use = require('packer').use
 require('packer').startup(function()
   use 'wbthomason/packer.nvim' -- Package manager itself.
   use 'tpope/vim-commentary' -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
+  use 'tpope/vim-surround' -- change text wrappers e.g. " ' ()
+  use 'tpope/vim-fugitive' -- git commands in vim 
   use 'nvim-treesitter/nvim-treesitter' -- Highlight, edit, and navigate code using a fast incremental parsing library. Treesitter is used by nvim for various things, but among others, for syntax coloring. Make sure that any themes you install support treesitter!
   use 'nvim-treesitter/nvim-treesitter-textobjects' -- Additional textobjects for treesitter.
   use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client.
@@ -18,7 +20,8 @@ end)
 require('cmp_nvim_lsp') -- need to add a check here to see if it's installed
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 

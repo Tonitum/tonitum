@@ -69,7 +69,8 @@ for k, v in pairs(options) do
 end
 
 -- visual
-vim.cmd("colorscheme NeoSolarized")
+-- vim.cmd("colorscheme NeoSolarized")
+vim.cmd("colorscheme solarized")
 -- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
 
 vim.opt.shortmess:append("c")
