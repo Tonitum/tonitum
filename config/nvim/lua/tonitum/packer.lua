@@ -91,17 +91,4 @@ return require("packer").startup(function(use)
       require("which-key").setup {}
     end
   })
-
-  }
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-  use("mfussenegger/nvim-dap-python")
-
-  use {
-    'renerocksai/telekasten.nvim',
-    requires = {
-      'nvim-telescope/telescope.nvim',
-      'nvim-lua/plenary.nvim'
-    },
-  }
 end)
