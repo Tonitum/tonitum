@@ -37,10 +37,10 @@ jobs:
     runs-on: ubuntu-latest
     container: 
       image: python:3.10
+
     steps:
-     - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: day-one-test
-        run: |
-          PYTHONPATH=$PYTHONPATH:$(pwd)
-          python3 python/day1/test/test_question_1.py
+        run: PYTHONPATH=$PYTHONPATH:$(pwd)
+        run: python3 python/day1/test/test_question_1.py
 
