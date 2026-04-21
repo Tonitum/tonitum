@@ -27,24 +27,26 @@ packer.startup(function()
     --  Snippets plugin
     use(home_dir .. '/manual-plugins/LuaSnip-master')
 end)
--- if nil == packer["cmp_nvim_lsp"] then
---     -- failed to load plugins, are they installed?
---     print("failed to load cmp_nvim_lsp")
---     return
--- end
+
 local cmp_module_name = "cmp_nvim_lsp"
 if not pcall(require, cmp_module_name) then
     print(cmp_module_name .. " is not found")
     return
 end
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- TODO: add logic to this to deterine which method to use, OR update work cmp
+-- work cmp
+-- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+-- home cmp
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'pylsp' }
+-- local servers = { 'pylsp' }
+local servers = {}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     -- on_attach = my_custom_on_attach,
@@ -52,13 +54,11 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.pylsp.setup {
+  capabilities = capabilities,
+}
 lspconfig.clangd.setup({
     capabilities = capabilities,
-    -- cmd = {
-    --   "clangd",
-    --   "-completion-style=detailed",
-    --   "--header-insertion=never",
-    --   "-g -std=c++20"}
 })
 
 -- luasnip setup
