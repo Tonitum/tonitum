@@ -1,65 +1,62 @@
 -- highlight on yank
 local augroup = vim.api.nvim_create_augroup
-local tonitum_group = augroup("Tonitum", {})
+local tonitum_group = augroup("Tonitum", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
-
--- TODO: move these to lua autocmds
 -- tab types for c++ files
-vim.cmd [[
-  autocmd FileType cpp setlocal shiftwidth=2 tabstop=2 commentstring=//\ %s
-]]
+autocmd("FileType", {
+  group = tonitum_group,
+  pattern = { "c", "cpp" },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.commentstring = "// %s"
+  end,
+})
 
-vim.cmd [[
-  autocmd FileType lua setlocal shiftwidth=2 tabstop=2
-]]
+autocmd("FileType", {
+  group = tonitum_group,
+  pattern = { "lua", "cmake", "bash", "yaml", "sh", "proto", "json" },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+  end,
+})
 
-vim.cmd [[
-  autocmd FileType cmake setlocal shiftwidth=2 tabstop=2
-]]
+autocmd("FileType", {
+  group = tonitum_group,
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+    vim.opt_local.softtabstop = 4
+  end,
+})
 
-vim.cmd [[
-  autocmd FileType python setlocal shiftwidth=4 tabstop=4
-]]
+autocmd("FileType", {
+  group = tonitum_group,
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+    vim.opt_local.spelllang = "en"
+    vim.opt_local.spell = true
+  end,
+})
 
--- markdown settings
-vim.cmd [[
-  autocmd FileType markdown setlocal spell spelllang=en shiftwidth=2 tabstop=2
-]]
+vim.filetype.add({
+  extension = {
+    avsc = "json",
+  },
+})
 
--- tab types for bash/sh files
-vim.cmd [[
-  autocmd FileType sh setlocal shiftwidth=2 tabstop=2 softtabstop=4
-]]
-
-vim.cmd [[
-  autocmd FileType bash setlocal shiftwidth=2 tabstop=2 softtabstop=4
-]]
-
-vim.cmd [[
-  autocmd FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=4 commentstring=#\ %s
-]]
-
-vim.cmd [[
-  autocmd FileType proto setlocal shiftwidth=2 tabstop=2 softtabstop=2 commentstring=//\ %s
-]]
-
-vim.cmd [[
-  autocmd BufRead,BufNewFile *.avsc setlocal filetype=json shiftwidth=2 tabstop=2 softtabstop=2
-]]
-
-vim.cmd [[
-  autocmd FileType json setlocal shiftwidth=2 tabstop=2 softtabstop=2
-]]
-
-vim.cmd [[
-  autocmd FileType yml setfiletype yaml set ft=yaml
-]]
-
--- This autocmd is trying to restore the cursor position to where you were last 
--- editing the file, but only if the file is not a commit message and the last 
+-- This autocmd is trying to restore the cursor position to where you were last
+-- editing the file, but only if the file is not a commit message and the last
 -- cursor position is within the valid range of the buffer.
-vim.api.nvim_create_autocmd("BufReadPost", {
+autocmd("BufReadPost", {
   group = tonitum_group,
   callback = function(args)
     local valid_line = vim.fn.line([['"]]) >= 1 and vim.fn.line([['"]]) < vim.fn.line("$")
@@ -71,7 +68,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
-local yank_group = augroup("HighlightYank", {})
+local yank_group = augroup("HighlightYank", { clear = true })
 autocmd("TextYankPost", {
   group = yank_group,
   pattern = "*",

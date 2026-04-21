@@ -69,23 +69,6 @@ return {
       vim.keymap.set("n", "<leader>gp", ":G pull<CR>")                 -- Git pull from origin
       vim.keymap.set("n", "<leader>gm", ":Gvdiffsplit!<CR>")           -- Git diff while rebasing
 
-      local function makeCommit()
-        local current_branch = vim.fn.system("git branch --show-current 2> /dev/null | tr -d '\n'")
-        if current_branch == "" then
-          print("Not in git branch")
-          return
-        end
-        local commit_message = vim.fn.input("Commit Message: ", "")
-        print(commit_message)
-        if commit_message == "" then
-          print("aborting commit")
-          return
-        end
-        local branch_ref = "refs " .. current_branch
-        local complete_message = branch_ref .. ": " .. commit_message
-        vim.cmd("G commit -m '" .. complete_message .. "'")
-      end
-      vim.keymap.set("n", "<leader>gc", makeCommit) -- add the current file
     end
   },                                                -- git commands in vim
 

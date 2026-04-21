@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "everforest"
+  color = color or "catppuccin-mocha"
   vim.opt.termguicolors = true
   vim.cmd("set background=dark")
 
@@ -83,7 +83,6 @@ return {
           -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
       })
-      vim.cmd.colorscheme "catppuccin"
     end
   },
 
@@ -135,8 +134,5 @@ return {
     'l-snq/tr100.vim',
     lazy = true,
     priority = 1000,
-    config = function()
-      vim.cmd('colorscheme tr100')
-    end,
   }
 }

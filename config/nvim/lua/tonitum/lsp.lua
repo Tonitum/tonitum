@@ -4,8 +4,8 @@ local function on_attach(_, bufnr)
   vim.keymap.set('n', 'D', function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set('n', '[d', function() vim.lsp.diagnostic.goto_next() end, opts)
-  vim.keymap.set('n', ']d', function() vim.lsp.diagnostic.goto_prev() end, opts)
+  vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
   vim.keymap.set('n', '<leader>da', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
   vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
@@ -44,9 +44,6 @@ vim.diagnostic.config({
     prefix = '',
   },
   virtual_text = true,
-  document_highlight = {
-    enabled = true,
-  },
 })
 
 require("fidget").setup()
