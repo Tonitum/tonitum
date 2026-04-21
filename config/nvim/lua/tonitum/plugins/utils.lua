@@ -39,13 +39,13 @@ return {
       vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
     end
   },
-  {
-    "Chaitanyabsprip/present.nvim",
-    ft = "markdown",
-    build = function()
-      require("present").setup {}
-    end
-  },
+  -- {
+  --   "Chaitanyabsprip/present.nvim",
+  --   ft = "markdown",
+  --   build = function()
+  --     require("present").setup {}
+  --   end
+  -- },
   {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",

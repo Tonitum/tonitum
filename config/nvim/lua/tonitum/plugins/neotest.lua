@@ -54,5 +54,9 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-python"
     }
+  },
+  {
+    "nvim-neotest/neotest-python",
+    commit = "2e83d2bc00acbcc1fd529dbf0a0e677cabfe6b50"
   }
 }
