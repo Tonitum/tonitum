@@ -8,6 +8,12 @@ vim.g.netrw_browse_split = 4    -- use previous window to open file
 vim.g.netrw_altv = 1            -- left/right window splitting
 vim.g.netrw_winsize = 25        -- absolute window size
 
+local map = require("map").map
+function nmap(shortcut, command)
+    -- normal mode remampings
+    map('n', shortcut, command)
+end
+
 -- auto show Vex on new windows/tabs
 -- vim.cmd [[ augroup ProjectDrawer
 --   autocmd!

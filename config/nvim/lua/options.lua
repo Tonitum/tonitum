@@ -69,22 +69,34 @@ local options = {
     pumheight = 10,
     scrolloff = 8,
     signcolumn = "yes",
-    title = true,
+    title = false,
     numberwidth = 4,
     wrap = false,
     showtabline = 1,
+    showmode = false,
 }
 
 for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
--- colorscheme, etc 
+-- colorscheme, etc
 vim.cmd("colorscheme NeoSolarized")
 -- vim.cmd("colorscheme solarized")
 -- vim.cmd("colorscheme gruvbox")
 -- vim.cmd("hi Normal guibg=NONE ctermbg=NONE") -- transparency
 
+vim.cmd('set t_8f=^[[38;2;%lu;%lu;%lum')
+vim.cmd('set t_8b=^[[48;2;%lu;%lu;%lum')
+
 vim.opt.shortmess:append("c") -- what do these do?
 vim.opt.isfname:append("@-@")
+
+-- Plugin Settings
+-- vim-airline
+-- let g:airline_theme='<theme>'
+vim.cmd('let g:airline#extensions#tabline#enabled = 1')
+
+-- gitgutter
+vim.g.gitgutter_override_sign_column_highlight = 0
 

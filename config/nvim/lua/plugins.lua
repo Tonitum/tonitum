@@ -34,11 +34,14 @@ packer.startup(function()
   use( 'wbthomason/packer.nvim' )-- Package manager itself.
   use( 'tpope/vim-commentary' ) -- Use "gc" to comment lines in visual mode. Similarly to cmd+/ in other editors.
   use( 'tpope/vim-surround' ) -- change text wrappers e.g. " ' ()
-  use( 'tpope/vim-fugitive' ) -- git commands in vim 
+  -- use( 'tpope/vim-fugitive' ) -- git commands in vim
+  use( 'vim-airline/vim-airline' ) -- fancy status bar
+  use( 'airblade/vim-gitgutter' )
+  use( 'preservim/nerdtree' )
 
-  -- Highlight, edit, and navigate code using a fast incremental parsing library. 
-  -- Treesitter is used by nvim for various things, 
-  -- but among others, for syntax coloring. 
+  -- Highlight, edit, and navigate code using a fast incremental parsing library.
+  -- Treesitter is used by nvim for various things,
+  -- but among others, for syntax coloring.
   -- Make sure that any themes you install support treesitter!
   use( 'nvim-treesitter/nvim-treesitter' )
   use( 'nvim-treesitter/nvim-treesitter-textobjects' ) -- Additional textobjects for treesitter.
@@ -52,8 +55,8 @@ end)
 
 local cmp_module_name = "cmp_nvim_lsp"
 if not pcall(require, cmp_module_name) then
-    print(cmp_module_name .. " is not found")
-    return
+  print(cmp_module_name .. " is not found")
+  return
 end
 
 -- Add additional capabilities supported by nvim-cmp
