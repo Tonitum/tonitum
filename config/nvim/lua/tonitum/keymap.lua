@@ -49,6 +49,7 @@ vim.keymap.set("v", "<leader>d", "\"_d")
 vim.keymap.set("n", "<leader>vs", "<cmd>so ~/.config/nvim/init.lua<CR>") -- re-source the config
 vim.keymap.set("n", "<leader>ve", "<cmd>tabedit ~/.config/nvim/lua/tonitum/init.lua<CR>") -- edit the config
 vim.keymap.set("n", "<leader>vk", "<cmd>tabedit ~/.config/nvim/lua/tonitum/keymap.lua<CR>") -- edit the keymaps
+vim.keymap.set("n", "<leader>vl", "<cmd>tabedit ~/.config/nvim/after/plugin/lsp.lua<CR>") -- edit the keymaps
 vim.keymap.set("n", "<leader>vo", "<cmd>tabedit ~/.config/nvim/lua/tonitum/packer.lua<CR>") -- edit the plugins
 vim.keymap.set("n", "<leader>vE", "<cmd>tabedit ~/.config/nvim/<CR>") -- open the vim config folder
 
@@ -82,3 +83,6 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- diffing
 vim.keymap.set("n", "<leader><C-d>s", "<cmd>windo diffthis<CR>", { silent = true })
 vim.keymap.set("n", "<leader><C-d>e", "<cmd>windo diffoff<CR>", { silent = true })
+
+-- protobuf linting
+vim.keymap.set("n", "<leader>lp", "<cmd>!buf lint<CR>", { silent = true })
