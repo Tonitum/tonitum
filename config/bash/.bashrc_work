@@ -44,20 +44,6 @@ export PATH=$PATH:/home/e416232/grpcurl
 export PATH=$PATH:/home/e416232/minikube
 export PATH=$PATH:/disk01/e416232/projects/scripts/utilities
 
-export HTTPS_PROXY=http://proxy-lmi.global.lmco.com:80
-export http_proxy=http://proxy-lmi.global.lmco.com:80
-export https_proxy=http://proxy-lmi.global.lmco.com:80
-export NO_PROXY=localhost,127.0.0.1,10.96.0.0/12,192.168.99.0/24,192.168.39.0/24,.lmco.com,.local
-export no_proxy=localhost,127.0.0.1,10.96.0.0/12,192.168.99.0/24,192.168.39.0/24,.lmco.com,.local
-
-export EFOSS_USER=e416232
-export EFOSS_TOKEN=aztVrzwPC0TyzZoGm85vsHbuCcVEf4
-# export NEXUS_USER=HCezdpL7
-# export NEXUS_TOKEN=5HOlcm9Y1EhmFJm2gqeqTwPFqKbUtR17mxpmRPxBxlMe
-export NEXUS_USER=7xROFjAa
-export NEXUS_TOKEN=qP1tme0fk0plepnO7lw5TC60TjABJ5ZstUXXzEXqtmUt
-export DOCKER_TOKEN=9m-LTWDy4DejeeznK7ve
-
 export TERM=xterm-color
 export CLICOLOR=1
 
