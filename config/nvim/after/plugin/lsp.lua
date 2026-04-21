@@ -58,6 +58,29 @@ lsp.on_attach(function(client, bufnr)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
+local path = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+local words = {}
+
+for word in io.open(path, "r"):lines() do
+	table.insert(words, word)
+end
+
+require('lspconfig').ltex.setup {
+   settings = {
+    ltex = {
+      configurationTarget = {
+          dictionary = path,
+      },
+      dictionary = { ["en-US"] = words },
+      java = {
+        path = "/usr/lib/jvm/java-17-openjdk-amd64/"
+      },
+    },
+   },
+}
+
+lsp.skip_server_setup({'jdtls'})
+
 
 lsp.nvim_workspace()
 lsp.setup()
