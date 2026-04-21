@@ -23,7 +23,7 @@ return require("packer").startup(function(use)
   -- Treesitter is used by nvim for various things,
   -- but among others, for syntax coloring.
   -- Make sure that any themes you install support treesitter!
-  use({"nvim-treesitter/nvim-treesitter", commit = "0948bf22745f1d80572e2b46ed547c7c8674cca9"}, {run = ":TSUpdate"})
+  use({"nvim-treesitter/nvim-treesitter"}, {run = ":TSUpdate"})
   use("nvim-treesitter/playground")
   -- use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter.
   use("nvim-treesitter/nvim-treesitter-context")
@@ -76,4 +76,10 @@ return require("packer").startup(function(use)
       "nvim-neotest/neotest-python"
     }
   }
+  use 'mfussenegger/nvim-dap'
+  use("mfussenegger/nvim-dap-python")
+
+  use("renerocksai/telekasten.nvim")
+
+
 end)
