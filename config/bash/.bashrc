@@ -137,3 +137,5 @@ export PATH=$PATH:~/nvim-linux64/bin/
 export PATH=$PATH:~/.local/bin
 
 PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_branch) λ "
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
