@@ -12,6 +12,9 @@ require("neotest").setup({
 
 local run = require("neotest").run
 
+-- todo: autocommand to load these on python/lua/not cpp
 vim.keymap.set("n", "<leader>tt", run.run)
--- vim.keymap.set("n", "<leader>ta", run.run(vim.fn.expand("%")))
+vim.keymap.set("n", "<leader>ta", function ()
+  run.run(vim.fn.expand("%"))
+end)
 
