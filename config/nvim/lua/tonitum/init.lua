@@ -1,5 +1,6 @@
 require("tonitum.options")
 require("tonitum.keymap")
+require("tonitum.autocommands")
 
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
