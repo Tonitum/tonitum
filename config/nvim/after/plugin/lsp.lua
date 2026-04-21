@@ -8,7 +8,7 @@ local lsp = require("lsp-zero")
 lsp.ensure_installed({
   'lua_ls',
   'rust_analyzer',
-  'pylsp',
+  'pyright',
   'clangd',
 })
 

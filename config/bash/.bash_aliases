@@ -30,6 +30,7 @@ alias gbl='git branch'
 alias gbn='git checkout -b '
 alias gp='git pull --rebase'
 alias gmaster='git checkout master'
+alias grd="git rev-parse --show-toplevel"
 
 # vim < neovim
 alias vim=nvim
