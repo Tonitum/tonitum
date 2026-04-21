@@ -5,4 +5,5 @@ require("tonitum.autocommands")
 require("tonitum.keymap")
 require("tonitum.options")
 require("tonitum.lazy_init")
+require("tonitum.lsp")
 vim.cmd.colorscheme "catppuccin-mocha"

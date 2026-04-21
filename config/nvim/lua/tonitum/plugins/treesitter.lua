@@ -33,6 +33,18 @@ return {
   "nvim-treesitter/nvim-treesitter-context",
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    init = function()
+      -- Disable entire built-in ftplugin mappings to avoid conflicts.
+      -- See https://github.com/neovim/neovim/tree/master/runtime/ftplugin for built-in ftplugins.
+      vim.g.no_plugin_maps = true
+
+      -- Or, disable per filetype (add as you like)
+      -- vim.g.no_python_maps = true
+      -- vim.g.no_ruby_maps = true
+      -- vim.g.no_rust_maps = true
+      -- vim.g.no_go_maps = true
+    end,
     config = function()
       local opts = {
         textobjects = {
@@ -43,8 +55,8 @@ return {
 
             keymaps = {
               -- You can use the capture groups defined in textobjects.scm
-              ["af"] = {query = "@function.outer", desc = "Select all of function"},
-              ["if"] = {query = "@function.inner", desc = "Select all of function"},
+              ["af"] = { query = "@function.outer", desc = "Select all of function" },
+              ["if"] = { query = "@function.inner", desc = "Select all of function" },
               ["ac"] = { query = "@class.outer", desc = "Select inner part of a class region" },
               -- You can optionally set descriptions to the mappings (used in the desc parameter of
               -- nvim_buf_set_keymap) which plugins like which-key display
@@ -77,8 +89,7 @@ return {
           }
         }
       }
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter-textobjects").setup(opts)
     end,
   }, -- Additional textobjects for treesitter.
-  "nvim-treesitter/playground",
 }
