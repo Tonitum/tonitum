@@ -23,6 +23,8 @@ require('telescope').setup({
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     prompt_prefix = " >",
     color_devicons = true,
+    theme = "ivy",
+    initial_mode = "normal",
 
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -63,6 +65,21 @@ require('telescope').setup({
       theme = "ivy"
     },
     git_files = {
+      theme = "ivy"
+    },
+    git_branches = {
+      theme = "ivy"
+    },
+    git_status = {
+      theme = "ivy"
+    },
+    git_commits = {
+      theme = "ivy"
+    },
+    git_bcommits = {
+      theme = "ivy"
+    },
+    git_stash = {
       theme = "ivy"
     }
   }
