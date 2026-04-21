@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "autoupdate": false,
+  "model": "ollama/gemma4:e4b",
+  "provider": {
+    "ollama": {
+      "models": {
+        "gemma4:e4b": {
+          "_launch": true,
+          "name": "gemma4:e4b"
+        },
+        "qwen2.5-coder:14b": {
+          "model": "qwen2.5-coder:14b"
+        }
+      },
+      "name": "Ollama",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      }
+    }
+  },
+  "share": "disabled"
+}
