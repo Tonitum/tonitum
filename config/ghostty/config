@@ -1,0 +1,7 @@
+theme = catppuccin-mocha.conf
+font-size = 11
+background-blur-radius = 50
+mouse-hide-while-typing = true
+window-decoration = auto
+macos-option-as-alt = true
+background-opacity = 0.8
