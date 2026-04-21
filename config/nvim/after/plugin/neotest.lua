@@ -32,3 +32,7 @@ vim.keymap.set("n", "<leader>td", function ()
   run.run({vim.fn.expand("%"), strategy = "dap"})
 end)
 
+-- Setting breakpoints via :lua require'dap'.toggle_breakpoint().
+-- Launching debug sessions and resuming execution via :lua require'dap'.continue().
+-- Stepping through code via :lua require'dap'.step_over() and :lua require'dap'.step_into().
+-- Inspecting the state via the built-in REPL: :lua require'dap'.repl.open() or using the widget UI (:help dap-widgets)
