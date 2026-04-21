@@ -15,7 +15,9 @@ local options = {
 
     smartindent = true,
 
-    wrap = false,
+    wrap = true,
+    linebreak = true,
+    breakindent = true,
 
     swapfile = false,
     backup = false,
@@ -39,7 +41,6 @@ local options = {
     colorcolumn = "80",
     background = "dark",
 
-
     showtabline = 1,
     mouse = "",
     clipboard = "unnamedplus",
@@ -50,6 +51,8 @@ local options = {
     scrolloff = 8,
     signcolumn = "yes",
     autoread = true,
+    splitright = true,
+
     -- folding
     foldmethod = "indent", -- set a default fold method
     foldenable = false,
