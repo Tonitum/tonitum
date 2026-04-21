@@ -25,7 +25,7 @@ return require("packer").startup(function(use)
   -- Make sure that any themes you install support treesitter!
   use({"nvim-treesitter/nvim-treesitter"}, {run = ":TSUpdate"})
   use("nvim-treesitter/playground")
-  -- use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter.
+  use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter.
   use("nvim-treesitter/nvim-treesitter-context")
 
   use{"sainnhe/everforest"} -- everforest color scheme
@@ -81,6 +81,4 @@ return require("packer").startup(function(use)
   use("mfussenegger/nvim-dap-python")
 
   use("renerocksai/telekasten.nvim")
-
-
 end)

@@ -39,7 +39,10 @@ local options = {
     colorcolumn = "80",
     background = "dark",
 
+
     showtabline = 1,
+    mouse = "",
+    clipboard = "unnamedplus",
     cmdheight = 1,-- Give more space for displaying messages.
     errorbells = false, -- no dings on error
     laststatus = 3, --
