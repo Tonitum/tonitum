@@ -22,7 +22,7 @@ vim.cmd [[
   autocmd FileType python setlocal shiftwidth=4 tabstop=4
 ]]
 
-- markdown settings
+-- markdown settings
 vim.cmd [[
   autocmd FileType markdown setlocal spell spelllang=en shiftwidth=2 tabstop=2
 ]]
