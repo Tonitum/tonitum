@@ -1,7 +1,6 @@
 return {
   "folke/trouble.nvim",
   -- trouble
-  tag = "v3.7.1",
   cmd = "Trouble",
   opts = {
     focus = true,
