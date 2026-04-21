@@ -1,3 +1,4 @@
+-- installing packer and plugin config
 local use = require('packer').use
 
 require('packer').startup(function()
@@ -12,7 +13,9 @@ require('packer').startup(function()
   use 'L3MON4D3/LuaSnip' -- Snippets plugin
 end)
 
-require('cmp_nvim_lsp')
+-- can probably move the below to idividual files
+
+require('cmp_nvim_lsp') -- need to add a check here to see if it's installed
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)

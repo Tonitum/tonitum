@@ -1,7 +1,0 @@
-lua require("plugins")
-
-set vim.opt.autoindent
-syntax enable
-set background=dark
-colorscheme solarized
-hi Normal guibg=NONE ctermbg=NONE
