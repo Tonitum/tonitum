@@ -48,7 +48,11 @@ vim.diagnostic.config({
 
 require("fidget").setup()
 require("mason").setup({})
-require("mason-lspconfig").setup()
+require("mason-lspconfig").setup({
+  automatic_enable = {
+    exclude = { "jdtls" },
+  },
+})
 
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
 cmp.setup({
@@ -147,13 +151,6 @@ vim.lsp.config['jqls'] = {
   capabilities = capabilities,
 }
 vim.lsp.enable('jqls')
-
-vim.lsp.config['jdtls'] = {
-  filetypes = { 'java' },
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('jdtls')
 
 vim.lsp.config['helm-ls'] = {
   settings = {
