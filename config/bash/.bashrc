@@ -140,6 +140,7 @@ export PATH=$PATH:$(pwd)
 PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_branch) λ "
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(fzf --bash)"
 
 [ -f ~/.bash_local ] && source ~/.bash_local
 
