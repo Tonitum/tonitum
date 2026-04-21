@@ -33,7 +33,7 @@ return require("packer").startup(function(use)
   use("renerocksai/telekasten.nvim")
   use("renerocksai/calendar-vim")
   use("towolf/vim-helm")
-  use("airblade/vim-gitgutter")
+  use("lewis6991/gitsigns.nvim")
 
   -- troupe
   use({
