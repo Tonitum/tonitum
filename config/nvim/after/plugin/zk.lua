@@ -8,6 +8,8 @@ require('telekasten').setup({
   template_new_daily = vim.fn.expand(notes_path .. "/templates/daily.md"),
   new_note_filename = 'title-uuid',
   filename_space_subst = "_",
+  auto_set_filetype = false,
+  journal_auto_open = true,
 })
 
 
@@ -53,6 +55,17 @@ vim.keymap.set("n", "<leader>zb", function()
   end)
 vim.keymap.set("n", "<leader>zI", function()
     tk.insert_img_link()
+  end)
+vim.keymap.set("n", "<leader>zj", function()
+    vim.cmd("vsplit")
+    local win = vim.api.nvim_get_current_win()
+    local buf = vim.api.nvim_create_buf(true, true)
+    vim.api.nvim_win_set_buf(win, buf)
+    tk.goto_today()
+    vim.keymap.set('n', 'q', "<c-w>c", { buffer = 0 })
+    vim.cmd("set wrap")
+    vim.cmd("set linebreak")
+    vim.cmd("set breakindent")
   end)
 
 -- Call insert link automatically when we start typing a link
