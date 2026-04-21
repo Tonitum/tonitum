@@ -361,7 +361,7 @@ return {
         -- The command that starts the language server
         -- See: https://github.com/eclipse/eclipse.jdt.ls#running-from-the-command-line
         local cmd = {
-          "/usr/lib/jvm/java-17-openjdk-amd64/bin/java",
+          "/usr/lib/jvm/java-21-openjdk-amd64/bin/java",
           "-Declipse.application=org.eclipse.jdt.ls.core.id1",
           "-Dosgi.bundles.defaultStartLevel=4",
           "-Declipse.product=org.eclipse.jdt.ls.core.product",

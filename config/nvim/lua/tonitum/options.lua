@@ -56,6 +56,7 @@ local options = {
   signcolumn = "yes",
   autoread = true,
   splitright = true,
+  splitkeep = "screen",
 
   -- folding
   foldmethod = "indent", -- set a default fold method

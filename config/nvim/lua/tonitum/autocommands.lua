@@ -60,7 +60,9 @@ vim.cmd [[
   autocmd FileType yml setfiletype yaml set ft=yaml
 ]]
 
--- what does this do again?
+-- This autocmd is trying to restore the cursor position to where you were last 
+-- editing the file, but only if the file is not a commit message and the last 
+-- cursor position is within the valid range of the buffer.
 vim.api.nvim_create_autocmd("BufReadPost", {
   group = tonitum_group,
   callback = function(args)
@@ -84,14 +86,3 @@ autocmd("TextYankPost", {
     })
   end,
 })
-
--- TODO: move this to a keymap
--- vim.cmd [[
---   autocmd BufWritePre *.lua :%s/\s\+$//e
---   autocmd BufWritePre *.yaml :%s/\s\+$//e
---   autocmd BufWritePre *.yml :%s/\s\+$//e
---   autocmd BufWritePre *.py :%s/\s\+$//e
---   autocmd BufWritePre *.cc :%s/\s\+$//e
---   autocmd BufWritePre *.h :%s/\s\+$//e
---   autocmd BufWritePre *.proto :%s/\s\+$//e
--- ]]
