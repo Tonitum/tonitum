@@ -3,14 +3,14 @@ local lsp = require("lsp-zero")
 lsp.preset("recommended")
 
 lsp.ensure_installed({
-  'sumneko_lua',
+  'lua_ls',
   'rust_analyzer',
   'pylsp',
   'clangd',
 })
 
 -- Fix Undefined global 'vim'
-lsp.configure('sumneko_lua', {
+lsp.configure('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
@@ -64,7 +64,6 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
 vim.diagnostic.config({
     virtual_text = true
 })

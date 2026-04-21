@@ -30,9 +30,6 @@ local options = {
 
     termguicolors = true,
 
-    scrolloff = 8,
-    signcolumn = "yes",
-
     -- Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
     -- delays and poor user experience.
     updatetime = 50,
