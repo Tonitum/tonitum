@@ -31,5 +31,8 @@ alias gbn='git checkout -b '
 alias gp='git pull --rebase'
 alias gmaster='git checkout master'
 
+# vim < neovim
+alias vim=nvim
+
 # Kubernetes
 alias k=kubectl
