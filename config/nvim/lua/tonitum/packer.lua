@@ -14,11 +14,6 @@ return require("packer").startup(function(use)
   use("alepez/vim-gtest")
   use("ojroques/nvim-osc52")
 
-  use({
-    "nvim-telescope/telescope.nvim", tag = "0.1.0",
-    requires = { {"nvim-lua/plenary.nvim"} }
-  })
-
   -- Highlight, edit, and navigate code using a fast incremental parsing library.
   -- Treesitter is used by nvim for various things,
   -- but among others, for syntax coloring.
@@ -27,9 +22,16 @@ return require("packer").startup(function(use)
   use("nvim-treesitter/playground")
   use("nvim-treesitter/nvim-treesitter-textobjects") -- Additional textobjects for treesitter.
   use("nvim-treesitter/nvim-treesitter-context")
+  use("nvim-tree/nvim-web-devicons")
 
   use{"sainnhe/everforest"} -- everforest color scheme
+  use("mfussenegger/nvim-dap")
+  use("rcarriga/nvim-dap-ui")
+  use("mfussenegger/nvim-dap-python")
+  use("folke/zen-mode.nvim")
+  use("renerocksai/telekasten.nvim")
 
+  -- troupe
   use({
     "folke/trouble.nvim",
     config = function()
@@ -38,13 +40,16 @@ return require("packer").startup(function(use)
         }
     end
   })
-
-  use("nvim-tree/nvim-web-devicons")
-
+  -- harpoon
   use{"theprimeagen/harpoon",
     commit="6138ff7096bc50f0b6b40b607196232e1b90d6b6"
   }
-
+  -- telescope
+  use({
+    "nvim-telescope/telescope.nvim", tag = "0.1.0",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  })
+  -- lsp-zero
   use{
     "VonHeikemen/lsp-zero.nvim",
     requires = {
@@ -67,7 +72,8 @@ return require("packer").startup(function(use)
       {"rafamadriz/friendly-snippets"},
     }
   }
-  use {
+  -- neotest
+  use({
     "nvim-neotest/neotest",
     requires = {
       "nvim-lua/plenary.nvim",
@@ -75,22 +81,15 @@ return require("packer").startup(function(use)
       "antoinemadec/FixCursorHold.nvim",
       "nvim-neotest/neotest-python"
     }
-  }
-  use 'mfussenegger/nvim-dap'
-  use 'rcarriga/nvim-dap-ui'
-  use("mfussenegger/nvim-dap-python")
+  })
+  -- whichkey
+  use({
+    "folke/which-key.nvim",
+    config = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+      require("which-key").setup {}
+    end
+  })
 
-  use("renerocksai/telekasten.nvim")
-  use {
-  "folke/which-key.nvim",
-  config = function()
-    vim.o.timeout = true
-    vim.o.timeoutlen = 300
-    require("which-key").setup {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    }
-  end
-}
 end)
