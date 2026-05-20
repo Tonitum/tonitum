@@ -127,9 +127,19 @@ CYAN='\001\e[0;36m\002'
 YELLOW='\001\e[1;33m\002'
 RESET='\001\e[0m\002'
 export PATH=$PATH:~/nvim-linux64/bin/
+export PATH=$PATH:~/nvim-macos-arm64/bin/
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:/opt/homebrew/bin
+# go
+export PATH=$PATH:$HOME/go/bin
+# rust
+export PATH=$PATH:~/.cargo/bin
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
+# opencode
+export PATH=~/.opencode/bin:$PATH
 export PATH=$PATH:$(pwd)
+
+export EDITOR=nvim
 
 PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_branch) λ "
 
@@ -139,11 +149,6 @@ eval "$(fzf --bash)"
 [ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
 
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH=$PATH:~/.cargo/bin
-# . "$HOME/.cargo/env"
-
-# opencode
-export PATH=~/.opencode/bin:$PATH
 
 # source things for local installations
 [ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
