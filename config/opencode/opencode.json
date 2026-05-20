@@ -1,16 +1,25 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
-  "model": "ollama/gemma4:e4b",
   "provider": {
     "ollama": {
       "models": {
         "gemma4:e4b": {
           "_launch": true,
-          "name": "gemma4:e4b"
+          "name": "gemma4:e4b",
+          "tools": true
+        },
+        "qwen3-coder:30b": {
+          "name": "qwen3-coder:30b",
+          "tools": true
         },
         "qwen2.5-coder:14b": {
-          "model": "qwen2.5-coder:14b"
+          "tools": true,
+          "name": "qwen2.5-coder:14b"
+        },
+        "qwen2.5-coder:14b-instruct": {
+          "tools": true,
+          "name": "qwen2.5-coder:14b-instruct"
         }
       },
       "name": "Ollama",
