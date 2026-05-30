@@ -169,3 +169,9 @@ vim.lsp.config['helm-ls'] = {
   capabilities = capabilities,
 }
 vim.lsp.enable('helm-ls')
+
+vim.lsp.config['gopls'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('gopls')
