@@ -1,11 +1,15 @@
 # Theme & Appearance
 theme = Catppuccin Mocha
 font-size = 12
+font-thicken = true
+term = xterm-256color
+
+# Font
 # font-family = "BlexMono Nerd Font Mono"
 font-family = "Jetbrains Mono"
 font-feature = +liga
 background-blur-radius = 50
-background-opacity = 1
+background-opacity = 0.9
 window-decoration = auto
 
 # Cursor & Input
@@ -31,8 +35,11 @@ keybind = cmd+shift+t=new_window
 keybind = cmd+plus=increase_font_size:1
 keybind = cmd+minus=decrease_font_size:1
 keybind = cmd+0=reset_font_size
+keybind = cmd+ctrl+f=toggle_fullscreen
 
 # Advanced Features
 copy-on-select = clipboard
 working-directory = home
 confirm-close-surface = false
+link-url = true
+macos-non-native-fullscreen = true
