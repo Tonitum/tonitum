@@ -30,7 +30,7 @@ return {
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
-    config = function ()
+    config = function()
       require("which-key").setup()
     end
   },
@@ -60,5 +60,16 @@ return {
       vim.g.mkdp_echo_preview_url = 1
       vim.g.mkdp_auto_start = 0
     end
-  }
+  },
+
+  {
+    -- Make sure to set this up properly if you have lazy=true
+    'MeanderingProgrammer/render-markdown.nvim',
+    opts = {
+      file_types = { "markdown" },
+    },
+    ft = { "markdown" },
+  },
+
+
 }

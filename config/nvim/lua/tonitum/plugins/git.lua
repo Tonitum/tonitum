@@ -65,12 +65,11 @@ return {
       vim.keymap.set("n", "<leader>gl", ":Telescope git_branches<CR>") -- branches
       -- vim.keymap.set("n", "<leader>gbl", ":G blame<CR>")               -- full file blame
       -- vim.keymap.set("n", "<leader>ga", ":Gwrite<CR>")                 -- add the current file
-      vim.keymap.set("n", "<leader>gP", ":G push<CR>")                 -- Git push to origin
-      vim.keymap.set("n", "<leader>gp", ":G pull<CR>")                 -- Git pull from origin
-      vim.keymap.set("n", "<leader>gm", ":Gvdiffsplit!<CR>")           -- Git diff while rebasing
-
+      vim.keymap.set("n", "<leader>gP", ":G push<CR>")       -- Git push to origin
+      vim.keymap.set("n", "<leader>gp", ":G pull<CR>")       -- Git pull from origin
+      vim.keymap.set("n", "<leader>gm", ":Gvdiffsplit!<CR>") -- Git diff while rebasing
     end
-  },                                                -- git commands in vim
+  },                                                         -- git commands in vim
 
   {
     "kdheepak/lazygit.nvim",
@@ -94,5 +93,21 @@ return {
     config = function()
       require("telescope").load_extension("lazygit")
     end,
-  }
+  },
+
+  {
+    -- Make sure to set this up properly if you have lazy=true
+    {
+      'barrettruth/diffs.nvim',
+      config = function()
+        vim.g.diffs = {
+          integrations = {
+            fugitive = true,
+            gitsigns = true,
+          }
+        }
+      end,
+
+    },
+  },
 }
