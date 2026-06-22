@@ -8,7 +8,19 @@ return {
     build = ":TSUpdate",
     opts = {
       -- A list of parser names, or "all"
-      ensure_installed = { "vimdoc", "cpp", "python", "vim", "c", "lua", "rust" },
+      ensure_installed = {
+        "vimdoc",
+        "cpp",
+        "python",
+        "vim",
+        "c",
+        "lua",
+        "rust",
+        "markdown",
+        "markdown_inline",
+        "html",
+        "yaml",
+      },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -28,7 +40,42 @@ return {
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = { "markdown" },
       },
-    }
+    },
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+
+      local query = require("vim.treesitter.query")
+
+      local aliases = {
+        ex = "elixir",
+        pl = "perl",
+        sh = "bash",
+        ts = "typescript",
+        uxn = "uxntal",
+      }
+
+      local function first_node(match, id)
+        local node = match[id]
+        if type(node) == "table" then
+          return node[1]
+        end
+        return node
+      end
+
+      -- Neovim 0.12 passes directive captures as TSNode[]; nvim-treesitter
+      -- currently expects a TSNode here.
+      query.add_directive("set-lang-from-info-string!", function(match, _, bufnr, pred, metadata)
+        local node = first_node(match, pred[2])
+        if not node then
+          return
+        end
+
+        local lang = vim.treesitter.get_node_text(node, bufnr):lower()
+        metadata["injection.language"] = vim.filetype.match({
+          filename = "a." .. lang,
+        }) or aliases[lang] or lang
+      end, { force = true })
+    end,
   },
   "nvim-treesitter/nvim-treesitter-context",
   {
