@@ -175,3 +175,14 @@ vim.lsp.config['gopls'] = {
   capabilities = capabilities,
 }
 vim.lsp.enable('gopls')
+
+vim.lsp.config['basedpyright'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('basedpyright')
+vim.lsp.config['ruff'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('ruff')

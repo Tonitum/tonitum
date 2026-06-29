@@ -12,6 +12,24 @@ return {
         git = {
           timeout = 1000
         },
+        view = {
+          float = {
+            enable = true,
+            open_win_config = function()
+              local width = math.floor(vim.o.columns / 3)
+              local height = math.floor(vim.o.lines / 3)
+
+              return {
+                relative = "editor",
+                border = "rounded",
+                width = width,
+                height = height,
+                col = math.floor((vim.o.columns - width) / 2),
+                row = math.floor((vim.o.lines - height) / 2),
+              }
+            end,
+          }
+        },
         filesystem_watchers = {
           ignore_dirs = {
             ".venv",
