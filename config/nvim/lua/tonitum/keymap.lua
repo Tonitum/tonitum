@@ -130,3 +130,4 @@ vim.keymap.set("n", "<leader>sh", ":!")
 vim.keymap.set("n", "<leader>si", ":r!")
 
 -- vim.keymap.set("n", "<leader>lg", ":!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { silent = true })
+vim.keymap.set("n", "<leader>R", ":restart<CR>")
