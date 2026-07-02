@@ -17,7 +17,7 @@ autocmd("FileType", {
 
 autocmd("FileType", {
   group = tonitum_group,
-  pattern = { "lua", "cmake", "bash", "yaml", "sh", "proto", "json" },
+  pattern = { "lua", "cmake", "bash", "yaml", "sh", "proto", "json", "helm" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
