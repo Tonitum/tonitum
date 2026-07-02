@@ -16,7 +16,7 @@ return {
           float = {
             enable = true,
             open_win_config = function()
-              local width = math.floor(vim.o.columns / 3)
+              local width = math.floor(vim.o.columns / 2)
               local height = math.floor(vim.o.lines / 3)
 
               return {
