@@ -1,0 +1,17 @@
+k9s:
+  refreshRate: 1
+  ui:
+    skin: catppuccin-mocha-transparent
+    enableMouse: false
+    headless: false
+    logoless: true
+    crumbsless: false
+    noIcons: false
+    # Toggles reactive UI. This option provide for watching on disk artifacts changes and update the UI live  Defaults to false.
+    reactive: true
+
+  logger:
+    buffer: 5000
+    textWrap: true
+    showTime: true
+
