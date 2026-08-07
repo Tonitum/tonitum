@@ -4,8 +4,8 @@ local function on_attach(_, bufnr)
   vim.keymap.set('n', 'D', function() vim.lsp.buf.hover() end, opts)
   vim.keymap.set('n', '<leader>vws', function() vim.lsp.buf.workspace_symbol() end, opts)
   vim.keymap.set('n', '<leader>vd', function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set('n', ']d', function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set('n', '[d', function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set('n', ']d', function() vim.diagnostic.jump({diagnostic=vim.diagnostic.get_next()}) end, opts)
+  vim.keymap.set('n', '[d', function() vim.diagnostic.jump({diagnostic=vim.diagnostic.get_prev()}) end, opts)
   vim.keymap.set('n', '<leader>da', function() vim.lsp.buf.code_action() end, opts)
   vim.keymap.set('n', '<leader>vrr', function() vim.lsp.buf.references() end, opts)
   vim.keymap.set('n', '<leader>vrn', function() vim.lsp.buf.rename() end, opts)
@@ -46,7 +46,7 @@ vim.diagnostic.config({
   virtual_text = true,
 })
 
-require("fidget").setup()
+require("fidget").setup({})
 require("mason").setup({})
 require("mason-lspconfig").setup({
   automatic_enable = {
@@ -98,6 +98,7 @@ cmp.setup({
 })
 
 -- Configure language servers
+-- lua
 vim.lsp.config['lua_ls'] = {
   -- Command and arguments to start the server.
   cmd = { 'lua-language-server' },
@@ -124,6 +125,7 @@ vim.lsp.config['lua_ls'] = {
 }
 vim.lsp.enable('lua_ls')
 
+-- C/C++
 vim.lsp.config['clangd'] = {
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
   on_attach = on_attach,
@@ -131,6 +133,7 @@ vim.lsp.config['clangd'] = {
 }
 vim.lsp.enable('clangd')
 
+-- YAML
 vim.lsp.config['yamlls'] = {
   settings = {
     yaml = {
@@ -145,6 +148,7 @@ vim.lsp.config['yamlls'] = {
 }
 vim.lsp.enable('yamlls')
 
+-- JSON
 vim.lsp.config['jqls'] = {
   filetypes = { 'jq', 'avsc', 'json' },
   on_attach = on_attach,
@@ -152,6 +156,7 @@ vim.lsp.config['jqls'] = {
 }
 vim.lsp.enable('jqls')
 
+-- Helm
 vim.lsp.config['helm-ls'] = {
   settings = {
     yamlls = {
@@ -170,12 +175,14 @@ vim.lsp.config['helm-ls'] = {
 }
 vim.lsp.enable('helm-ls')
 
+-- Golang
 vim.lsp.config['gopls'] = {
   on_attach = on_attach,
   capabilities = capabilities,
 }
 vim.lsp.enable('gopls')
 
+-- Python
 vim.lsp.config['basedpyright'] = {
   on_attach = on_attach,
   capabilities = capabilities,
