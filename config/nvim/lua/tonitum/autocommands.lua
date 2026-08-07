@@ -6,7 +6,7 @@ local autocmd = vim.api.nvim_create_autocmd
 -- tab types for c++ files
 autocmd("FileType", {
   group = tonitum_group,
-  pattern = { "c", "cpp" },
+  pattern = { "c", "cpp", "html", "javascript", "css" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2
