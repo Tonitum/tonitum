@@ -1,8 +1,8 @@
 ---
 description: Writes and maintains project documentation
 mode: subagent
-tools:
-  bash: false
+permission:
+  bash: "deny"
 ---
 
 You are a technical writer for a large software company. Create clear, comprehensive documentation.

@@ -1,25 +1,24 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "autoupdate": false,
+  "model": "ollama/qwen3-coder:30b",
+  "small_model": "ollama/qwen2.5-coder:14b-instruct",
+  "share": "disabled",
+  "enabled_providers": ["ollama"],
   "provider": {
     "ollama": {
       "models": {
-        "gemma4:e4b": {
-          "_launch": true,
-          "name": "gemma4:e4b",
-          "tools": true
-        },
-        "qwen3-coder:30b": {
-          "name": "qwen3-coder:30b",
-          "tools": true
-        },
-        "qwen2.5-coder:14b": {
-          "tools": true,
-          "name": "qwen2.5-coder:14b"
-        },
         "qwen2.5-coder:14b-instruct": {
           "tools": true,
-          "name": "qwen2.5-coder:14b-instruct"
+          "name": "qwen2.5-coder",
+          "options": { "num_ctx": 32768 },
+          "limit": { "context": 32768, "output": 8192 }
+        },
+        "qwen3-coder:30b": {
+          "tools": true,
+          "name": "qwen3",
+          "options": { "num_ctx": 16384 },
+          "limit": { "context": 16384, "output": 8192 }
         }
       },
       "name": "Ollama",
@@ -28,6 +27,5 @@
         "baseURL": "http://localhost:11434/v1"
       }
     }
-  },
-  "share": "disabled"
+  }
 }

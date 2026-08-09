@@ -1,8 +1,8 @@
 ---
-description: Writes and maintains project documentation
+description: Performs GitLab operations using the glab CLI
 mode: subagent
-tools:
-  bash: false
+permission:
+  bash: "deny"
 ---
 
 You are an AI assistant helping with GitLab operations.
