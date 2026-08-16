@@ -51,6 +51,20 @@ deleteWorktree() {
   echo "Deleted worktree ${target}"
 }
 
+getDefaultBranch() {
+  branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@refs/remotes/origin/@@')
+  if [[ -z $branch ]]; then
+    if git rev-parse --verify --quiet main > /dev/null 2>&1; then
+      branch="main"
+    elif git rev-parse --verify --quiet master > /dev/null 2>&1; then
+      branch="master"
+    else
+      branch="main"
+    fi
+  fi
+  echo "$branch"
+}
+
 # make sure we're in a git repo
 if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
   echo "ERROR: worktrees can only be run from a git repo"
@@ -80,23 +94,9 @@ main_repo_root=${main_repo_root%/.git}
 git_repo_parent=$(dirname "$main_repo_root")
 git_repo_name=$(basename "$main_repo_root")
 
-getDefaultBranch() {
-  branch=$(git symbolic-ref refs/remotes/origin/HEAD 2>/dev/null | sed 's@refs/remotes/origin/@@')
-  if [[ -z $branch ]]; then
-    if git rev-parse --verify --quiet main > /dev/null 2>&1; then
-      branch="main"
-    elif git rev-parse --verify --quiet master > /dev/null 2>&1; then
-      branch="master"
-    else
-      branch="main"
-    fi
-  fi
-  echo "$branch"
-}
+default_branch=$(getDefaultBranch)
 
 if [[ $selected == "new" ]]; then
-  default_branch=$(getDefaultBranch)
-
   while true; do
     # prompt for new branch name
     read -rp "New Worktree Branch Name: " new_branch_name
@@ -138,6 +138,12 @@ if [[ $selected == "new" ]]; then
   selected="${new_branch_name}"
 elif [[ $selected == "delete" ]]; then
   deleteWorktree
+  exit 0
+fi
+
+# default branch lives in the main repo; no worktree needed
+if [[ $selected == "$default_branch" ]]; then
+  tmux-sessionizer "${main_repo_root}"
   exit 0
 fi
 
