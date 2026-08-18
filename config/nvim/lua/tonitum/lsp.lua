@@ -205,3 +205,15 @@ vim.lsp.config['ts_ls'] = {
   capabilities = capabilities,
 }
 vim.lsp.enable('ts_ls')
+
+-- bash/sh
+vim.lsp.config['bashls'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('bashls')
+vim.lsp.config['shellcheck'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+vim.lsp.enable('shellcheck')
