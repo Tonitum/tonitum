@@ -146,9 +146,11 @@ PS1="[$GREEN\u$RESET @ $YELLOW\h$RESET] ($CYAN\w$RESET) \n\$ \t\$(parse_git_bran
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 eval "$(fzf --bash)"
 
-[ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
-
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # source things for local installations
+[ -f ~/.bash_local ] && source ~/.bash_local
 [ -f ~/.bash_local.rc ] && source ~/.bash_local.rc
+
