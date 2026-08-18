@@ -125,6 +125,14 @@ vim.lsp.config['lua_ls'] = {
 }
 vim.lsp.enable('lua_ls')
 
+local function default_enable_server(servername)
+  vim.lsp.config[servername] = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+  vim.lsp.enable(servername)
+end
+
 -- C/C++
 vim.lsp.config['clangd'] = {
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
@@ -175,45 +183,22 @@ vim.lsp.config['helm-ls'] = {
 }
 vim.lsp.enable('helm-ls')
 
+local default_servers = {}
 -- Golang
-vim.lsp.config['gopls'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('gopls')
+table.insert(default_servers, 'gopls')
 
 -- Python
-vim.lsp.config['basedpyright'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('basedpyright')
-vim.lsp.config['ruff'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('ruff')
+table.insert(default_servers, 'basedpyright')
+table.insert(default_servers, 'ruff')
 
 -- Javascript / Typescript
-vim.lsp.config['eslint'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('eslint')
-vim.lsp.config['ts_ls'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('ts_ls')
+table.insert(default_servers, 'eslint')
+table.insert(default_servers, 'ts_ls')
 
 -- bash/sh
-vim.lsp.config['bashls'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('bashls')
-vim.lsp.config['shellcheck'] = {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-vim.lsp.enable('shellcheck')
+table.insert(default_servers, 'bashls')
+table.insert(default_servers, 'shellcheck')
+
+for _, server in ipairs(default_servers) do
+  default_enable_server(server)
+end
