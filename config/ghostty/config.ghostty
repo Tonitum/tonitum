@@ -1,6 +1,6 @@
 # Theme & Appearance
 theme = Catppuccin Mocha
-font-size = 12
+font-size = 16
 font-thicken = true
 term = xterm-256color
 
