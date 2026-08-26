@@ -26,7 +26,7 @@ link() {
 for tool_dir in "$repo_dir"/config/*/; do
     tool="$(basename "$tool_dir")"
     case "$tool" in
-        bash|vim|tmux|terminal) continue ;;
+        bash|vim|tmux|terminal|opencode) continue ;;
     esac
     link "$repo_dir/config/$tool" "$HOME/.config/$tool"
 done
