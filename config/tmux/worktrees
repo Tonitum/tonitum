@@ -147,7 +147,8 @@ if [[ $selected == "$default_branch" ]]; then
   exit 0
 fi
 
-worktree_name=${git_repo_name}-${selected}
+# Normalize path separators while retaining the original branch name for Git.
+worktree_name=${git_repo_name}-${selected//\//_}
 worktree_path="$git_repo_parent/$worktree_name"
 
 # check if there is already a worktree for that branch. if not, create it
