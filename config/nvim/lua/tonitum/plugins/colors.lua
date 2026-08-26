@@ -134,5 +134,7 @@ return {
     'l-snq/tr100.vim',
     lazy = true,
     priority = 1000,
-  }
+  },
+
+  {"Aejkatappaja/cendre"}
 }
