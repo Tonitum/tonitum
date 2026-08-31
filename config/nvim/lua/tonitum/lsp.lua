@@ -125,14 +125,6 @@ vim.lsp.config['lua_ls'] = {
 }
 vim.lsp.enable('lua_ls')
 
-local function default_enable_server(servername)
-  vim.lsp.config[servername] = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-  vim.lsp.enable(servername)
-end
-
 -- C/C++
 vim.lsp.config['clangd'] = {
   filetypes = { 'c', 'cpp', 'objc', 'objcpp', 'cuda' },
@@ -188,7 +180,19 @@ local default_servers = {}
 table.insert(default_servers, 'gopls')
 
 -- Python
-table.insert(default_servers, 'basedpyright')
+vim.lsp.config['basedpyright'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    basedpyright = {
+      analysis = {
+        diagnosticMode = 'workspace',
+      },
+    },
+  },
+}
+vim.lsp.enable('basedpyright')
+
 table.insert(default_servers, 'ruff')
 
 -- Javascript / Typescript
@@ -198,6 +202,18 @@ table.insert(default_servers, 'ts_ls')
 -- bash/sh
 table.insert(default_servers, 'bashls')
 table.insert(default_servers, 'shellcheck')
+
+table.insert(default_servers, 'terraform')
+table.insert(default_servers, 'terraformls')
+
+
+local function default_enable_server(servername)
+  vim.lsp.config[servername] = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+  vim.lsp.enable(servername)
+end
 
 for _, server in ipairs(default_servers) do
   default_enable_server(server)
