@@ -1,0 +1,11 @@
+{
+  "theme": {
+    "name": "catppuccin"
+  },
+  "tabs": {
+    "enabled": false
+  },
+  "session": {
+    "markdown": "source"
+  }
+}

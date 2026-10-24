@@ -1,9 +1,10 @@
 ---
 description: Performs security audits and identifies vulnerabilities
 mode: subagent
-permission:
-  write: "deny"
-  edit: "deny"
+permissions:
+  - action: edit
+    resource: "*"
+    effect: deny
 ---
 
 You are a security expert. Focus on identifying potential security issues.
@@ -15,4 +16,3 @@ Look for:
 - Data exposure risks
 - Dependency vulnerabilities
 - Configuration security issues
-
