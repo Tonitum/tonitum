@@ -129,7 +129,8 @@ RESET='\001\e[0m\002'
 export PATH=$PATH:~/nvim-linux64/bin/
 export PATH=$PATH:~/nvim-macos-arm64/bin/
 export PATH=$PATH:~/.local/bin
-export PATH=$PATH:/opt/homebrew/bin
+export PATH=/opt/homebrew/sbin:$PATH
+export PATH=/opt/homebrew/bin:$PATH
 # go
 export PATH=$PATH:$HOME/go/bin
 # rust
