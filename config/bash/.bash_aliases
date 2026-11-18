@@ -121,6 +121,7 @@ alias openaliases="vim ~/.bash_aliases"
 alias edita="vim ~/.bash_aliases"
 alias openrc="vim ~/.bashrc"
 alias editb="vim ~/.bashrc"
+alias editl="vim ~/.bash_local"
 alias re-source="source ~/.bashrc"
 alias rsb="source ~/.bashrc"
 
