@@ -14,7 +14,7 @@ window-decoration = auto
 
 # Cursor & Input
 cursor-style = block
-cursor-style-blink = true
+cursor-style-blink = false
 mouse-hide-while-typing = true
 macos-option-as-alt = true
 
