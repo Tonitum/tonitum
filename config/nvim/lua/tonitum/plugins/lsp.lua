@@ -8,15 +8,32 @@ return {
     "mfussenegger/nvim-lint",
     config = function()
       local lint = require("lint")
+      lint.linters.pymarkdownlnt = {
+        name = "pymarkdownlnt",
+        cmd = "pymarkdownlnt",
+        args = { "scan" },
+        append_fname = true,
+        ignore_exitcode = true,
+        parser = require("lint.parser").from_errorformat(
+          "%f:%l:%c: %o: %m",
+          { source = "pymarkdownlnt" }
+        ),
+      }
       lint.linters_by_ft = {
         markdown = { "pymarkdownlnt" },
       }
 
-      vim.api.nvim_create_autocmd("BufWritePost", {
-        callback = function()
-          lint.try_lint()
-        end,
-      })
+      vim.keymap.set("n", "<leader>vl", function()
+        lint.try_lint()
+      end
+      )
+
+
+      -- vim.api.nvim_create_autocmd("BufWritePost", {
+      -- callback = function()
+      --   lint.try_lint()
+      -- end,
+      -- })
     end,
   },
   { "williamboman/mason.nvim" },

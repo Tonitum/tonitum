@@ -50,7 +50,7 @@ require("fidget").setup({})
 require("mason").setup({})
 require("mason-lspconfig").setup({
   automatic_enable = {
-    exclude = { "jdtls" },
+    exclude = { "jdtls", "basedpyright", "pyright", "ty" },
   },
 })
 
@@ -180,20 +180,33 @@ local default_servers = {}
 table.insert(default_servers, 'gopls')
 
 -- Python
-vim.lsp.config['basedpyright'] = {
+-- Python: typing, completion, hover, navigation.
+vim.lsp.config('basedpyright', {
   on_attach = on_attach,
   capabilities = capabilities,
+  init_options = {
+    disablePullDiagnostics = true,
+  },
   settings = {
     basedpyright = {
+      disableOrganizeImports = true, -- Ruff owns import sorting.
       analysis = {
         diagnosticMode = 'workspace',
+        typeCheckingMode = 'standard',
       },
     },
   },
-}
+})
 vim.lsp.enable('basedpyright')
-
-table.insert(default_servers, 'ruff')
+-- Python: linting, formatting, import sorting.
+vim.lsp.config('ruff', {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    client.server_capabilities.hoverProvider = false
+    on_attach(client, bufnr)
+  end,
+})
+vim.lsp.enable('ruff')
 
 -- Javascript / Typescript
 table.insert(default_servers, 'eslint')

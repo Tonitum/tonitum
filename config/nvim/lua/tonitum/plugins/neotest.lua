@@ -72,6 +72,7 @@ return {
       })
     end,
     dependencies = {
+      "nvim-neotest/nvim-nio",
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
@@ -80,8 +81,4 @@ return {
       "fredrikaverpil/neotest-golang",
     }
   },
-  {
-    "nvim-neotest/neotest-python",
-    commit = "2e83d2bc00acbcc1fd529dbf0a0e677cabfe6b50"
-  }
 }
